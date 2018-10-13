@@ -8,8 +8,19 @@
 
 import UIKit
 
-struct ArticlesDisplayData {
+class ArticlesDisplayData {
+    fileprivate weak var viewController: ArticlesViewController?
     
+    var articles = [Article]()
+    
+    init(viewController: ArticlesViewController) {
+        self.viewController = viewController
+    }
+    
+    func add(article: Article) {
+        articles.append(article)
+        viewController?.tableView.reloadData()
+    }
 }
 
 extension ArticlesDisplayData: DisplayCollection {
@@ -18,11 +29,12 @@ extension ArticlesDisplayData: DisplayCollection {
     }
     
     func numberOfRows(in section: Int) -> Int {
-        return 10
+        return articles.count
     }
     
     func model(for indexPath: IndexPath) -> BaseCellViewModel {
-        return ArticleCellViewModel(title: "\(indexPath.row)", name: "by Name")
+        let article = articles[indexPath.row]
+        return ArticleCellViewModel(title: "\(article.title)", name: "\(article.url)")
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {

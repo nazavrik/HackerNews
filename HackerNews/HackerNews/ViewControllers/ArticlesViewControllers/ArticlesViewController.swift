@@ -12,14 +12,33 @@ class ArticlesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var displayData = ArticlesDisplayData()
+    var displayData: ArticlesDisplayData!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Articles"
         
+        displayData =  ArticlesDisplayData(viewController: self)
+        
         tableView.registerNibs(from: displayData)
+        
+        let request = Article.Requests.articleIds
+        Server.standard.request(request) { array, error in
+            if let articleIds = array?.items {
+                
+                //var articles = [Article]()
+                for articleId in articleIds {
+                    let request = Article.Requests.article(for: articleId)
+                    Server.standard.request(request, completion: { article, error in
+                        if let article = article {
+                            //articles.append(article)
+                            self.displayData.add(article: article)
+                        }
+                    })
+                }
+            }
+        }
     }
 }
 
