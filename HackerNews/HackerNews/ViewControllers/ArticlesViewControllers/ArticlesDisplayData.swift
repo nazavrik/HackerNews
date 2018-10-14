@@ -20,6 +20,25 @@ class ArticlesDisplayData {
     func add(article: Article) {
         articles.append(article)
         viewController?.tableView.reloadData()
+        // TODO: need refactoring
+        // viewController?.endRefreshing()
+    }
+    
+    func fetchArticles(refresh: Bool) {
+        let request = Article.Requests.articleIds
+        Server.standard.request(request) { array, error in
+            if let articleIds = array?.items {
+                
+                for articleId in articleIds {
+                    let request = Article.Requests.article(for: articleId)
+                    Server.standard.request(request, completion: { article, error in
+                        if let article = article {
+                            self.add(article: article)
+                        }
+                    })
+                }
+            }
+        }
     }
 }
 
