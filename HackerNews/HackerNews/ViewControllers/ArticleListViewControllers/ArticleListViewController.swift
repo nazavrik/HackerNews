@@ -17,9 +17,6 @@ class ArticleListViewController: TableViewController {
     }
     
     override func viewDidLoad() {
-        //  TODO: need refactoring
-        displayData = ArticlesDisplayData(viewController: self)
-        
         super.viewDidLoad()
 
         title = "Articles"

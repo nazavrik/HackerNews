@@ -9,7 +9,9 @@
 import UIKit
 
 class ArticlesDisplayData {
-    fileprivate weak var viewController: ArticleListViewController?
+    private weak var viewController: ArticleListViewController?
+    
+    var didArticleSelect: ((Article) -> Void)?
     
     var articles = [Article]()
     
@@ -63,11 +65,7 @@ extension ArticlesDisplayData: DisplayCollection {
 
 extension ArticlesDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
-        let articleViewController = Storyboards.Main.articleViewController()
-        
         let article = articles[indexPath.row]
-        articleViewController.url = article.url
-            
-        viewController?.navigationController?.pushViewController(articleViewController, animated: true)
+        didArticleSelect?(article)
     }
 }
