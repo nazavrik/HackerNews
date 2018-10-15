@@ -14,7 +14,7 @@
 		11514091216D7993007857A7 /* HackerNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11514090216D7993007857A7 /* HackerNewsTests.swift */; };
 		1151409C216D7993007857A7 /* HackerNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151409B216D7993007857A7 /* HackerNewsUITests.swift */; };
 		115140B2216EE36E007857A7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140B1216EE36E007857A7 /* Article.swift */; };
-		115140BD21702EFF007857A7 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BC21702EFF007857A7 /* ArticlesViewController.swift */; };
+		115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BC21702EFF007857A7 /* ArticleListViewController.swift */; };
 		115140BF217030D4007857A7 /* ArticlesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BE217030D4007857A7 /* ArticlesDisplayData.swift */; };
 		115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140C1217031BD007857A7 /* DisplayCollection.swift */; };
 		115140C421703484007857A7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140C321703484007857A7 /* CellViewModel.swift */; };
@@ -31,6 +31,9 @@
 		115140E32170BB72007857A7 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E22170BB72007857A7 /* ObjectType.swift */; };
 		115140E62170C753007857A7 /* ArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E52170C753007857A7 /* ArrayObject.swift */; };
 		115140E92172DE69007857A7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E82172DE69007857A7 /* TableViewController.swift */; };
+		117A84702174305200655CC9 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A846F2174305200655CC9 /* ArticleViewController.swift */; };
+		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
+		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +67,7 @@
 		1151409B216D7993007857A7 /* HackerNewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsUITests.swift; sourceTree = "<group>"; };
 		1151409D216D7993007857A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		115140B1216EE36E007857A7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		115140BC21702EFF007857A7 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		115140BC21702EFF007857A7 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		115140BE217030D4007857A7 /* ArticlesDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesDisplayData.swift; sourceTree = "<group>"; };
 		115140C1217031BD007857A7 /* DisplayCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCollection.swift; sourceTree = "<group>"; };
 		115140C321703484007857A7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +84,9 @@
 		115140E22170BB72007857A7 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		115140E52170C753007857A7 /* ArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayObject.swift; sourceTree = "<group>"; };
 		115140E82172DE69007857A7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		117A846F2174305200655CC9 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,10 +144,9 @@
 				115140C0217031A3007857A7 /* Protocols */,
 				115140BA21702EC1007857A7 /* ViewControllers */,
 				115140B0216EE35E007857A7 /* Models */,
+				117A84712174318600655CC9 /* Resources */,
 				1151407B216D7991007857A7 /* AppDelegate.swift */,
-				1151407F216D7991007857A7 /* Main.storyboard */,
 				11514082216D7993007857A7 /* Assets.xcassets */,
-				11514084216D7993007857A7 /* LaunchScreen.storyboard */,
 				11514087216D7993007857A7 /* Info.plist */,
 			);
 			path = HackerNews;
@@ -177,18 +182,19 @@
 			isa = PBXGroup;
 			children = (
 				115140E72172DDB3007857A7 /* Base */,
-				115140BB21702ECA007857A7 /* ArticlesViewControllers */,
+				117A846E2174301E00655CC9 /* ArticleViewController */,
+				115140BB21702ECA007857A7 /* ArticleListViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		115140BB21702ECA007857A7 /* ArticlesViewControllers */ = {
+		115140BB21702ECA007857A7 /* ArticleListViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				115140BC21702EFF007857A7 /* ArticlesViewController.swift */,
+				115140BC21702EFF007857A7 /* ArticleListViewController.swift */,
 				115140BE217030D4007857A7 /* ArticlesDisplayData.swift */,
 			);
-			path = ArticlesViewControllers;
+			path = ArticleListViewControllers;
 			sourceTree = "<group>";
 		};
 		115140C0217031A3007857A7 /* Protocols */ = {
@@ -240,6 +246,7 @@
 				115140CF21703EE7007857A7 /* UITableViewCell+Nib.swift */,
 				115140D52170401C007857A7 /* UITableView+Registration.swift */,
 				115140D72170421D007857A7 /* UITableView+CellViewModel.swift */,
+				117A8475217437FD00655CC9 /* UITableView+Deselection.swift */,
 			);
 			path = UITableView;
 			sourceTree = "<group>";
@@ -294,6 +301,32 @@
 				115140E82172DE69007857A7 /* TableViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		117A846E2174301E00655CC9 /* ArticleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				117A846F2174305200655CC9 /* ArticleViewController.swift */,
+			);
+			path = ArticleViewController;
+			sourceTree = "<group>";
+		};
+		117A84712174318600655CC9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				117A8472217431AF00655CC9 /* Storyboards */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		117A8472217431AF00655CC9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1151407F216D7991007857A7 /* Main.storyboard */,
+				11514084216D7993007857A7 /* LaunchScreen.storyboard */,
+				117A84732174326800655CC9 /* Storyboards.swift */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,9 +473,12 @@
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
-				115140BD21702EFF007857A7 /* ArticlesViewController.swift in Sources */,
+				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
+				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
+				117A84742174326800655CC9 /* Storyboards.swift in Sources */,
+				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,
 				115140D421703F3C007857A7 /* UIView+Nib.swift in Sources */,
 				115140D82170421D007857A7 /* UITableView+CellViewModel.swift in Sources */,
 				115140BF217030D4007857A7 /* ArticlesDisplayData.swift in Sources */,

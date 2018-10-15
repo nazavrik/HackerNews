@@ -66,4 +66,11 @@ extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableDisplayData.height(for: indexPath)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow()
+        
+        guard let actionDelegate = tableDisplayData as? DisplayCollectionAction else { return }
+        actionDelegate.didSelect(indexPath: indexPath)
+    }
 }

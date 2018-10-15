@@ -9,11 +9,11 @@
 import UIKit
 
 class ArticlesDisplayData {
-    fileprivate weak var viewController: ArticlesViewController?
+    fileprivate weak var viewController: ArticleListViewController?
     
     var articles = [Article]()
     
-    init(viewController: ArticlesViewController) {
+    init(viewController: ArticleListViewController) {
         self.viewController = viewController
     }
     
@@ -58,5 +58,16 @@ extension ArticlesDisplayData: DisplayCollection {
     
     func height(for indexPath: IndexPath) -> CGFloat {
         return 44.0
+    }
+}
+
+extension ArticlesDisplayData: DisplayCollectionAction {
+    func didSelect(indexPath: IndexPath) {
+        let articleViewController = Storyboards.Main.articleViewController()
+        
+        let article = articles[indexPath.row]
+        articleViewController.url = article.url
+            
+        viewController?.navigationController?.pushViewController(articleViewController, animated: true)
     }
 }

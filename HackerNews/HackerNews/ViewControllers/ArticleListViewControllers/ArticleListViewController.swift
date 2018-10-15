@@ -1,5 +1,5 @@
 //
-//  ArticlesViewController.swift
+//  ArticleListViewController.swift
 //  HackerNews
 //
 //  Created by Alexander Nazarov on 10/11/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticlesViewController: TableViewController {
+class ArticleListViewController: TableViewController {
     
     var displayData: ArticlesDisplayData! {
         didSet {
