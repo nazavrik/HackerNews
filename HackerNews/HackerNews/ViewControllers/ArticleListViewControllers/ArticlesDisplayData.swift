@@ -19,28 +19,40 @@ class ArticlesDisplayData {
         self.viewController = viewController
     }
     
-    func add(article: Article) {
-        articles.append(article)
-        viewController?.tableView.reloadData()
-        // TODO: need refactoring
-        // viewController?.endRefreshing()
-    }
-    
     func fetchArticles(refresh: Bool) {
         let request = Article.Requests.articleIds
-        Server.standard.request(request) { array, error in
+        Server.standard.request(request) { [weak self] array, error in
             if let articleIds = array?.items {
-                
-                for articleId in articleIds {
-                    let request = Article.Requests.article(for: articleId)
-                    Server.standard.request(request, completion: { article, error in
-                        if let article = article {
-                            self.add(article: article)
-                        }
-                    })
-                }
+                self?.fetchArticles(for: articleIds)
             }
         }
+    }
+    
+    private func fetchArticles(for articleIds: [Int]) {
+        var items = [Article]()
+        let group = DispatchGroup()
+
+        for articleId in articleIds {
+            group.enter()
+            
+            let request = Article.Requests.article(for: articleId)
+            Server.standard.request(request, completion: { article, error in
+                if let article = article {
+                    items.append(article)
+                }
+                group.leave()
+            })
+        }
+        
+        group.notify(queue: DispatchQueue.main, execute: {
+            self.updateUI(with: items)
+        })
+    }
+    
+    private func updateUI(with items: [Article]) {
+        articles.removeAll()
+        articles.append(contentsOf: items)
+        viewController?.tableView.reloadData()
     }
 }
 
