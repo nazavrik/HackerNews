@@ -52,6 +52,7 @@ class ArticlesDisplayData {
     private func updateUI(with items: [Article]) {
         articles.removeAll()
         articles.append(contentsOf: items)
+        viewController?.endRefreshing()
         viewController?.tableView.reloadData()
     }
 }
