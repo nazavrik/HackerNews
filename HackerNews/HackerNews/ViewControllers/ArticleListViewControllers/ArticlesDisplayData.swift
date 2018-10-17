@@ -20,6 +20,10 @@ class ArticlesDisplayData {
     }
     
     func fetchArticles(refresh: Bool) {
+        if !refresh {
+            viewController?.view.showLoader()
+        }
+        
         let request = Article.Requests.articleIds
         Server.standard.request(request) { [weak self] array, error in
             if let articleIds = array?.items {
@@ -52,6 +56,7 @@ class ArticlesDisplayData {
     private func updateUI(with items: [Article]) {
         articles.removeAll()
         articles.append(contentsOf: items)
+        viewController?.view.hideLoader()
         viewController?.endRefreshing()
         viewController?.tableView.reloadData()
     }

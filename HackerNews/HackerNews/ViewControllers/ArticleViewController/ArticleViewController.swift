@@ -11,7 +11,11 @@ import WebKit
 
 class ArticleViewController: UIViewController {
 
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var webView: WKWebView! {
+        didSet {
+            webView.navigationDelegate = self
+        }
+    }
     
     var url: String?
     
@@ -21,9 +25,17 @@ class ArticleViewController: UIViewController {
         title = "Article"
         
         if let url = url {
+            view.showLoader()
+            
             let myURL = URL(string: url)
             let myRequest = URLRequest(url: myURL!)
             webView.load(myRequest)
         }
+    }
+}
+
+extension ArticleViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        view.hideLoader()
     }
 }

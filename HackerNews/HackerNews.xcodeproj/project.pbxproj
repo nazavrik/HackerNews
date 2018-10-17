@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
 		1151407C216D7991007857A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151407B216D7991007857A7 /* AppDelegate.swift */; };
 		11514081216D7991007857A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151407F216D7991007857A7 /* Main.storyboard */; };
 		11514083216D7993007857A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11514082216D7993007857A7 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
 		11514078216D7991007857A7 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151407B216D7991007857A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11514080216D7991007857A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				115140D321703F3C007857A7 /* UIView+Nib.swift */,
+				11444BCF2176E8DC000632E0 /* UIView+Loader.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
 				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
+				11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */,
 				117A847B2174404900655CC9 /* Coordinator.swift in Sources */,
 				117A84742174326800655CC9 /* Storyboards.swift in Sources */,
 				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,
