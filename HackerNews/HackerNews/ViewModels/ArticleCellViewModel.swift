@@ -15,6 +15,6 @@ struct ArticleCellViewModel {
 
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
-        cell.configure(title: title, name: name)
+        cell.configure(title: title, name: "by \(name)")
     }
 }

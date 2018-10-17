@@ -68,11 +68,11 @@ extension ArticlesDisplayData: DisplayCollection {
     
     func model(for indexPath: IndexPath) -> BaseCellViewModel {
         let article = articles[indexPath.row]
-        return ArticleCellViewModel(title: "\(article.title)", name: "\(article.url)")
+        return ArticleCellViewModel(title: "\(article.title)", name: "\(article.author)")
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        return 60.0
     }
 }
 
