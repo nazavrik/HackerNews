@@ -13,10 +13,16 @@ struct ArticleCellViewModel {
     let name: String
     let score: Int
     let comments: Int
+    let date: Date?
 }
 
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
-        cell.configure(title: title, name: "by \(name)", score: score, comments: comments)
+        
+        cell.configure(title: title,
+                       name: "by \(name)",
+                       score: "\(score)",
+                       comments: "\(comments) comments",
+                       timeAgo: date?.timeSinceNow ?? "")
     }
 }

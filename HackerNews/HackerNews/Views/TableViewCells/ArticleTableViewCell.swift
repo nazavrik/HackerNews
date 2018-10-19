@@ -18,14 +18,18 @@ class ArticleTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(title: String, name: String, score: Int, comments: Int) {
+    func configure(title: String,
+                   name: String,
+                   score: String,
+                   comments: String,
+                   timeAgo: String) {
         titleLabel.text = title
-        scoreLabel.text = "\(score)"
+        scoreLabel.text = score
         
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         
-        nameLabel.attributedText = NSAttributedString(string: "\(name)  \(comments) comments", attributes: attributes)
+        nameLabel.attributedText = NSAttributedString(string: "\(name)  \(comments)  \(timeAgo)", attributes: attributes)
         
     }
 }
