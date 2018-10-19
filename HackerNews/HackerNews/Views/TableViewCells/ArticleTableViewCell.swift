@@ -12,13 +12,20 @@ class ArticleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func configure(title: String, name: String) {
+    func configure(title: String, name: String, score: Int, comments: Int) {
         titleLabel.text = title
-        nameLabel.text = name
+        scoreLabel.text = "\(score)"
+        
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                          NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
+        
+        nameLabel.attributedText = NSAttributedString(string: "\(name)  \(comments) comments", attributes: attributes)
+        
     }
 }

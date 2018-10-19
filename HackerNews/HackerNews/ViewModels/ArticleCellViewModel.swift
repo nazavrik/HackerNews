@@ -11,10 +11,12 @@ import Foundation
 struct ArticleCellViewModel {
     let title: String
     let name: String
+    let score: Int
+    let comments: Int
 }
 
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
-        cell.configure(title: title, name: "by \(name)")
+        cell.configure(title: title, name: "by \(name)", score: score, comments: comments)
     }
 }

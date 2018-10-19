@@ -14,6 +14,7 @@ struct Article {
     let url: String
     let score: Int
     let author: String
+    let comments: Int
     let date: Date?
 }
 
@@ -25,6 +26,7 @@ extension Article: ObjectType {
             let url = json["url"] as? String,
             let score = json["score"] as? Int,
             let author = json["by"] as? String,
+            let comments = json["descendants"] as? Int,
             let timeStamp = json["time"] as? TimeInterval
             else { return nil }
         
@@ -33,6 +35,7 @@ extension Article: ObjectType {
         self.url = url
         self.score = score
         self.author = author
+        self.comments = comments
         self.date = Date(timeIntervalSince1970: timeStamp)
     }
 }
