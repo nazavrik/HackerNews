@@ -9,21 +9,17 @@
 import Foundation
 
 struct ArticleCellViewModel {
-    let title: String
-    let name: String
-    let score: Int
-    let comments: Int
-    let date: Date?
+    let article: Article
 }
 
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
-        
-        let commentDescripion = comments == 1 ? "comment" : "comments"
-        cell.configure(title: title,
-                       name: "by \(name)",
-                       score: "\(score)",
-                       comments: "\(comments) \(commentDescripion)",
-                       timeAgo: date?.timeSinceNow ?? "")
+        let commentDescripion = article.comments == 1 ? "comment" : "comments"
+        cell.configure(title: article.title,
+                       domain: article.url.domain,
+                       name: "by \(article.author)",
+                       score: "\(article.score)",
+                       comments: "\(article.comments) \(commentDescripion)",
+                       timeAgo: article.date?.timeSinceNow ?? "")
     }
 }

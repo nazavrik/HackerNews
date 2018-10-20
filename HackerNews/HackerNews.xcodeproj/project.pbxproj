@@ -40,6 +40,7 @@
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* WebViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */; };
+		11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB6217BB6D500381C6D /* String+Url.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDisplayData.swift; sourceTree = "<group>"; };
+		11C34EB6217BB6D500381C6D /* String+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Url.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 		115140CE21703ED2007857A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				11C34EB5217BB6B200381C6D /* String */,
 				11C34E972179913800381C6D /* Date */,
 				115140D221703F2A007857A7 /* UIView */,
 				115140D121703EEF007857A7 /* UITableView */,
@@ -369,6 +372,14 @@
 				11C34EB0217AD8A600381C6D /* WebViewController.swift */,
 			);
 			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		11C34EB5217BB6B200381C6D /* String */ = {
+			isa = PBXGroup;
+			children = (
+				11C34EB6217BB6D500381C6D /* String+Url.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */,
 				117A84792174403200655CC9 /* AppCoordinator.swift in Sources */,
 				115140DE2170BA8E007857A7 /* Server.swift in Sources */,
 				115140E62170C753007857A7 /* ArrayObject.swift in Sources */,

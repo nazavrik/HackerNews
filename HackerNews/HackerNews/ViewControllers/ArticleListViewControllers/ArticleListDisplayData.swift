@@ -73,11 +73,7 @@ extension ArticleListDisplayData: DisplayCollection {
     
     func model(for indexPath: IndexPath) -> BaseCellViewModel {
         let article = articles[indexPath.row]
-        return ArticleCellViewModel(title: article.title,
-                                    name: article.author,
-                                    score: article.score,
-                                    comments: article.comments,
-                                    date: article.date)
+        return ArticleCellViewModel(article: article)
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {
