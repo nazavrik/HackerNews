@@ -14,12 +14,12 @@ struct ArticleCellViewModel {
 
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
-        let commentDescripion = article.comments == 1 ? "comment" : "comments"
+        let commentDescripion = article.commentsCount == 1 ? "comment" : "comments"
         cell.configure(title: article.title,
                        domain: article.url.domain,
                        name: "by \(article.author)",
                        score: "\(article.score)",
-                       comments: "\(article.comments) \(commentDescripion)",
+                       comments: "\(article.commentsCount) \(commentDescripion)",
                        timeAgo: article.date?.timeSinceNow ?? "")
     }
 }

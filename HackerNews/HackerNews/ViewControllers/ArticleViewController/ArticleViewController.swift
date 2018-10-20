@@ -21,5 +21,7 @@ class ArticleViewController: TableViewController {
         super.viewDidLoad()
 
         title = "Details"
+        
+        displayData.fetchComments()
     }
 }

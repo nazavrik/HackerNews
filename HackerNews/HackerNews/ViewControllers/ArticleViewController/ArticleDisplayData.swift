@@ -11,7 +11,7 @@ import UIKit
 class ArticleDisplayData {
     private weak var viewController: ArticleViewController?
     private var article: Article
-    private var comments = [String]()
+    private var comments = [Comment]()
     
     var didOpeningUrlSelect: ((String) -> Void)?
     
@@ -19,11 +19,53 @@ class ArticleDisplayData {
         self.viewController = viewController
         self.article = article
     }
+    
+    func fetchComments() {
+        viewController?.view.showLoader()
+        
+        var items = [Int: Comment]()
+        
+        let group = DispatchGroup()
+        
+        for commentId in article.commentIds {
+            group.enter()
+            
+            let request = Comment.Requests.comment(for: commentId)
+            Server.standard.request(request) { comment, error in
+                if let comment = comment {
+                    items[comment.id] = comment
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main, execute: {
+            
+            var sortedItems = [Comment]()
+            
+            for commentId in self.article.commentIds {
+                if let item = items[commentId] {
+                    sortedItems.append(item)
+                }
+            }
+            
+            self.updateUI(with: sortedItems)
+        })
+    }
+    
+    private func updateUI(with items: [Comment]) {
+        comments.removeAll()
+        comments.append(contentsOf: items)
+        viewController?.view.hideLoader()
+        viewController?.tableView.reloadData()
+    }
 }
 
 extension ArticleDisplayData: DisplayCollection {
     static var modelsForRegistration: [BaseCellViewModel.Type] {
-        return [ArticleCellViewModel.self]
+        return [ArticleCellViewModel.self,
+                HeaderCellViewModel.self,
+                CommentCellViewModel.self]
     }
     
     var numberOfSections: Int {
@@ -39,14 +81,30 @@ extension ArticleDisplayData: DisplayCollection {
             return ArticleCellViewModel(article: article)
         }
         
-        return ArticleCellViewModel(article: article)
+        let comment = comments[indexPath.row]
+        return CommentCellViewModel(comment: comment)
+    }
+    
+    func header(for section: Int) -> BaseCellViewModel? {
+        if section == 0 {
+            return nil
+        }
+        
+        return HeaderCellViewModel(title: "Comments (\(article.commentsCount))")
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 70.0
         }
-        return 100.0
+        return UITableView.automaticDimension//100.0
+    }
+    
+    func headerHeight(for section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }
+        return 44.0
     }
 }
 

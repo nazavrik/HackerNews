@@ -41,6 +41,13 @@
 		11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* WebViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */; };
 		11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB6217BB6D500381C6D /* String+Url.swift */; };
+		11C34EBC217BC3F500381C6D /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */; };
+		11C34EBD217BC3F500381C6D /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */; };
+		11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */; };
+		11C34EC1217BCAD100381C6D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC0217BCAD100381C6D /* Comment.swift */; };
+		11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */; };
+		11C34EC5217BCFCF00381C6D /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */; };
+		11C34EC7217BD1B000381C6D /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +108,13 @@
 		11C34EB0217AD8A600381C6D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDisplayData.swift; sourceTree = "<group>"; };
 		11C34EB6217BB6D500381C6D /* String+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Url.swift"; sourceTree = "<group>"; };
+		11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
+		11C34EC0217BCAD100381C6D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +250,10 @@
 			children = (
 				115140C721703915007857A7 /* ArticleTableViewCell.swift */,
 				115140C821703915007857A7 /* ArticleTableViewCell.xib */,
+				11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */,
+				11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */,
+				11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */,
+				11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -244,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				115140CC21703C0A007857A7 /* ArticleCellViewModel.swift */,
+				11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */,
+				11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -311,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				115140B1216EE36E007857A7 /* Article.swift */,
+				11C34EC0217BCAD100381C6D /* Comment.swift */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -487,8 +508,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				115140CA21703915007857A7 /* ArticleTableViewCell.xib in Resources */,
+				11C34EC5217BCFCF00381C6D /* CommentTableViewCell.xib in Resources */,
 				11514086216D7993007857A7 /* LaunchScreen.storyboard in Resources */,
 				11514083216D7993007857A7 /* Assets.xcassets in Resources */,
+				11C34EBD217BC3F500381C6D /* HeaderTableViewCell.xib in Resources */,
 				11514081216D7991007857A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -525,22 +548,27 @@
 				115140E32170BB72007857A7 /* ObjectType.swift in Sources */,
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
+				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
 				11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
+				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
 				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
 				11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */,
+				11C34EBC217BC3F500381C6D /* HeaderTableViewCell.swift in Sources */,
 				117A847B2174404900655CC9 /* Coordinator.swift in Sources */,
+				11C34EC1217BCAD100381C6D /* Comment.swift in Sources */,
 				117A84742174326800655CC9 /* Storyboards.swift in Sources */,
 				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,
 				115140D421703F3C007857A7 /* UIView+Nib.swift in Sources */,
 				115140D82170421D007857A7 /* UITableView+CellViewModel.swift in Sources */,
+				11C34EC7217BD1B000381C6D /* CommentCellViewModel.swift in Sources */,
 				115140BF217030D4007857A7 /* ArticleListDisplayData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
