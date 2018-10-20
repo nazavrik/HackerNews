@@ -74,7 +74,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="nameLabel" destination="3Sz-6L-ge1" id="Qx2-kc-tpH"/>
+                <outlet property="descriptionLabel" destination="3Sz-6L-ge1" id="a5m-e9-vDm"/>
                 <outlet property="scoreLabel" destination="DdU-GN-HDw" id="pHB-Hf-QPt"/>
                 <outlet property="titleLabel" destination="KsE-Tq-Zf0" id="vQY-0g-nC0"/>
             </connections>

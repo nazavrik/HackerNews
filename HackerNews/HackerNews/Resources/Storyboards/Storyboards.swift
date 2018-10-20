@@ -30,5 +30,9 @@ struct Storyboards {
         static func articleViewController() -> ArticleViewController {
             return storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
         }
+        
+        static func webViewController() -> WebViewController {
+            return storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        }
     }
 }

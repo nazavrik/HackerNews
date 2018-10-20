@@ -19,10 +19,11 @@ struct ArticleCellViewModel {
 extension ArticleCellViewModel: CellViewModel {
     func setup(on cell: ArticleTableViewCell) {
         
+        let commentDescripion = comments == 1 ? "comment" : "comments"
         cell.configure(title: title,
                        name: "by \(name)",
                        score: "\(score)",
-                       comments: "\(comments) comments",
+                       comments: "\(comments) \(commentDescripion)",
                        timeAgo: date?.timeSinceNow ?? "")
     }
 }

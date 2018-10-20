@@ -19,7 +19,7 @@ class AppCoordinator: Coordinator {
         let articleListViewController = Storyboards.Main.articleListViewController()
         let displayData = ArticlesDisplayData(viewController: articleListViewController)
         displayData.didArticleSelect = { [weak self] article in
-            self?.showArticleViewController(with: article)
+            self?.showArticleViewController(with: article.url)
         }
         
         articleListViewController.displayData = displayData
@@ -27,11 +27,17 @@ class AppCoordinator: Coordinator {
         navigationController.setViewControllers([articleListViewController], animated: false)
     }
     
-    private func showArticleViewController(with article: Article) {
+    private func showArticleDetailsViewController(with article: Article) {
         let articleViewController = Storyboards.Main.articleViewController()
         
-        articleViewController.url = article.url
+        articleViewController.article = article
         
         navigationController.pushViewController(articleViewController, animated: true)
+    }
+    
+    private func showArticleViewController(with url: String) {
+        let webViewController = Storyboards.Main.webViewController()
+        webViewController.url = url
+        navigationController.pushViewController(webViewController, animated: true)
     }
 }

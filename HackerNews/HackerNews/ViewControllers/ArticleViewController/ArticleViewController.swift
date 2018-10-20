@@ -11,31 +11,13 @@ import WebKit
 
 class ArticleViewController: UIViewController {
 
-    @IBOutlet weak var webView: WKWebView! {
-        didSet {
-            webView.navigationDelegate = self
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     
-    var url: String?
+    var article: Article?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Article"
-        
-        if let url = url {
-            view.showLoader()
-            
-            let myURL = URL(string: url)
-            let myRequest = URLRequest(url: myURL!)
-            webView.load(myRequest)
-        }
-    }
-}
-
-extension ArticleViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        view.hideLoader()
     }
 }
