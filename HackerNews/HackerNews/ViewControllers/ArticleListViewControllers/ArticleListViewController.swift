@@ -10,7 +10,7 @@ import UIKit
 
 class ArticleListViewController: TableViewController {
     
-    var displayData: ArticlesDisplayData! {
+    var displayData: ArticleListDisplayData! {
         didSet {
             tableDisplayData = displayData
         }

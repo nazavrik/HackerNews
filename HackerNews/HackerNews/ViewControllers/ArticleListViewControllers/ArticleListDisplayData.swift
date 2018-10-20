@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticlesDisplayData {
+class ArticleListDisplayData {
     private weak var viewController: ArticleListViewController?
     
     var didArticleSelect: ((Article) -> Void)?
@@ -62,7 +62,7 @@ class ArticlesDisplayData {
     }
 }
 
-extension ArticlesDisplayData: DisplayCollection {
+extension ArticleListDisplayData: DisplayCollection {
     static var modelsForRegistration: [BaseCellViewModel.Type] {
         return [ArticleCellViewModel.self]
     }
@@ -85,7 +85,7 @@ extension ArticlesDisplayData: DisplayCollection {
     }
 }
 
-extension ArticlesDisplayData: DisplayCollectionAction {
+extension ArticleListDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
         let article = articles[indexPath.row]
         didArticleSelect?(article)

@@ -60,11 +60,22 @@ extension TableViewController: UITableViewDataSource {
         let model = tableDisplayData.model(for: indexPath)
         return tableView.dequeueReusableCell(for: indexPath, with: model)
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let model = tableDisplayData.header(for: section) else {
+            return nil
+        }
+        return tableView.dequeueReusableHeader(for: section, with: model)
+    }
 }
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableDisplayData.height(for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return tableDisplayData.headerHeight(for: section)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

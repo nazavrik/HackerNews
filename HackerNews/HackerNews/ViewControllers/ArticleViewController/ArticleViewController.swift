@@ -9,15 +9,17 @@
 import UIKit
 import WebKit
 
-class ArticleViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+class ArticleViewController: TableViewController {
     
-    var article: Article?
+    var displayData: ArticleDisplayData! {
+        didSet {
+            tableDisplayData = displayData
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Article"
+        title = "Details"
     }
 }

@@ -16,7 +16,7 @@
 		1151409C216D7993007857A7 /* HackerNewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151409B216D7993007857A7 /* HackerNewsUITests.swift */; };
 		115140B2216EE36E007857A7 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140B1216EE36E007857A7 /* Article.swift */; };
 		115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BC21702EFF007857A7 /* ArticleListViewController.swift */; };
-		115140BF217030D4007857A7 /* ArticlesDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BE217030D4007857A7 /* ArticlesDisplayData.swift */; };
+		115140BF217030D4007857A7 /* ArticleListDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140BE217030D4007857A7 /* ArticleListDisplayData.swift */; };
 		115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140C1217031BD007857A7 /* DisplayCollection.swift */; };
 		115140C421703484007857A7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140C321703484007857A7 /* CellViewModel.swift */; };
 		115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140C721703915007857A7 /* ArticleTableViewCell.swift */; };
@@ -39,6 +39,7 @@
 		117A847B2174404900655CC9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A847A2174404900655CC9 /* Coordinator.swift */; };
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* WebViewController.swift */; };
+		11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,7 @@
 		1151409D216D7993007857A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		115140B1216EE36E007857A7 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		115140BC21702EFF007857A7 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
-		115140BE217030D4007857A7 /* ArticlesDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesDisplayData.swift; sourceTree = "<group>"; };
+		115140BE217030D4007857A7 /* ArticleListDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListDisplayData.swift; sourceTree = "<group>"; };
 		115140C1217031BD007857A7 /* DisplayCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCollection.swift; sourceTree = "<group>"; };
 		115140C321703484007857A7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		115140C721703915007857A7 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		117A847A2174404900655CC9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDisplayData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 		115140BA21702EC1007857A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11C34EB2217ADF0E00381C6D /* WebViewController */,
 				115140E72172DDB3007857A7 /* Base */,
 				117A846E2174301E00655CC9 /* ArticleViewController */,
 				115140BB21702ECA007857A7 /* ArticleListViewControllers */,
@@ -203,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				115140BC21702EFF007857A7 /* ArticleListViewController.swift */,
-				115140BE217030D4007857A7 /* ArticlesDisplayData.swift */,
+				115140BE217030D4007857A7 /* ArticleListDisplayData.swift */,
 			);
 			path = ArticleListViewControllers;
 			sourceTree = "<group>";
@@ -321,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				117A846F2174305200655CC9 /* ArticleViewController.swift */,
-				11C34EB0217AD8A600381C6D /* WebViewController.swift */,
+				11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */,
 			);
 			path = ArticleViewController;
 			sourceTree = "<group>";
@@ -358,6 +361,14 @@
 				11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		11C34EB2217ADF0E00381C6D /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11C34EB0217AD8A600381C6D /* WebViewController.swift */,
+			);
+			path = WebViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +516,7 @@
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
+				11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
@@ -517,7 +529,7 @@
 				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,
 				115140D421703F3C007857A7 /* UIView+Nib.swift in Sources */,
 				115140D82170421D007857A7 /* UITableView+CellViewModel.swift in Sources */,
-				115140BF217030D4007857A7 /* ArticlesDisplayData.swift in Sources */,
+				115140BF217030D4007857A7 /* ArticleListDisplayData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,4 +17,13 @@ extension UITableView {
         
         return cell
     }
+    
+    func dequeueReusableHeader(for section: Int, with model: BaseCellViewModel) -> UIView {
+        let cellIdentifier = String(describing: type(of: model).cellClass)
+        guard let cell = dequeueReusableCell(withIdentifier: cellIdentifier) else { fatalError() }
+        
+        model.setupCell(cell)
+        
+        return cell.contentView
+    }
 }
