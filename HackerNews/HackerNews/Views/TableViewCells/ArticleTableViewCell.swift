@@ -22,7 +22,7 @@ class ArticleTableViewCell: UITableViewCell {
                    domain: String?,
                    name: String,
                    score: String,
-                   comments: String,
+                   comments: String?,
                    timeAgo: String) {
         
         let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
@@ -45,7 +45,13 @@ class ArticleTableViewCell: UITableViewCell {
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
                           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)]
         
-        descriptionLabel.attributedText = NSAttributedString(string: "\(name)  \(comments)  \(timeAgo)", attributes: attributes)
+        var description = name
+        if let comments = comments {
+            description += "  \(comments)"
+        }
+        description += "  \(timeAgo)"
+        
+        descriptionLabel.attributedText = NSAttributedString(string: description, attributes: attributes)
         
     }
 }

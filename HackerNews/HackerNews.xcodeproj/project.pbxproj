@@ -48,6 +48,9 @@
 		11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */; };
 		11C34EC5217BCFCF00381C6D /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */; };
 		11C34EC7217BD1B000381C6D /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */; };
+		11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */; };
+		11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF3217C2EE4003EF25D /* NavigationController.swift */; };
+		11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,9 @@
 		11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
+		11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarItems.swift"; sourceTree = "<group>"; };
+		11D9FFF3217C2EE4003EF25D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +277,8 @@
 		115140CE21703ED2007857A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				11D9FFF5217C2FB5003EF25D /* UIColor */,
+				11D9FFF0217C2E7F003EF25D /* UIViewController */,
 				11C34EB5217BB6B200381C6D /* String */,
 				11C34E972179913800381C6D /* Date */,
 				115140D221703F2A007857A7 /* UIView */,
@@ -340,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				115140E82172DE69007857A7 /* TableViewController.swift */,
+				11D9FFF3217C2EE4003EF25D /* NavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -401,6 +410,22 @@
 				11C34EB6217BB6D500381C6D /* String+Url.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		11D9FFF0217C2E7F003EF25D /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		11D9FFF5217C2FB5003EF25D /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,13 +574,16 @@
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
 				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
+				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
+				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
 				11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
 				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
+				11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
 				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,

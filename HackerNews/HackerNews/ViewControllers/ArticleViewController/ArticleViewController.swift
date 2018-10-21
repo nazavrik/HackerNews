@@ -20,7 +20,7 @@ class ArticleViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Details"
+        title = "Comments"
         
         displayData.fetchComments()
     }
