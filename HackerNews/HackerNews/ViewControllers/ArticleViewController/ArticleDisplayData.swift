@@ -110,6 +110,8 @@ extension ArticleDisplayData: DisplayCollection {
 
 extension ArticleDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
-        didOpeningUrlSelect?(article.url)
+        if indexPath.section == 0 {
+            didOpeningUrlSelect?(article.url)
+        }
     }
 }

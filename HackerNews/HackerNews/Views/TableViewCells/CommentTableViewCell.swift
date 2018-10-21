@@ -22,6 +22,9 @@ class CommentTableViewCell: UITableViewCell {
     func config(name: String, text: String, timeAgo: String) {
         nameLabel.text = name
         dateLabel.text = timeAgo
-        commentLabel.text = text
+        
+        if let data = text.data(using: .unicode) {
+            commentLabel.attributedText = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        }
     }
 }
