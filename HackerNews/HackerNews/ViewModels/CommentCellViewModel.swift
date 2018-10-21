@@ -10,6 +10,11 @@ import Foundation
 
 struct CommentCellViewModel {
     let comment: Comment
+    var didCommentSelect: ((_ urls: [String]) -> Void)?
+    
+    init(comment: Comment) {
+        self.comment = comment
+    }
 }
 
 extension CommentCellViewModel: CellViewModel {
@@ -17,5 +22,7 @@ extension CommentCellViewModel: CellViewModel {
         cell.config(name: comment.author,
                     text: comment.text,
                     timeAgo: comment.date?.timeSinceNow ?? "")
+        
+        cell.didCellSelect = didCommentSelect
     }
 }

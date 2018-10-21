@@ -82,7 +82,11 @@ extension ArticleDisplayData: DisplayCollection {
         }
         
         let comment = comments[indexPath.row]
-        return CommentCellViewModel(comment: comment)
+        var model = CommentCellViewModel(comment: comment)
+        model.didCommentSelect = { urls in
+            self.showURLActions(for: urls)
+        }
+        return model
     }
     
     func header(for section: Int) -> BaseCellViewModel? {
@@ -97,7 +101,7 @@ extension ArticleDisplayData: DisplayCollection {
         if indexPath.section == 0 {
             return 70.0
         }
-        return UITableView.automaticDimension//100.0
+        return UITableView.automaticDimension
     }
     
     func headerHeight(for section: Int) -> CGFloat {
@@ -105,6 +109,27 @@ extension ArticleDisplayData: DisplayCollection {
             return 0.0
         }
         return 44.0
+    }
+    
+    private func showURLActions(for urls: [String]) {
+        guard !urls.isEmpty else { return }
+        
+        let alertController = UIAlertController(title: "Open URL", message: nil, preferredStyle: .actionSheet)
+        
+        for urlString in urls {
+            guard let _ = URL(string: urlString) else { continue }
+            
+            let action = UIAlertAction(title: urlString, style: .default) { success in
+                self.didOpeningUrlSelect?(urlString)
+            }
+            
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        viewController?.navigationController?.present(alertController, animated: true, completion: nil)
     }
 }
 

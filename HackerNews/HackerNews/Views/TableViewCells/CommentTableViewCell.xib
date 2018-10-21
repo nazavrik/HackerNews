@@ -58,19 +58,29 @@
                                     </constraint>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y5-pw-FMW">
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="98.5"/>
+                                <connections>
+                                    <action selector="didSelect:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mLS-vV-Tme"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8kh-27-p5k" firstAttribute="leading" secondItem="xbp-sn-fLE" secondAttribute="leading" id="53X-lc-fLs"/>
                             <constraint firstAttribute="trailing" secondItem="mjl-Rn-lVi" secondAttribute="trailing" id="5aS-Mo-J5x"/>
                             <constraint firstAttribute="trailing" secondItem="8kh-27-p5k" secondAttribute="trailing" constant="16" id="8Iw-N4-d3d"/>
+                            <constraint firstItem="5Y5-pw-FMW" firstAttribute="top" secondItem="xbp-sn-fLE" secondAttribute="top" id="Bpf-en-maR"/>
+                            <constraint firstItem="mjl-Rn-lVi" firstAttribute="top" secondItem="5Y5-pw-FMW" secondAttribute="bottom" id="DWB-FF-2CR"/>
                             <constraint firstItem="GbS-7h-uhP" firstAttribute="leading" secondItem="xbp-sn-fLE" secondAttribute="leading" id="NgS-D3-fYY"/>
                             <constraint firstAttribute="trailing" secondItem="GbS-7h-uhP" secondAttribute="trailing" constant="16" id="PoY-vh-0ar"/>
                             <constraint firstItem="8kh-27-p5k" firstAttribute="top" secondItem="Hgg-wZ-ges" secondAttribute="bottom" constant="-2" id="TzH-cr-1ra"/>
                             <constraint firstItem="mjl-Rn-lVi" firstAttribute="leading" secondItem="xbp-sn-fLE" secondAttribute="leading" id="VwJ-n1-8ce"/>
                             <constraint firstAttribute="bottom" secondItem="mjl-Rn-lVi" secondAttribute="bottom" id="Wsh-ks-4y2"/>
                             <constraint firstAttribute="bottom" secondItem="GbS-7h-uhP" secondAttribute="bottom" constant="10" id="Yh3-IV-xCz"/>
+                            <constraint firstAttribute="trailing" secondItem="5Y5-pw-FMW" secondAttribute="trailing" id="arM-sN-MQp"/>
                             <constraint firstAttribute="trailing" secondItem="Hgg-wZ-ges" secondAttribute="trailing" constant="16" id="i3J-hm-qJT"/>
+                            <constraint firstItem="5Y5-pw-FMW" firstAttribute="leading" secondItem="xbp-sn-fLE" secondAttribute="leading" id="l2M-sl-NtK"/>
                             <constraint firstItem="Hgg-wZ-ges" firstAttribute="top" secondItem="xbp-sn-fLE" secondAttribute="top" constant="10" id="peI-fj-JZx"/>
                             <constraint firstItem="Hgg-wZ-ges" firstAttribute="leading" secondItem="xbp-sn-fLE" secondAttribute="leading" id="sin-vF-1w1"/>
                             <constraint firstItem="GbS-7h-uhP" firstAttribute="top" secondItem="8kh-27-p5k" secondAttribute="bottom" constant="5" id="tdH-4B-cs9"/>
@@ -90,7 +100,7 @@
                 <outlet property="dateLabel" destination="8kh-27-p5k" id="i1s-6X-I3k"/>
                 <outlet property="nameLabel" destination="Hgg-wZ-ges" id="Ndd-9x-0YT"/>
             </connections>
-            <point key="canvasLocation" x="-155.19999999999999" y="34.632683658170919"/>
+            <point key="canvasLocation" x="-155.19999999999999" y="34.182908545727138"/>
         </tableViewCell>
     </objects>
 </document>
