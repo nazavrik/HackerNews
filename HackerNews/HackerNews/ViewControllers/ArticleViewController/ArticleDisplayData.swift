@@ -21,6 +21,9 @@ class ArticleDisplayData {
     }
     
     func fetchComments() {
+        comments.removeAll()
+        viewController?.tableView.reloadData()
+        
         viewController?.view.showLoader()
         
         var items = [Int: Comment]()

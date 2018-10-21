@@ -23,7 +23,9 @@ extension UIView {
     
     func showLoader() {
         if activityIndicatorView == nil {
-            let indicatorView = UIActivityIndicatorView(style: .gray)
+            let indicatorView = UIActivityIndicatorView(style: .white)
+            indicatorView.color = UIColor.tint
+            
             var indicatorFrame = indicatorView.frame
             indicatorFrame.origin.x = (frame.size.width - indicatorFrame.size.width)/2
             indicatorFrame.origin.y = (frame.size.height - indicatorFrame.size.height)/2

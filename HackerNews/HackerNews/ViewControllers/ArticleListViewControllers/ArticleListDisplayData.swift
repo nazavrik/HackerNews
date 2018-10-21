@@ -36,7 +36,15 @@ class ArticleListDisplayData {
         var items = [Article]()
         let group = DispatchGroup()
 
-        for articleId in articleIds {
+        // TODO: need to refactor
+        var ids = [Int]()
+        if !articleIds.isEmpty {
+            let index = articleIds.count > 20 ? 20 : articleIds.count
+            let firstItems = articleIds[..<index]
+            ids.append(contentsOf: firstItems)
+        }
+        
+        for articleId in ids {
             group.enter()
             
             let request = Article.Requests.article(for: articleId)

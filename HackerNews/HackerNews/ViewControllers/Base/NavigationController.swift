@@ -18,7 +18,7 @@ class NavigationController: UINavigationController {
         
         navigationBar.backgroundColor = UIColor.clear
         navigationBar.isTranslucent = true
-        navigationBar.tintColor = UIColor(hex: 0xFC6621)
+        navigationBar.tintColor = UIColor.tint
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

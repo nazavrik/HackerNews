@@ -13,7 +13,7 @@ struct HeaderCellViewModel {
 }
 
 extension HeaderCellViewModel: CellViewModel {
-    func setup(on cell: HeaderTableViewCell) {
+    func setup(on cell: ArticleHeaderTableViewCell) {
         cell.config(title: title)
     }
 }

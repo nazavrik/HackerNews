@@ -16,8 +16,6 @@ class WebViewController: UIViewController {
             webView.navigationDelegate = self
         }
     }
-
-    fileprivate let activityIndicator = UIActivityIndicatorView(style: .gray)
     
     var url: String?
     
@@ -26,10 +24,9 @@ class WebViewController: UIViewController {
         
         title = "Article"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-        
         if let url = url {
-            activityIndicator.startAnimating()
+            view.showLoader()
+            webView.isHidden = true
             
             let myURL = URL(string: url)
             let myRequest = URLRequest(url: myURL!)
@@ -40,7 +37,8 @@ class WebViewController: UIViewController {
 
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activityIndicator.stopAnimating()
+        webView.isHidden = false
+        view.hideLoader()
     }
 }
 

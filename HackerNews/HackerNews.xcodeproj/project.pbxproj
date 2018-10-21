@@ -41,8 +41,8 @@
 		11C34EB1217AD8A600381C6D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* WebViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */; };
 		11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB6217BB6D500381C6D /* String+Url.swift */; };
-		11C34EBC217BC3F500381C6D /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */; };
-		11C34EBD217BC3F500381C6D /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */; };
+		11C34EBC217BC3F500381C6D /* ArticleHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EBA217BC3F500381C6D /* ArticleHeaderTableViewCell.swift */; };
+		11C34EBD217BC3F500381C6D /* ArticleHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C34EBB217BC3F500381C6D /* ArticleHeaderTableViewCell.xib */; };
 		11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */; };
 		11C34EC1217BCAD100381C6D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC0217BCAD100381C6D /* Comment.swift */; };
 		11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */; };
@@ -51,6 +51,7 @@
 		11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */; };
 		11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF3217C2EE4003EF25D /* NavigationController.swift */; };
 		11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */; };
+		11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,8 +112,8 @@
 		11C34EB0217AD8A600381C6D /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* ArticleDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDisplayData.swift; sourceTree = "<group>"; };
 		11C34EB6217BB6D500381C6D /* String+Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Url.swift"; sourceTree = "<group>"; };
-		11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
-		11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		11C34EBA217BC3F500381C6D /* ArticleHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		11C34EBB217BC3F500381C6D /* ArticleHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
 		11C34EC0217BCAD100381C6D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBarItems.swift"; sourceTree = "<group>"; };
 		11D9FFF3217C2EE4003EF25D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,8 +258,8 @@
 			children = (
 				115140C721703915007857A7 /* ArticleTableViewCell.swift */,
 				115140C821703915007857A7 /* ArticleTableViewCell.xib */,
-				11C34EBA217BC3F500381C6D /* HeaderTableViewCell.swift */,
-				11C34EBB217BC3F500381C6D /* HeaderTableViewCell.xib */,
+				11C34EBA217BC3F500381C6D /* ArticleHeaderTableViewCell.swift */,
+				11C34EBB217BC3F500381C6D /* ArticleHeaderTableViewCell.xib */,
 				11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */,
 				11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */,
 			);
@@ -424,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */,
+				11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */,
 			);
 			path = UIColor;
 			sourceTree = "<group>";
@@ -536,7 +539,7 @@
 				11C34EC5217BCFCF00381C6D /* CommentTableViewCell.xib in Resources */,
 				11514086216D7993007857A7 /* LaunchScreen.storyboard in Resources */,
 				11514083216D7993007857A7 /* Assets.xcassets in Resources */,
-				11C34EBD217BC3F500381C6D /* HeaderTableViewCell.xib in Resources */,
+				11C34EBD217BC3F500381C6D /* ArticleHeaderTableViewCell.xib in Resources */,
 				11514081216D7991007857A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +585,7 @@
 				11C34EB4217ADF8F00381C6D /* ArticleDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
+				11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */,
 				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
 				11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
@@ -589,7 +593,7 @@
 				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
 				11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */,
-				11C34EBC217BC3F500381C6D /* HeaderTableViewCell.swift in Sources */,
+				11C34EBC217BC3F500381C6D /* ArticleHeaderTableViewCell.swift in Sources */,
 				117A847B2174404900655CC9 /* Coordinator.swift in Sources */,
 				11C34EC1217BCAD100381C6D /* Comment.swift in Sources */,
 				117A84742174326800655CC9 /* Storyboards.swift in Sources */,
