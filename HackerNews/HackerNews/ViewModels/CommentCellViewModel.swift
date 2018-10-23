@@ -11,6 +11,7 @@ import Foundation
 struct CommentCellViewModel {
     let comment: Comment
     var didCommentSelect: ((_ urls: [String]) -> Void)?
+    var didReplyingSelect: ((_ cell: CommentTableViewCell) -> Void)?
     
     init(comment: Comment) {
         self.comment = comment
@@ -19,10 +20,14 @@ struct CommentCellViewModel {
 
 extension CommentCellViewModel: CellViewModel {
     func setup(on cell: CommentTableViewCell) {
+        let numberOfSubcomments = comment.commentIds.count == 0 ? "" : "\(comment.commentIds.count)"
+        
         cell.config(name: comment.author,
                     text: comment.text,
-                    timeAgo: comment.date?.timeSinceNow ?? "")
+                    timeAgo: comment.date?.timeSinceNow ?? "",
+                    subComments: numberOfSubcomments)
         
         cell.didCellSelect = didCommentSelect
+        cell.didReplyingSelect = didReplyingSelect
     }
 }

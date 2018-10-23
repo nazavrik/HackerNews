@@ -89,6 +89,9 @@ extension ArticleDisplayData: DisplayCollection {
         model.didCommentSelect = { urls in
             self.showURLActions(for: urls)
         }
+        model.didReplyingSelect = { cell in
+            
+        }
         return model
     }
     
