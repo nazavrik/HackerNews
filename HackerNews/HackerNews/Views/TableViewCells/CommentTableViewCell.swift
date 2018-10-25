@@ -15,9 +15,17 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var replyViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentViewLeadingConstraint: NSLayoutConstraint!
     
     var didCellSelect: ((_ urls: [String]) -> Void)?
     var didReplyingSelect: ((_ cell: CommentTableViewCell) -> Void)?
+    
+    var level: Int = 0 {
+        didSet {
+            let lvl = level > 4 ? 4 : level
+            contentViewLeadingConstraint.constant = CGFloat(16 + 16*lvl)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

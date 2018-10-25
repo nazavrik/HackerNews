@@ -15,6 +15,9 @@ struct Comment {
     let date: Date?
     let commentIds: [Int]
     let parentId: Int
+    let deleted: Bool
+    var level = 0
+    var subcomments = [Comment]()
 }
 
 extension Comment: ObjectType {
@@ -31,7 +34,8 @@ extension Comment: ObjectType {
         self.text = text
         self.author = author
         self.date = Date(timeIntervalSince1970: timeStamp)
-        self.commentIds = json["kids"] as? [Int] ?? [Int]()
+        self.commentIds = json["kids"] as? [Int] ?? []
+        self.deleted = json["deleted"] as? Bool ?? false
         self.parentId = parentId
     }
 }

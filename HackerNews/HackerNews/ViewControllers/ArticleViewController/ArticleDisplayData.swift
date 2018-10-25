@@ -25,34 +25,65 @@ class ArticleDisplayData {
         viewController?.tableView.reloadData()
         
         viewController?.view.showLoader()
+
+        _fetchComments(article.commentIds) { comments in
+            var sortedComments = [Comment]()
+            self.getComments(from: comments, to: &sortedComments)
+            self.updateUI(with: sortedComments)
+        }
+    }
+    
+    private func getComments(from graph: [Comment], to comments: inout [Comment]) {
+        for comment in graph {
+            comments.append(comment)
+            getComments(from: comment.subcomments, to: &comments)
+        }
+    }
+    
+    private func _fetchComments(_ commentIds: [Int], parent: Comment? = nil, complete: @escaping (([Comment]) -> Void)) {
+        var comments = [Comment]()
         
-        var items = [Int: Comment]()
+        let commentsGroup = DispatchGroup()
         
-        let group = DispatchGroup()
-        
-        for commentId in article.commentIds {
-            group.enter()
+        for commentId in commentIds {
+            commentsGroup.enter()
             
             let request = Comment.Requests.comment(for: commentId)
             Server.standard.request(request) { comment, error in
-                if let comment = comment {
-                    items[comment.id] = comment
+                if var comment = comment {
+                    let level = parent == nil ? 0 : parent!.level + 1
+                    comment.level = level
+                    comments.append(comment)
                 }
-                group.leave()
+                commentsGroup.leave()
             }
         }
         
-        group.notify(queue: DispatchQueue.main, execute: {
+        commentsGroup.notify(queue: DispatchQueue.main, execute: {
+            comments = comments.sorted(by: { $0.id < $1.id })
             
-            var sortedItems = [Comment]()
+            var result = [Comment]()
             
-            for commentId in self.article.commentIds {
-                if let item = items[commentId] {
-                    sortedItems.append(item)
+            let subcommentsGroup = DispatchGroup()
+            
+            for item in comments {
+                subcommentsGroup.enter()
+                if item.commentIds.count > 0 {
+                    self._fetchComments(item.commentIds, parent: item, complete: { subcomments in
+                        subcommentsGroup.leave()
+                        var comment = item
+                        comment.subcomments.append(contentsOf: subcomments)
+                        result.append(comment)
+                    })
+                } else {
+                    subcommentsGroup.leave()
+                    result.append(item)
                 }
             }
             
-            self.updateUI(with: sortedItems)
+            subcommentsGroup.notify(queue: DispatchQueue.main, execute: {
+                complete(result.sorted(by: { $0.id < $1.id }))
+            })
         })
     }
     
@@ -88,9 +119,6 @@ extension ArticleDisplayData: DisplayCollection {
         var model = CommentCellViewModel(comment: comment)
         model.didCommentSelect = { urls in
             self.showURLActions(for: urls)
-        }
-        model.didReplyingSelect = { cell in
-            
         }
         return model
     }

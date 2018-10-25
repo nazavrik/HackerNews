@@ -22,6 +22,9 @@ class ArticleViewController: TableViewController {
 
         title = "Comments"
         
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        
         let updateButton = UIButton(type: .custom)
         updateButton.frame = CGRect(x: 0.0, y: 0.0, width: 50.0, height: 44.0)
         updateButton.backgroundColor = .clear

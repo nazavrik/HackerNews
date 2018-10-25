@@ -20,12 +20,14 @@ struct CommentCellViewModel {
 
 extension CommentCellViewModel: CellViewModel {
     func setup(on cell: CommentTableViewCell) {
-        let numberOfSubcomments = comment.commentIds.count == 0 ? "" : "\(comment.commentIds.count)"
+        let numberOfSubcomments = ""//comment.commentIds.count == 0 ? "" : "\(comment.commentIds.count)"
         
         cell.config(name: comment.author,
                     text: comment.text,
                     timeAgo: comment.date?.timeSinceNow ?? "",
                     subComments: numberOfSubcomments)
+        
+        cell.level = comment.level
         
         cell.didCellSelect = didCommentSelect
         cell.didReplyingSelect = didReplyingSelect
