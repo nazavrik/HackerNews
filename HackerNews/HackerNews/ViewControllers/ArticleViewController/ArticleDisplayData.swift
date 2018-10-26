@@ -102,16 +102,28 @@ extension ArticleDisplayData: DisplayCollection {
                 CommentCellViewModel.self]
     }
     
+    enum Section: Int {
+        case info
+        case comments
+    }
+    
     var numberOfSections: Int {
         return 2
     }
     
     func numberOfRows(in section: Int) -> Int {
-        return section == 0 ? 1 : comments.count
+        guard let sectinType = Section(rawValue: section) else { fatalError() }
+        
+        switch sectinType {
+        case .info: return 1
+        case .comments: return comments.count
+        }
     }
     
     func model(for indexPath: IndexPath) -> BaseCellViewModel {
-        if indexPath.section == 0 {
+        guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        if sectinType == .info {
             return ArticleCellViewModel(article: article)
         }
         
@@ -124,7 +136,9 @@ extension ArticleDisplayData: DisplayCollection {
     }
     
     func header(for section: Int) -> BaseCellViewModel? {
-        if section == 0 {
+        guard let sectinType = Section(rawValue: section) else { fatalError() }
+        
+        if sectinType == .info {
             return nil
         }
         
@@ -132,16 +146,22 @@ extension ArticleDisplayData: DisplayCollection {
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        if sectinType == .info {
             return 70.0
         }
+        
         return UITableView.automaticDimension
     }
     
     func headerHeight(for section: Int) -> CGFloat {
-        if section == 0 {
+        guard let sectinType = Section(rawValue: section) else { fatalError() }
+        
+        if sectinType == .info {
             return 0.0
         }
+        
         return 44.0
     }
     
@@ -169,7 +189,9 @@ extension ArticleDisplayData: DisplayCollection {
 
 extension ArticleDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        if sectinType == .info {
             didOpeningUrlSelect?(article.url)
         }
     }
