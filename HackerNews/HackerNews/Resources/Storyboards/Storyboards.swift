@@ -27,12 +27,12 @@ struct Storyboards {
             return storyboard.instantiateViewController(withIdentifier: "ArticleListViewController") as! ArticleListViewController
         }
         
-        static func articleViewController() -> ArticleViewController {
-            return storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
+        static func commentsViewController() -> CommentsViewController {
+            return storyboard.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
         }
         
-        static func webViewController() -> WebViewController {
-            return storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        static func articleViewController() -> ArticleViewController {
+            return storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
         }
     }
 }

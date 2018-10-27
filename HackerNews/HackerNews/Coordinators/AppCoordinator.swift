@@ -16,10 +16,14 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
+        showMainViewController()
+    }
+    
+    private func showMainViewController() {
         let articleListViewController = Storyboards.Main.articleListViewController()
         let displayData = ArticleListDisplayData(viewController: articleListViewController)
         displayData.didArticleSelect = { [weak self] article in
-            self?.showArticleDetailsViewController(with: article)
+            self?.showCommentsViewController(for: article)
         }
         
         articleListViewController.displayData = displayData
@@ -27,23 +31,23 @@ class AppCoordinator: Coordinator {
         navigationController.setViewControllers([articleListViewController], animated: false)
     }
     
-    private func showArticleDetailsViewController(with article: Article) {
-        let articleViewController = Storyboards.Main.articleViewController()
+    private func showCommentsViewController(for article: Article) {
+        let commentsViewController = Storyboards.Main.commentsViewController()
         
-        let displayData = ArticleDisplayData(viewController: articleViewController, article: article)
+        let displayData = CommentsDisplayData(viewController: commentsViewController, article: article)
         displayData.didOpeningUrlSelect = { [weak self] url in
             self?.showArticleViewController(with: article)
         }
         
-        articleViewController.displayData = displayData
+        commentsViewController.displayData = displayData
         
-        navigationController.pushViewController(articleViewController, animated: true)
+        navigationController.pushViewController(commentsViewController, animated: true)
     }
     
     private func showArticleViewController(with article: Article) {
-        let webViewController = Storyboards.Main.webViewController()
-        webViewController.url = article.url
-        webViewController.countOfComments = article.commentsCount
-        navigationController.pushViewController(webViewController, animated: true)
+        let articleViewController = Storyboards.Main.articleViewController()
+        articleViewController.url = article.url
+        articleViewController.countOfComments = article.commentsCount
+        navigationController.pushViewController(articleViewController, animated: true)
     }
 }

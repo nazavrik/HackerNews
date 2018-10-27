@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="76.911544227886068"/>
         </scene>
-        <!--Article View Controller-->
+        <!--Comments View Controller-->
         <scene sceneID="HCY-xK-pvb">
             <objects>
-                <viewController storyboardIdentifier="ArticleViewController" id="PgU-2D-buD" customClass="ArticleViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentsViewController" id="PgU-2D-buD" customClass="CommentsViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IAg-qD-Tlt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="793.8530734632684"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="4LM-xA-bXY">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="yj8-oG-GY6" customClass="WebViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleViewController" id="yj8-oG-GY6" customClass="ArticleViewController" customModule="HackerNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pjW-Q9-OCS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

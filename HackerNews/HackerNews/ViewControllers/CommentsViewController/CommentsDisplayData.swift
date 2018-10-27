@@ -1,5 +1,5 @@
 //
-//  ArticleDisplayData.swift
+//  CommentsDisplayData.swift
 //  HackerNews
 //
 //  Created by Alexander Nazarov on 10/19/18.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ArticleDisplayData {
-    private weak var viewController: ArticleViewController?
+class CommentsDisplayData {
+    private weak var viewController: CommentsViewController?
     private var article: Article
     private var comments = [Comment]()
+//    private var subcomments = [Int: [Comment]]() // commentId: Subcomments
     
     var didOpeningUrlSelect: ((String) -> Void)?
     
-    init(viewController: ArticleViewController, article: Article) {
+    init(viewController: CommentsViewController, article: Article) {
         self.viewController = viewController
         self.article = article
     }
@@ -95,7 +96,7 @@ class ArticleDisplayData {
     }
 }
 
-extension ArticleDisplayData: DisplayCollection {
+extension CommentsDisplayData: DisplayCollection {
     static var modelsForRegistration: [BaseCellViewModel.Type] {
         return [ArticleCellViewModel.self,
                 HeaderCellViewModel.self,
@@ -132,6 +133,16 @@ extension ArticleDisplayData: DisplayCollection {
         model.didCommentSelect = { urls in
             self.showURLActions(for: urls)
         }
+//        model.didReplyingSelect = { cell in
+//            let text = cell.replyButton.titleLabel?.text ?? ""
+//            if text.hasPrefix("Show") {
+//                cell.replyButton.setTitle("Hide replies", for: .normal)
+//                self.showSubcomments(for: cell, comment: comment)
+//            } else {
+//                cell.replyButton.setTitle("Show replies (\(comment.commentIds.count))", for: .normal)
+//                self.hideSubcomments(for: cell, comment: comment)
+//            }
+//        }
         return model
     }
     
@@ -185,9 +196,73 @@ extension ArticleDisplayData: DisplayCollection {
         
         viewController?.navigationController?.present(alertController, animated: true, completion: nil)
     }
+    
+//    private func showSubcomments(for cell: CommentTableViewCell, comment: Comment) {
+//        guard !comment.commentIds.isEmpty,
+//            let tableView = viewController?.tableView else { return }
+//
+//        _fetchComments(comment.commentIds) { comments in
+//            let actualComments = comments.filter({ !$0.deleted })
+//
+//            self.subcomments[comment.id] = actualComments
+//
+//            let items = actualComments.compactMap({ element -> Comment in
+//                var item = element
+//                item.level = comment.level + 1
+//                return item
+//            })
+//
+//            tableView.performBatchUpdates({
+//                if let indexPath = tableView.indexPath(for: cell) {
+//                    self.comments.insert(contentsOf: items, at: indexPath.row + 1)
+//                    var indexPaths = [IndexPath]()
+//                    var index = indexPath.row + 1
+//
+//                    comments.forEach({ comment in
+//                        indexPaths.append(IndexPath(row: index, section: 1))
+//                        index += 1
+//                    })
+//
+//                    tableView.insertRows(at: indexPaths, with: .automatic)
+//                }
+//            }, completion: { success in
+//
+//            })
+//        }
+//    }
+//
+//    private func hideSubcomments(for cell: CommentTableViewCell, comment: Comment) {
+//        guard !comment.commentIds.isEmpty,
+//            let tableView = viewController?.tableView else { return }
+//
+//        tableView.performBatchUpdates({
+//            if let indexPath = tableView.indexPath(for: cell) {
+//                let comments = self.subcomments[comment.id] ?? []
+//                let commentIds = comments.map({ comment -> Int in
+//                    return comment.id
+//                })
+//
+//                self.comments.removeAll(where: {
+//                    commentIds.contains($0.id)
+//                })
+//
+//                var indexPaths = [IndexPath]()
+//                var index = indexPath.row + 1
+//
+//                commentIds.forEach({ _ in
+//                    indexPaths.append(IndexPath(row: index, section: 1))
+//                    index += 1
+//                })
+//
+//                tableView.deleteRows(at: indexPaths, with: .automatic)
+//            }
+//        }, completion: { success in
+//
+//        })
+//    }
 }
 
-extension ArticleDisplayData: DisplayCollectionAction {
+extension CommentsDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
