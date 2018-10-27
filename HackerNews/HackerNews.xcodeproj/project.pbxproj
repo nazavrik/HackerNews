@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
 		1151407C216D7991007857A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151407B216D7991007857A7 /* AppDelegate.swift */; };
 		11514081216D7991007857A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151407F216D7991007857A7 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
 		11514078216D7991007857A7 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151407B216D7991007857A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		115140C521703830007857A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				112E7B4F2183E67200FD9E09 /* NBarButton.swift */,
 				115140C62170384C007857A7 /* TableViewCells */,
 			);
 			path = Views;
@@ -588,6 +591,7 @@
 				11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */,
 				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
 				11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */,
+				112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
 				117A84702174305200655CC9 /* ArticleViewController.swift in Sources */,

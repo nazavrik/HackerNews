@@ -32,7 +32,7 @@ class AppCoordinator: Coordinator {
         
         let displayData = ArticleDisplayData(viewController: articleViewController, article: article)
         displayData.didOpeningUrlSelect = { [weak self] url in
-            self?.showArticleViewController(with: url)
+            self?.showArticleViewController(with: article)
         }
         
         articleViewController.displayData = displayData
@@ -40,9 +40,10 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(articleViewController, animated: true)
     }
     
-    private func showArticleViewController(with url: String) {
+    private func showArticleViewController(with article: Article) {
         let webViewController = Storyboards.Main.webViewController()
-        webViewController.url = url
+        webViewController.url = article.url
+        webViewController.countOfComments = article.commentsCount
         navigationController.pushViewController(webViewController, animated: true)
     }
 }
