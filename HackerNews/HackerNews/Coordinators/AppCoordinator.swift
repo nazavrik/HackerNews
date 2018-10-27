@@ -23,7 +23,7 @@ class AppCoordinator: Coordinator {
         let articleListViewController = Storyboards.Main.articleListViewController()
         let displayData = ArticleListDisplayData(viewController: articleListViewController)
         displayData.didArticleSelect = { [weak self] article in
-            self?.showCommentsViewController(for: article)
+            self?.showArticleViewController(with: article)
         }
         
         articleListViewController.displayData = displayData
@@ -36,7 +36,7 @@ class AppCoordinator: Coordinator {
         
         let displayData = CommentsDisplayData(viewController: commentsViewController, article: article)
         displayData.didOpeningUrlSelect = { [weak self] url in
-            self?.showArticleViewController(with: article)
+            self?.navigationController.popViewController(animated: true)
         }
         
         commentsViewController.displayData = displayData
@@ -46,8 +46,10 @@ class AppCoordinator: Coordinator {
     
     private func showArticleViewController(with article: Article) {
         let articleViewController = Storyboards.Main.articleViewController()
-        articleViewController.url = article.url
-        articleViewController.countOfComments = article.commentsCount
+        articleViewController.article = article
+        articleViewController.didSelectComments = {
+            self.showCommentsViewController(for: article)
+        }
         navigationController.pushViewController(articleViewController, animated: true)
     }
 }

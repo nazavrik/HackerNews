@@ -18,22 +18,22 @@ class ArticleViewController: UIViewController {
     }
     
     private var commentsTitle: String {
-        let commentsCount = countOfComments ?? 0
+        let commentsCount = article?.commentsCount ?? 0
         
         guard commentsCount > 0 else { return "" }
         
         return commentsCount > 999 ? "1K" : "\(commentsCount)"
     }
     
-    var url: String?
-    var countOfComments: Int?
+    var article: Article?
+    var didSelectComments: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Article"
         
-        guard let url = url else { return }
+        guard let url = article?.url else { return }
         
         view.showLoader()
         webView.isHidden = true
@@ -49,7 +49,7 @@ class ArticleViewController: UIViewController {
     }
     
     @objc private func commentsAction(_ sender: UIButton) {
-        
+        didSelectComments?()
     }
 }
 
@@ -57,6 +57,18 @@ extension ArticleViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         webView.isHidden = false
         view.hideLoader()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("didFail")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("didFailProvisionalNavigation")
     }
 }
 
