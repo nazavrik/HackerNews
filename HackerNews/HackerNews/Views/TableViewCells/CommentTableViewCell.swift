@@ -35,13 +35,13 @@ class CommentTableViewCell: UITableViewCell {
     func config(name: String, text: String, timeAgo: String, subComments number: String) {
         nameLabel.text = name
         dateLabel.text = timeAgo
-        let replyTitle = number.isEmpty ? "" : "Show Replies (\(number))"
-        replyButton.setTitle(replyTitle, for: .normal)
         
         if let data = text.data(using: .unicode) {
             commentLabel.attributedText = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         }
         
+        let replyTitle = number.isEmpty ? "" : "Show Replies (\(number))"
+        replyButton.setTitle(replyTitle, for: .normal)
         replyViewHeightConstraint.constant = replyTitle.isEmpty ? 0 : 30
     }
     
