@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1104B8B821880938005BB702 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104B8B621880938005BB702 /* LoaderTableViewCell.swift */; };
+		1104B8B921880938005BB702 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1104B8B721880938005BB702 /* LoaderTableViewCell.xib */; };
+		1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */; };
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
@@ -73,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1104B8B621880938005BB702 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
+		1104B8B721880938005BB702 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
+		1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCellViewModel.swift; sourceTree = "<group>"; };
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 				11C34EBB217BC3F500381C6D /* ArticleHeaderTableViewCell.xib */,
 				11C34EC2217BCFCF00381C6D /* CommentTableViewCell.swift */,
 				11C34EC3217BCFCF00381C6D /* CommentTableViewCell.xib */,
+				1104B8B621880938005BB702 /* LoaderTableViewCell.swift */,
+				1104B8B721880938005BB702 /* LoaderTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 				115140CC21703C0A007857A7 /* ArticleCellViewModel.swift */,
 				11C34EBE217BC57D00381C6D /* HeaderCellViewModel.swift */,
 				11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */,
+				1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -540,6 +549,7 @@
 			files = (
 				115140CA21703915007857A7 /* ArticleTableViewCell.xib in Resources */,
 				11C34EC5217BCFCF00381C6D /* CommentTableViewCell.xib in Resources */,
+				1104B8B921880938005BB702 /* LoaderTableViewCell.xib in Resources */,
 				11514086216D7993007857A7 /* LaunchScreen.storyboard in Resources */,
 				11514083216D7993007857A7 /* Assets.xcassets in Resources */,
 				11C34EBD217BC3F500381C6D /* ArticleHeaderTableViewCell.xib in Resources */,
@@ -585,6 +595,7 @@
 				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
+				1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */,
 				11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
@@ -597,6 +608,7 @@
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
 				11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */,
 				11C34EBC217BC3F500381C6D /* ArticleHeaderTableViewCell.swift in Sources */,
+				1104B8B821880938005BB702 /* LoaderTableViewCell.swift in Sources */,
 				117A847B2174404900655CC9 /* Coordinator.swift in Sources */,
 				11C34EC1217BCAD100381C6D /* Comment.swift in Sources */,
 				117A84742174326800655CC9 /* Storyboards.swift in Sources */,

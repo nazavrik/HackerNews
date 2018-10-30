@@ -31,9 +31,9 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Article"
-        
         guard let url = article?.url else { return }
+        
+        title = url.domain
         
         view.showLoader()
         webView.isHidden = true
