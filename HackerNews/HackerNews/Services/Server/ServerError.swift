@@ -9,6 +9,7 @@
 import Foundation
 
 enum ServerError: Error {
+    case noConnection
     case requestFailed
     case emptyResponse
     case other(String)
@@ -29,6 +30,7 @@ enum ServerError: Error {
     var description: String {
         switch self {
         case .other(let message): return message
+        case .noConnection: return "No Internet Connection."
         case .requestFailed: return "Request is wrong. Plase, try again later."
         case .emptyResponse: return Constants.defaultError
         }

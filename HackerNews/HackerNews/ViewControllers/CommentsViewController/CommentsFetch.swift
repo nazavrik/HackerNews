@@ -9,13 +9,16 @@
 import Foundation
 
 struct CommentsFetch {
-    static func fetchComments(for articleId: Int, complete: @escaping (([Comment]) -> Void)) {
+    static func fetchComments(for articleId: Int, complete: @escaping ((Article?, [Comment], ServerError?) -> Void)) {
         let request = Article.Requests.article(for: articleId)
         Server.standard.request(request) { article, error in
-            guard let article = article else { return }
+            guard let article = article, error == nil else {
+                complete(nil, [], error)
+                return
+            }
             
             _loadComments(article.commentIds) { comments in
-                complete(comments)
+                complete(article, comments, nil)
             }
         }
     }

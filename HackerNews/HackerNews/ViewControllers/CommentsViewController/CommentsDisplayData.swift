@@ -10,6 +10,11 @@ import UIKit
 
 class CommentsDisplayData {
     private weak var viewController: CommentsViewController?
+    private var isRefreshing = false {
+        didSet {
+            viewController?.tableView.reloadData()
+        }
+    }
     private var article: Article
     private var comments = [Comment]()
     
@@ -22,15 +27,24 @@ class CommentsDisplayData {
     }
     
     func fetchComments() {
-        comments.removeAll()
-        viewController?.tableView.reloadData()
-        
+        isRefreshing = true
         viewController?.view.showLoader()
 
-        CommentsFetch.fetchComments(for: article.id) { comments in
+        CommentsFetch.fetchComments(for: article.id) { [weak self] article, comments, error in
+            guard let article = article, error == nil else {
+                self?.viewController?.showAlert(title: "Can't fetch comments",
+                                                message: "Reason: \(error?.description ?? "")")
+                self?.updateUI()
+                return
+            }
+            
+            self?.article = article
+            
             var sortedComments = [Comment]()
-            self.getComments(from: comments, to: &sortedComments)
-            self.updateUI(with: sortedComments)
+            self?.getComments(from: comments, to: &sortedComments)
+            self?.comments.removeAll()
+            self?.comments.append(contentsOf: sortedComments)
+            self?.updateUI()
         }
     }
     
@@ -41,11 +55,9 @@ class CommentsDisplayData {
         }
     }
     
-    private func updateUI(with items: [Comment]) {
-        comments.removeAll()
-        comments.append(contentsOf: items)
+    private func updateUI() {
+        isRefreshing = false
         viewController?.view.hideLoader()
-        viewController?.tableView.reloadData()
     }
 }
 
@@ -70,7 +82,7 @@ extension CommentsDisplayData: DisplayCollection {
         
         switch sectinType {
         case .info: return 1
-        case .comments: return comments.count
+        case .comments: return isRefreshing ? 0 : comments.count
         }
     }
     

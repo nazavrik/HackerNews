@@ -11,6 +11,8 @@
 		1104B8B921880938005BB702 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1104B8B721880938005BB702 /* LoaderTableViewCell.xib */; };
 		1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */; };
 		112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B46218EA32800D9575C /* CommentsFetch.swift */; };
+		112D3B49218EAE3600D9575C /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B48218EAE3600D9575C /* UIViewController+Alerts.swift */; };
+		112D3B4C218EB2D400D9575C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B4B218EB2D400D9575C /* Reachability.swift */; };
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
@@ -81,6 +83,8 @@
 		1104B8B721880938005BB702 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
 		1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCellViewModel.swift; sourceTree = "<group>"; };
 		112D3B46218EA32800D9575C /* CommentsFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsFetch.swift; sourceTree = "<group>"; };
+		112D3B48218EAE3600D9575C /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		112D3B4B218EB2D400D9575C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
@@ -160,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112D3B4A218EB2B100D9575C /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				112D3B4B218EB2D400D9575C /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		1151406F216D7991007857A7 = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +338,7 @@
 		115140D92170BA0D007857A7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				112D3B4A218EB2B100D9575C /* Reachability */,
 				115140DA2170BA25007857A7 /* Server */,
 			);
 			path = Services;
@@ -433,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				11D9FFF1217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift */,
+				112D3B48218EAE3600D9575C /* UIViewController+Alerts.swift */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -581,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112D3B49218EAE3600D9575C /* UIViewController+Alerts.swift in Sources */,
 				11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */,
 				117A84792174403200655CC9 /* AppCoordinator.swift in Sources */,
 				115140DE2170BA8E007857A7 /* Server.swift in Sources */,
@@ -588,6 +603,7 @@
 				115140D62170401C007857A7 /* UITableView+Registration.swift in Sources */,
 				115140DC2170BA31007857A7 /* Request.swift in Sources */,
 				115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */,
+				112E7B542184120D00FD9E09 /* ArticleTitleView.swift in Sources */,
 				11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */,
 				115140E32170BB72007857A7 /* ObjectType.swift in Sources */,
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
@@ -597,6 +613,7 @@
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
 				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */,
+				112D3B4C218EB2D400D9575C /* Reachability.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
 				1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */,
 				11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */,

@@ -60,8 +60,11 @@ class Server {
         
         let session = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
+                let internetAvailable = Reachability.isInternetAvailable
+                let serverError: ServerError = !internetAvailable ? .noConnection : .requestFailed
+                
                 OperationQueue.main.addOperation {
-                    completion(nil, .requestFailed)
+                    completion(nil, serverError)
                 }
                 return
             }
