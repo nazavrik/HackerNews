@@ -27,16 +27,7 @@ class CommentsDisplayData {
         
         viewController?.view.showLoader()
 
-        let articleRequest = Article.Requests.article(for: article.id)
-        Server.standard.request(articleRequest) { [weak self] updatedArticle, error in
-            guard let updatedArticle = updatedArticle else { return }
-            
-            self?.loadComments(for: updatedArticle)
-        }
-    }
-    
-    private func loadComments(for article: Article) {
-        _loadComments(article.commentIds) { comments in
+        CommentsFetch.fetchComments(for: article.id) { comments in
             var sortedComments = [Comment]()
             self.getComments(from: comments, to: &sortedComments)
             self.updateUI(with: sortedComments)
@@ -48,53 +39,6 @@ class CommentsDisplayData {
             comments.append(comment)
             getComments(from: comment.subcomments, to: &comments)
         }
-    }
-    
-    private func _loadComments(_ commentIds: [Int], parent: Comment? = nil, complete: @escaping (([Comment]) -> Void)) {
-        var comments = [Comment]()
-        
-        let commentsGroup = DispatchGroup()
-        
-        for commentId in commentIds {
-            commentsGroup.enter()
-            
-            let request = Comment.Requests.comment(for: commentId)
-            Server.standard.request(request) { comment, error in
-                if var comment = comment {
-                    let level = parent == nil ? 0 : parent!.level + 1
-                    comment.level = level
-                    comments.append(comment)
-                }
-                commentsGroup.leave()
-            }
-        }
-        
-        commentsGroup.notify(queue: DispatchQueue.main, execute: {
-            comments = comments.sorted(by: { $0.id < $1.id })
-            
-            var result = [Comment]()
-            
-            let subcommentsGroup = DispatchGroup()
-            
-            for item in comments {
-                subcommentsGroup.enter()
-                if item.commentIds.count > 0 {
-                    self._loadComments(item.commentIds, parent: item, complete: { subcomments in
-                        subcommentsGroup.leave()
-                        var comment = item
-                        comment.subcomments.append(contentsOf: subcomments)
-                        result.append(comment)
-                    })
-                } else {
-                    subcommentsGroup.leave()
-                    result.append(item)
-                }
-            }
-            
-            subcommentsGroup.notify(queue: DispatchQueue.main, execute: {
-                complete(result.sorted(by: { $0.id < $1.id }))
-            })
-        })
     }
     
     private func updateUI(with items: [Comment]) {

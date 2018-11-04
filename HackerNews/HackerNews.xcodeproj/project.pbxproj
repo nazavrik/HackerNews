@@ -10,6 +10,7 @@
 		1104B8B821880938005BB702 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104B8B621880938005BB702 /* LoaderTableViewCell.swift */; };
 		1104B8B921880938005BB702 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1104B8B721880938005BB702 /* LoaderTableViewCell.xib */; };
 		1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */; };
+		112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B46218EA32800D9575C /* CommentsFetch.swift */; };
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
@@ -79,6 +80,7 @@
 		1104B8B621880938005BB702 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
 		1104B8B721880938005BB702 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
 		1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCellViewModel.swift; sourceTree = "<group>"; };
+		112D3B46218EA32800D9575C /* CommentsFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsFetch.swift; sourceTree = "<group>"; };
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				112E7B512183F01100FD9E09 /* CommentsViewController.swift */,
 				11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */,
+				112D3B46218EA32800D9575C /* CommentsFetch.swift */,
 			);
 			path = CommentsViewController;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
 				11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */,
 				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
+				112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */,
 				11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */,
 				112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
