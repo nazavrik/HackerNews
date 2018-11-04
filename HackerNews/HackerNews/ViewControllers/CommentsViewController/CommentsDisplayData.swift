@@ -27,7 +27,16 @@ class CommentsDisplayData {
         
         viewController?.view.showLoader()
 
-        _fetchComments(article.commentIds) { comments in
+        let articleRequest = Article.Requests.article(for: article.id)
+        Server.standard.request(articleRequest) { [weak self] updatedArticle, error in
+            guard let updatedArticle = updatedArticle else { return }
+            
+            self?.loadComments(for: updatedArticle)
+        }
+    }
+    
+    private func loadComments(for article: Article) {
+        _loadComments(article.commentIds) { comments in
             var sortedComments = [Comment]()
             self.getComments(from: comments, to: &sortedComments)
             self.updateUI(with: sortedComments)
@@ -41,7 +50,7 @@ class CommentsDisplayData {
         }
     }
     
-    private func _fetchComments(_ commentIds: [Int], parent: Comment? = nil, complete: @escaping (([Comment]) -> Void)) {
+    private func _loadComments(_ commentIds: [Int], parent: Comment? = nil, complete: @escaping (([Comment]) -> Void)) {
         var comments = [Comment]()
         
         let commentsGroup = DispatchGroup()
@@ -70,7 +79,7 @@ class CommentsDisplayData {
             for item in comments {
                 subcommentsGroup.enter()
                 if item.commentIds.count > 0 {
-                    self._fetchComments(item.commentIds, parent: item, complete: { subcomments in
+                    self._loadComments(item.commentIds, parent: item, complete: { subcomments in
                         subcommentsGroup.leave()
                         var comment = item
                         comment.subcomments.append(contentsOf: subcomments)
