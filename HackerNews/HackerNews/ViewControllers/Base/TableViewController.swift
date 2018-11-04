@@ -33,6 +33,7 @@ class TableViewController: UIViewController {
         
         tableView.registerNibs(from: tableDisplayData)
         
+        refreshControl.tintColor = UIColor.tint.withAlphaComponent(0.5)
         refreshControl.addTarget(self, action: #selector(refreshData), for: UIControl.Event.valueChanged)
     }
     

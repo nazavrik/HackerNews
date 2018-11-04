@@ -14,6 +14,6 @@ struct LoaderCellViewModel {
 
 extension LoaderCellViewModel: CellViewModel {
     func setup(on cell: LoaderTableViewCell) {
-        
+        cell.stopLoaderAnimation()
     }
 }

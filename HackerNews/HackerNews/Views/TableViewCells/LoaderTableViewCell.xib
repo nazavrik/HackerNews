@@ -24,15 +24,25 @@
                         <color key="textColor" red="0.98823529409999999" green="0.40000000000000002" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="319-Q4-8TB">
+                        <rect key="frame" x="150" y="12" width="20" height="20"/>
+                        <color key="color" red="0.98823529409999999" green="0.40000000000000002" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="cKq-2Y-u3M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Dv7-B4-C2Y"/>
                     <constraint firstItem="cKq-2Y-u3M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Er9-qg-Z5f"/>
                     <constraint firstAttribute="trailing" secondItem="cKq-2Y-u3M" secondAttribute="trailing" id="LM5-73-2DD"/>
+                    <constraint firstItem="319-Q4-8TB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="X1h-Pa-zDc"/>
                     <constraint firstAttribute="bottom" secondItem="cKq-2Y-u3M" secondAttribute="bottom" id="a7K-k0-Cgw"/>
+                    <constraint firstItem="319-Q4-8TB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="xun-uB-htn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="activityIndicator" destination="319-Q4-8TB" id="T7J-Rz-cMf"/>
+                <outlet property="titleLabel" destination="cKq-2Y-u3M" id="ldd-oo-iA8"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

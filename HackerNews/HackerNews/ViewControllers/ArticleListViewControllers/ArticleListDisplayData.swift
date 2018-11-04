@@ -133,10 +133,19 @@ extension ArticleListDisplayData: DisplayCollection {
 extension ArticleListDisplayData: DisplayCollectionAction {
     func didSelect(indexPath: IndexPath) {
         if isLoaderCell(indexPath) {
+            guard let cell = viewController?.tableView.cellForRow(at: indexPath) as? LoaderTableViewCell else {
+                return
+            }
+            
+            if cell.isAnimating {
+                return
+            }
+            
+            cell.startLoaderAnimation()
             fetchArticles(for: nextArticleIds)
-            return
+        } else {
+            let article = articles[indexPath.row]
+            didArticleSelect?(article)
         }
-        let article = articles[indexPath.row]
-        didArticleSelect?(article)
     }
 }
