@@ -35,7 +35,13 @@ class AppCoordinator: Coordinator {
         let commentsViewController = Storyboards.Main.commentsViewController()
         
         let displayData = CommentsDisplayData(viewController: commentsViewController, article: article)
-        displayData.didOpeningUrlSelect = { [weak self] url in
+        displayData.didOpeningUrlSelect = { urlString in
+            if let url = URL(string: urlString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        
+        displayData.didArticleSelect = { [weak self] in
             self?.navigationController.popViewController(animated: true)
         }
         

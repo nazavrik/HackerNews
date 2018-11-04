@@ -12,9 +12,9 @@ class CommentsDisplayData {
     private weak var viewController: CommentsViewController?
     private var article: Article
     private var comments = [Comment]()
-//    private var subcomments = [Int: [Comment]]() // commentId: Subcomments
     
     var didOpeningUrlSelect: ((String) -> Void)?
+    var didArticleSelect: (() -> Void)?
     
     init(viewController: CommentsViewController, article: Article) {
         self.viewController = viewController
@@ -267,7 +267,7 @@ extension CommentsDisplayData: DisplayCollectionAction {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
         if sectinType == .info {
-            didOpeningUrlSelect?(article.url)
+            didArticleSelect?()
         }
     }
 }
