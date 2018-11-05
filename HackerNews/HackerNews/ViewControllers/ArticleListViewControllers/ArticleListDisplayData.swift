@@ -10,7 +10,6 @@ import UIKit
 
 class ArticleListDisplayData {
     private weak var viewController: ArticleListViewController?
-    private let itemsOnPerPage = 20
     private var allArticleIds: [Int]?
     private var articles = [Article]()
     private var loadedItemsCount = 0
@@ -26,35 +25,24 @@ class ArticleListDisplayData {
             viewController?.view.showLoader()
         }
         
-        let request = Article.Requests.articleIds
-        Server.standard.request(request) { [weak self] array, error in
-            if let articleIds = array?.items {
-                self?.loadedItemsCount = 0
-                self?.allArticleIds = articleIds
-                self?.fetchArticles(for: self?.nextArticleIds ?? [])
+        ArticleListFetch.fetchFirstArticles { [weak self] ids, articles, error in
+            guard error == nil else {
+                self?.viewController?.showAlert(title: "Can't fetch comments",
+                                                message: "Reason: \(error?.description ?? "")")
+                self?.updateUI(with: [])
+                return
             }
+            
+            self?.loadedItemsCount = 0
+            self?.allArticleIds = ids
+            self?.updateUI(with: articles)
         }
     }
     
-    private func fetchArticles(for articleIds: [Int]) {
-        var items = [Article]()
-        let group = DispatchGroup()
-        
-        for id in articleIds {
-            group.enter()
-            
-            let request = Article.Requests.article(for: id)
-            Server.standard.request(request, completion: { article, error in
-                if let article = article {
-                    items.append(article)
-                }
-                group.leave()
-            })
+    private func fetchMoreArticles() {
+        ArticleListFetch.fetchArticles(for: nextArticleIds) { [weak self] articles in
+            self?.updateUI(with: articles)
         }
-        
-        group.notify(queue: DispatchQueue.main, execute: {
-            self.updateUI(with: items)
-        })
     }
     
     private func updateUI(with items: [Article]) {
@@ -63,7 +51,7 @@ class ArticleListDisplayData {
         }
         
         articles.append(contentsOf: items)
-        loadedItemsCount += itemsOnPerPage
+        loadedItemsCount += ArticleListFetch.itemsOnPerPage
         
         viewController?.view.hideLoader()
         viewController?.endRefreshing()
@@ -75,7 +63,7 @@ class ArticleListDisplayData {
         guard let articleIds = allArticleIds else { return [] }
         
         let startIndex = loadedItemsCount
-        let offset = articleIds.count - loadedItemsCount < itemsOnPerPage ? articleIds.count - loadedItemsCount : itemsOnPerPage
+        let offset = articleIds.count - loadedItemsCount < ArticleListFetch.itemsOnPerPage ? articleIds.count - loadedItemsCount : ArticleListFetch.itemsOnPerPage
         let endIndex = startIndex + offset
         var items = [Int]()
         items.append(contentsOf: articleIds[startIndex..<endIndex])
@@ -142,7 +130,7 @@ extension ArticleListDisplayData: DisplayCollectionAction {
             }
             
             cell.startLoaderAnimation()
-            fetchArticles(for: nextArticleIds)
+            fetchMoreArticles()
         } else {
             let article = articles[indexPath.row]
             didArticleSelect?(article)

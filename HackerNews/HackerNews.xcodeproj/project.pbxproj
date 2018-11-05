@@ -13,6 +13,7 @@
 		112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B46218EA32800D9575C /* CommentsFetch.swift */; };
 		112D3B49218EAE3600D9575C /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B48218EAE3600D9575C /* UIViewController+Alerts.swift */; };
 		112D3B4C218EB2D400D9575C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B4B218EB2D400D9575C /* Reachability.swift */; };
+		112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B53218FFF0C00D9575C /* ArticleListFetch.swift */; };
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
@@ -85,6 +86,7 @@
 		112D3B46218EA32800D9575C /* CommentsFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsFetch.swift; sourceTree = "<group>"; };
 		112D3B48218EAE3600D9575C /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		112D3B4B218EB2D400D9575C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		112D3B53218FFF0C00D9575C /* ArticleListFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListFetch.swift; sourceTree = "<group>"; };
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				115140BC21702EFF007857A7 /* ArticleListViewController.swift */,
 				115140BE217030D4007857A7 /* ArticleListDisplayData.swift */,
+				112D3B53218FFF0C00D9575C /* ArticleListFetch.swift */,
 			);
 			path = ArticleListViewControllers;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
 				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
 				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
+				112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */,
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
 				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */,
