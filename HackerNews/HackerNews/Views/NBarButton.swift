@@ -52,7 +52,7 @@ class HNBarButton: UIButton {
             let height = image.size.height
             let imageFrame = CGRect(x: x, y: y, width: width, height: height)
             _imageView?.frame = imageFrame
-            _titleLabel?.frame = CGRect(x: x + 2.0, y: y, width: width - 4.0, height: height)
+            _titleLabel?.frame = CGRect(x: x + 2.0, y: y, width: width - 4.0, height: height - 2.0)
         }
     }
     

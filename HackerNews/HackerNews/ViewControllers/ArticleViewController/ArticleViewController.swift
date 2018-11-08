@@ -25,6 +25,18 @@ class ArticleViewController: UIViewController {
         return commentsCount > 999 ? "1K" : "\(commentsCount)"
     }
     
+    private var isLoading = false {
+        didSet {
+            if isLoading {
+                view.showLoader()
+            } else {
+                view.hideLoader()
+            }
+            
+            webView.isHidden = isLoading
+        }
+    }
+    
     var article: Article?
     var didSelectComments: (() -> Void)?
     
@@ -35,8 +47,7 @@ class ArticleViewController: UIViewController {
         
         title = url.domain
         
-        view.showLoader()
-        webView.isHidden = true
+        isLoading = true
         
         let myURL = URL(string: url)
         let myRequest = URLRequest(url: myURL!)
@@ -55,8 +66,7 @@ class ArticleViewController: UIViewController {
 
 extension ArticleViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.isHidden = false
-        view.hideLoader()
+        isLoading = false
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -68,7 +78,9 @@ extension ArticleViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        print("didFailProvisionalNavigation")
+        isLoading = false
+        
+        self.showAlert(title: "Can't load the article", message: "Plase, try again later.", completion: nil)
     }
 }
 
