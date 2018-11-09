@@ -63,7 +63,7 @@ class CommentsDisplayData {
 
 extension CommentsDisplayData: DisplayCollection {
     static var modelsForRegistration: [BaseCellViewModel.Type] {
-        return [ArticleCellViewModel.self,
+        return [CommentHeaderCellViewModel.self,
                 HeaderCellViewModel.self,
                 CommentCellViewModel.self]
     }
@@ -90,7 +90,7 @@ extension CommentsDisplayData: DisplayCollection {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
         if sectinType == .info {
-            return ArticleCellViewModel(article: article)
+            return CommentHeaderCellViewModel(article: article)
         }
         
         let comment = comments[indexPath.row]
@@ -125,7 +125,7 @@ extension CommentsDisplayData: DisplayCollection {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
         if sectinType == .info {
-            return 70.0
+            return 94.0
         }
         
         return UITableView.automaticDimension
