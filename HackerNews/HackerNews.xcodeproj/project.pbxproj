@@ -41,6 +41,7 @@
 		115140E32170BB72007857A7 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E22170BB72007857A7 /* ObjectType.swift */; };
 		115140E62170C753007857A7 /* ArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E52170C753007857A7 /* ArrayObject.swift */; };
 		115140E92172DE69007857A7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E82172DE69007857A7 /* TableViewController.swift */; };
+		115CDE772195491D0057225F /* HNTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE762195491D0057225F /* HNTitleView.swift */; };
 		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
 		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 		117A84792174403200655CC9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84782174403200655CC9 /* AppCoordinator.swift */; };
@@ -123,6 +124,7 @@
 		115140E22170BB72007857A7 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		115140E52170C753007857A7 /* ArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayObject.swift; sourceTree = "<group>"; };
 		115140E82172DE69007857A7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		115CDE762195491D0057225F /* HNTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTitleView.swift; sourceTree = "<group>"; };
 		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 		117A84782174403200655CC9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				112E7B4F2183E67200FD9E09 /* NBarButton.swift */,
 				115140C62170384C007857A7 /* TableViewCells */,
+				115CDE762195491D0057225F /* HNTitleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
 				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
+				115CDE772195491D0057225F /* HNTitleView.swift in Sources */,
 				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
 				112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */,
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,

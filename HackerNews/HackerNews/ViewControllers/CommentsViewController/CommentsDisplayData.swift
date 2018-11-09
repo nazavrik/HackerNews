@@ -15,11 +15,12 @@ class CommentsDisplayData {
             viewController?.tableView.reloadData()
         }
     }
-    private var article: Article
     private var comments = [Comment]()
     
+    var article: Article
     var didOpeningUrlSelect: ((String) -> Void)?
     var didArticleSelect: (() -> Void)?
+    var commentHeaderHeight: CGFloat = 94.0
     
     init(viewController: CommentsViewController, article: Article) {
         self.viewController = viewController
@@ -125,7 +126,7 @@ extension CommentsDisplayData: DisplayCollection {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
         if sectinType == .info {
-            return 94.0
+            return commentHeaderHeight
         }
         
         return UITableView.automaticDimension

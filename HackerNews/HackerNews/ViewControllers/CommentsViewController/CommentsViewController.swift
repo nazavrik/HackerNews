@@ -37,3 +37,13 @@ class CommentsViewController: TableViewController {
         displayData.fetchComments()
     }
 }
+
+extension CommentsViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= displayData.commentHeaderHeight {
+            navigationItem.titleView = HNTitleView(title: displayData.article.title)
+        } else {
+            navigationItem.titleView = nil
+        }
+    }
+}

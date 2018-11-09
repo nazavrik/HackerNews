@@ -39,7 +39,7 @@ class HNBarButton: UIButton {
             _titleLabel = titleLabel
         }
         
-        frame = CGRect(x: 0.0, y: 0.0, width: 50.0, height: 44.0)
+        frame = CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0)
     }
     
     override var frame: CGRect {
