@@ -34,7 +34,8 @@ class HNTitleView: UIView {
         titleLabel = label
         
         if frame == .zero {
-            self.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 44.0)
+            let width = UIScreen.main.bounds.size.width - 100.0
+            self.frame = CGRect(x: 0.0, y: 0.0, width: width, height: 44.0)
         }
     }
     
