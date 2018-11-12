@@ -28,9 +28,10 @@ extension Article: ObjectType {
             let score = json["score"] as? Int,
             let author = json["by"] as? String,
             let commentsCount = json["descendants"] as? Int,
-            let timeStamp = json["time"] as? TimeInterval,
-            let commentIds = json["kids"] as? [Int]
-            else { return nil }
+            let timeStamp = json["time"] as? TimeInterval
+            else {
+                return nil
+        }
         
         self.id = id
         self.title = title
@@ -39,7 +40,7 @@ extension Article: ObjectType {
         self.author = author
         self.commentsCount = commentsCount
         self.date = Date(timeIntervalSince1970: timeStamp)
-        self.commentIds = commentIds
+        self.commentIds = json["kids"] as? [Int] ?? [Int]()
     }
 }
 

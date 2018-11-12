@@ -42,6 +42,7 @@
 		115140E62170C753007857A7 /* ArrayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E52170C753007857A7 /* ArrayObject.swift */; };
 		115140E92172DE69007857A7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115140E82172DE69007857A7 /* TableViewController.swift */; };
 		115CDE772195491D0057225F /* HNTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE762195491D0057225F /* HNTitleView.swift */; };
+		115CDE792199350A0057225F /* HNTitleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE782199350A0057225F /* HNTitleTableView.swift */; };
 		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
 		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 		117A84792174403200655CC9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84782174403200655CC9 /* AppCoordinator.swift */; };
@@ -125,6 +126,7 @@
 		115140E52170C753007857A7 /* ArrayObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayObject.swift; sourceTree = "<group>"; };
 		115140E82172DE69007857A7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		115CDE762195491D0057225F /* HNTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTitleView.swift; sourceTree = "<group>"; };
+		115CDE782199350A0057225F /* HNTitleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTitleTableView.swift; sourceTree = "<group>"; };
 		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 		117A84782174403200655CC9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				112E7B4F2183E67200FD9E09 /* NBarButton.swift */,
 				115140C62170384C007857A7 /* TableViewCells */,
 				115CDE762195491D0057225F /* HNTitleView.swift */,
+				115CDE782199350A0057225F /* HNTitleTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -620,7 +623,6 @@
 				115140D62170401C007857A7 /* UITableView+Registration.swift in Sources */,
 				115140DC2170BA31007857A7 /* Request.swift in Sources */,
 				115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */,
-				112E7B542184120D00FD9E09 /* ArticleTitleView.swift in Sources */,
 				11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */,
 				115140E32170BB72007857A7 /* ObjectType.swift in Sources */,
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
@@ -656,6 +658,7 @@
 				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,
 				112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */,
 				115140D421703F3C007857A7 /* UIView+Nib.swift in Sources */,
+				115CDE792199350A0057225F /* HNTitleTableView.swift in Sources */,
 				115140D82170421D007857A7 /* UITableView+CellViewModel.swift in Sources */,
 				11C34EC7217BD1B000381C6D /* CommentCellViewModel.swift in Sources */,
 				115140BF217030D4007857A7 /* ArticleListDisplayData.swift in Sources */,

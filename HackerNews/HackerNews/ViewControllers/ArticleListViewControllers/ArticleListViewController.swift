@@ -10,6 +10,8 @@ import UIKit
 
 class ArticleListViewController: TableViewController {
     
+    private var isTitleViewOpen = false
+    
     var displayData: ArticleListDisplayData! {
         didSet {
             tableDisplayData = displayData
@@ -19,8 +21,13 @@ class ArticleListViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Articles"
-
+        let titleView = HNTitleTableView(title: "Stories")
+        titleView.didTitleSelect = { [weak self] in
+            self?.didTitleViewChange()
+        }
+        
+        navigationItem.titleView = titleView
+        
         refreshing = true
         
         displayData.fetchArticles(refresh: false)
@@ -28,5 +35,13 @@ class ArticleListViewController: TableViewController {
     
     @objc override func refreshData() {
         displayData.fetchArticles(refresh: true)
+    }
+    
+    private func didTitleViewChange() {
+        if isTitleViewOpen {
+            isTitleViewOpen = false
+        } else {
+            isTitleViewOpen = true
+        }
     }
 }

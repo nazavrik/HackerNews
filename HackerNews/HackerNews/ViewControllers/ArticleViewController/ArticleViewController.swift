@@ -19,10 +19,7 @@ class ArticleViewController: UIViewController {
     
     private var commentsTitle: String {
         let commentsCount = article?.commentsCount ?? 0
-        
-        guard commentsCount > 0 else { return "" }
-        
-        return commentsCount > 999 ? "1K" : "\(commentsCount)"
+        return commentsCount > 999 ? "1K+" : "\(commentsCount)"
     }
     
     private var isLoading = false {
