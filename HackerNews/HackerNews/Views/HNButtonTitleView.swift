@@ -8,19 +8,26 @@
 
 import UIKit
 
-class HNTitleTableView: UIView {
+class HNButtonTitleView: UIView {
     private var _button: UIButton?
     
+    var title = "" {
+        didSet {
+            _button?.setTitle(title, for: .normal)
+        }
+    }
     var didTitleSelect: (() -> Void)?
     
     convenience init(title: String) {
         self.init()
         
+        self.title = title
+        
         let button = UIButton(type: .custom)
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
-        button.setTitleColor(UIColor.black.withAlphaComponent(0.4), for: .highlighted)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.25), for: .highlighted)
         button.addTarget(self, action: #selector(buttonDidPress(_:)), for: .touchUpInside)
         addSubview(button)
         _button = button

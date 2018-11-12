@@ -10,7 +10,21 @@ import UIKit
 
 class ArticleListViewController: TableViewController {
     
-    private var isTitleViewOpen = false
+    private var titleViewController: HNTitleViewController! {
+        didSet {
+            titleViewController.delegate = self
+            view.addSubview(titleViewController.view)
+        }
+    }
+    
+    private var titleView: HNButtonTitleView! {
+        didSet {
+            titleView.didTitleSelect = { [weak self] in
+                self?.didTitleViewChange()
+            }
+            navigationItem.titleView = titleView
+        }
+    }
     
     var displayData: ArticleListDisplayData! {
         didSet {
@@ -21,12 +35,8 @@ class ArticleListViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let titleView = HNTitleTableView(title: "Stories")
-        titleView.didTitleSelect = { [weak self] in
-            self?.didTitleViewChange()
-        }
-        
-        navigationItem.titleView = titleView
+        titleView = HNButtonTitleView(title: "Stories")
+        titleViewController = HNTitleViewController(with: [.new, .top, .best])
         
         refreshing = true
         
@@ -38,10 +48,18 @@ class ArticleListViewController: TableViewController {
     }
     
     private func didTitleViewChange() {
-        if isTitleViewOpen {
-            isTitleViewOpen = false
+        if titleViewController.isOpen {
+            titleViewController.hide()
         } else {
-            isTitleViewOpen = true
+            titleViewController.show()
         }
+    }
+}
+
+extension ArticleListViewController: HNTitleTableViewDelegate {
+    func titleTableView(_ tableView: UITableView, didSelect story: HNStory) {
+        titleView.title = story.title
+        
+        didTitleViewChange()
     }
 }
