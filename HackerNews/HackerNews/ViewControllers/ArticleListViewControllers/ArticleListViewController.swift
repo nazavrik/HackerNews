@@ -13,6 +13,13 @@ class ArticleListViewController: TableViewController {
     private var titleViewController: HNTitleViewController! {
         didSet {
             titleViewController.delegate = self
+            titleViewController.didTitleViewChange = { [weak self] isOpen in
+                if isOpen {
+                    self?.titleView.setIconUp()
+                } else {
+                    self?.titleView.setIconDown()
+                }
+            }
             view.addSubview(titleViewController.view)
         }
     }
@@ -20,7 +27,7 @@ class ArticleListViewController: TableViewController {
     private var titleView: HNButtonTitleView! {
         didSet {
             titleView.didTitleSelect = { [weak self] in
-                self?.didTitleViewChange()
+                self?.updateTitleViewController()
             }
             navigationItem.titleView = titleView
         }
@@ -47,7 +54,7 @@ class ArticleListViewController: TableViewController {
         displayData.fetchArticles(refresh: true)
     }
     
-    private func didTitleViewChange() {
+    private func updateTitleViewController() {
         if titleViewController.isOpen {
             titleViewController.hide()
         } else {
@@ -60,6 +67,6 @@ extension ArticleListViewController: HNTitleTableViewDelegate {
     func titleTableView(_ tableView: UITableView, didSelect story: HNStoryType) {
         titleView.title = story.title
         displayData.storyType = story
-        didTitleViewChange()
+        updateTitleViewController()
     }
 }

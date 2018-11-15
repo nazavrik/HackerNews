@@ -20,6 +20,8 @@ class HNTitleViewController: NSObject {
     
     weak var delegate: HNTitleTableViewDelegate?
     
+    var didTitleViewChange: ((Bool) -> Void)?
+    
     init(with items: [HNStoryType]) {
         _items = items
         
@@ -64,6 +66,8 @@ class HNTitleViewController: NSObject {
             self._titleTableView.frame.size.height = self.titleTableViewHeight
             self._view.alpha = 1.0
         }
+        
+        didTitleViewChange?(true)
     }
     
     func hide() {
@@ -73,6 +77,8 @@ class HNTitleViewController: NSObject {
             self._titleTableView.frame.size.height = 0.0
             self._view.alpha = 0.0
         }
+        
+        didTitleViewChange?(false)
     }
     
     private var titleTableViewHeight: CGFloat {
