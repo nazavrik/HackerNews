@@ -44,10 +44,9 @@
 		115CDE772195491D0057225F /* HNTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE762195491D0057225F /* HNTitleView.swift */; };
 		115CDE7B219945C30057225F /* HNButtonTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE7A219945C30057225F /* HNButtonTitleView.swift */; };
 		115CDE862199BB930057225F /* HNTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE852199BB930057225F /* HNTitleViewController.swift */; };
-		115CDE882199C93E0057225F /* HNStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE872199C93E0057225F /* HNStory.swift */; };
+		115CDE882199C93E0057225F /* HNStoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE872199C93E0057225F /* HNStoryType.swift */; };
 		115CDE8B2199CB0E0057225F /* StoryTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */; };
 		115CDE8C2199CB0E0057225F /* StoryTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */; };
-		115CDE8E2199CB670057225F /* StoryTitleCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE8D2199CB670057225F /* StoryTitleCellViewModel.swift */; };
 		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
 		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 		117A84792174403200655CC9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84782174403200655CC9 /* AppCoordinator.swift */; };
@@ -133,10 +132,9 @@
 		115CDE762195491D0057225F /* HNTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTitleView.swift; sourceTree = "<group>"; };
 		115CDE7A219945C30057225F /* HNButtonTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNButtonTitleView.swift; sourceTree = "<group>"; };
 		115CDE852199BB930057225F /* HNTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTitleViewController.swift; sourceTree = "<group>"; };
-		115CDE872199C93E0057225F /* HNStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNStory.swift; sourceTree = "<group>"; };
+		115CDE872199C93E0057225F /* HNStoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNStoryType.swift; sourceTree = "<group>"; };
 		115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleTableViewCell.swift; sourceTree = "<group>"; };
 		115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTitleTableViewCell.xib; sourceTree = "<group>"; };
-		115CDE8D2199CB670057225F /* StoryTitleCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleCellViewModel.swift; sourceTree = "<group>"; };
 		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 		117A84782174403200655CC9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 				11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */,
 				1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */,
 				118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */,
-				115CDE8D2199CB670057225F /* StoryTitleCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -418,7 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				115CDE852199BB930057225F /* HNTitleViewController.swift */,
-				115CDE872199C93E0057225F /* HNStory.swift */,
+				115CDE872199C93E0057225F /* HNStoryType.swift */,
 			);
 			path = HNTitleViewController;
 			sourceTree = "<group>";
@@ -653,7 +650,6 @@
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
 				115CDE862199BB930057225F /* HNTitleViewController.swift in Sources */,
 				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
-				115CDE8E2199CB670057225F /* StoryTitleCellViewModel.swift in Sources */,
 				115CDE772195491D0057225F /* HNTitleView.swift in Sources */,
 				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
 				112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */,
@@ -674,7 +670,7 @@
 				112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
-				115CDE882199C93E0057225F /* HNStory.swift in Sources */,
+				115CDE882199C93E0057225F /* HNStoryType.swift in Sources */,
 				115140C921703915007857A7 /* ArticleTableViewCell.swift in Sources */,
 				11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */,
 				11C34EBC217BC3F500381C6D /* ArticleHeaderTableViewCell.swift in Sources */,

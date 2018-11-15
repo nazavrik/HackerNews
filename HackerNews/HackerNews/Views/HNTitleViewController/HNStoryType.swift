@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HNStory: Int {
+enum HNStoryType: Int {
     case top
     case best
     case new
@@ -18,6 +18,14 @@ enum HNStory: Int {
         case .top: return "Top Stories"
         case .best: return "Best Stories"
         case .new: return "New Stories"
+        }
+    }
+    
+    var url: String {
+        switch self {
+        case .top: return "topstories.json"
+        case .best: return "beststories.json"
+        case .new: return "newstories.json"
         }
     }
 }

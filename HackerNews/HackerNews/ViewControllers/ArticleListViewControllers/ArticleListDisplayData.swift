@@ -14,6 +14,12 @@ class ArticleListDisplayData {
     private var articles = [Article]()
     private var loadedItemsCount = 0
     
+    var storyType: HNStoryType = .best {
+        didSet {
+            changeArticles()
+        }
+    }
+    
     var didArticleSelect: ((Article) -> Void)?
     
     init(viewController: ArticleListViewController) {
@@ -25,7 +31,7 @@ class ArticleListDisplayData {
             viewController?.view.showLoader()
         }
         
-        ArticleListFetch.fetchFirstArticles { [weak self] ids, articles, error in
+        ArticleListFetch.fetchFirstArticles(for: storyType) { [weak self] ids, articles, error in
             guard error == nil else {
                 self?.viewController?.showAlert(title: "Can't fetch comments",
                                                 message: "Reason: \(error?.description ?? "")")
@@ -78,6 +84,14 @@ class ArticleListDisplayData {
         }
         
         return loadedItemsCount < articleIds.count - 1
+    }
+    
+    private func changeArticles() {
+        allArticleIds?.removeAll()
+        articles.removeAll()
+        viewController?.tableView.reloadData()
+        
+        fetchArticles(refresh: false)
     }
 }
 

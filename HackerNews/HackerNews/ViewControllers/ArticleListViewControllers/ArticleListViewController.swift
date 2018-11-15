@@ -35,7 +35,7 @@ class ArticleListViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleView = HNButtonTitleView(title: "Stories")
+        titleView = HNButtonTitleView(title: displayData.storyType.title)
         titleViewController = HNTitleViewController(with: [.new, .top, .best])
         
         refreshing = true
@@ -57,9 +57,9 @@ class ArticleListViewController: TableViewController {
 }
 
 extension ArticleListViewController: HNTitleTableViewDelegate {
-    func titleTableView(_ tableView: UITableView, didSelect story: HNStory) {
+    func titleTableView(_ tableView: UITableView, didSelect story: HNStoryType) {
         titleView.title = story.title
-        
+        displayData.storyType = story
         didTitleViewChange()
     }
 }

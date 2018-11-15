@@ -11,9 +11,9 @@ import Foundation
 struct ArticleListFetch {
     static let itemsOnPerPage = 20
     
-    static func fetchFirstArticles(_ complete: @escaping (([Int], [Article], ServerError?) -> Void)) {
+    static func fetchFirstArticles(for story: HNStoryType, complete: @escaping (([Int], [Article], ServerError?) -> Void)) {
         
-        let request = Article.Requests.articleIds
+        let request = Article.Requests.articleIds(for: story)
         Server.standard.request(request) { array, error in
             guard let articleIds = array?.items, error == nil else {
                 complete([], [], error)

@@ -46,8 +46,8 @@ extension Article: ObjectType {
 
 extension Article {
     struct Requests {
-        static var articleIds: Request<ArrayObject<Int>> {
-            return Request(query: "topstories.json")
+        static func articleIds(for story: HNStoryType) -> Request<ArrayObject<Int>> {
+            return Request(query: story.url)
         }
         
         static func article(for id: Int) -> Request<Article> {

@@ -9,18 +9,18 @@
 import UIKit
 
 protocol HNTitleTableViewDelegate: class {
-    func titleTableView(_ tableView: UITableView, didSelect story: HNStory)
+    func titleTableView(_ tableView: UITableView, didSelect story: HNStoryType)
 }
 
 class HNTitleViewController: NSObject {
     private var titleCellHeight: CGFloat = 50.0
     private var _view = UIView()
     private var _titleTableView = UITableView()
-    private var _items: [HNStory]
+    private var _items: [HNStoryType]
     
     weak var delegate: HNTitleTableViewDelegate?
     
-    init(with items: [HNStory]) {
+    init(with items: [HNStoryType]) {
         _items = items
         
         super.init()
