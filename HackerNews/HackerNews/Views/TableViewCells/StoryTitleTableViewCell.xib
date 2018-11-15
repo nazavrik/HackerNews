@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ven-2S-lYc">
-                        <rect key="frame" x="20" y="0.0" width="280" height="43.5"/>
+                        <rect key="frame" x="20" y="0.0" width="247" height="43.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -37,22 +37,35 @@
                             </constraint>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="сheckmark_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dud-eu-eQT">
+                        <rect key="frame" x="287" y="17" width="13" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="F1a-Ej-2xB"/>
+                            <constraint firstAttribute="width" constant="13" id="MZ4-HU-26t"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ven-2S-lYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="3K1-Vb-28V"/>
+                    <constraint firstAttribute="trailing" secondItem="dud-eu-eQT" secondAttribute="trailing" constant="20" id="AWt-je-3Dx"/>
+                    <constraint firstItem="dud-eu-eQT" firstAttribute="leading" secondItem="ven-2S-lYc" secondAttribute="trailing" constant="20" id="D1a-VJ-rhL"/>
                     <constraint firstAttribute="bottom" secondItem="x7t-JG-9Oj" secondAttribute="bottom" id="aQf-yF-e2C"/>
                     <constraint firstAttribute="trailing" secondItem="x7t-JG-9Oj" secondAttribute="trailing" id="dM8-1b-pF3"/>
                     <constraint firstItem="ven-2S-lYc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ggd-B7-2Ae"/>
-                    <constraint firstAttribute="trailing" secondItem="ven-2S-lYc" secondAttribute="trailing" constant="20" id="lEC-UG-OaC"/>
+                    <constraint firstItem="dud-eu-eQT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="il4-ta-wH5"/>
                     <constraint firstItem="x7t-JG-9Oj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="o3e-ca-YW7"/>
                     <constraint firstAttribute="bottom" secondItem="ven-2S-lYc" secondAttribute="bottom" id="r2e-Ru-ag8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkmarkImageView" destination="dud-eu-eQT" id="NWg-NO-Iol"/>
                 <outlet property="separatorView" destination="x7t-JG-9Oj" id="zwt-wF-5rx"/>
                 <outlet property="titleLabel" destination="ven-2S-lYc" id="JRV-Ju-oP7"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="сheckmark_icon" width="26" height="20"/>
+    </resources>
 </document>

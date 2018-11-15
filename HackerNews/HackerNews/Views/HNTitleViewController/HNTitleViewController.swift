@@ -17,13 +17,15 @@ class HNTitleViewController: NSObject {
     private var _view = UIView()
     private var _titleTableView = UITableView()
     private var _items: [HNStoryType]
+    private var _selectedStoryType: HNStoryType
     
     weak var delegate: HNTitleTableViewDelegate?
     
     var didTitleViewChange: ((Bool) -> Void)?
     
-    init(with items: [HNStoryType]) {
+    init(with items: [HNStoryType], selected: HNStoryType) {
         _items = items
+        _selectedStoryType = selected
         
         super.init()
         
@@ -60,6 +62,8 @@ class HNTitleViewController: NSObject {
     
     func show() {
         isOpen = true
+        
+        _titleTableView.reloadData()
         
         _view.alpha = 0.0
         UIView.animate(withDuration: 0.25) {
@@ -103,6 +107,7 @@ extension HNTitleViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        _selectedStoryType = _items[indexPath.row]
         tableView.deselectRow()
         delegate?.titleTableView(_titleTableView, didSelect: _items[indexPath.row])
     }
@@ -116,8 +121,11 @@ extension HNTitleViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTitleTableViewCell", for: indexPath) as! StoryTitleTableViewCell
         
-        cell.titleLabel.text = _items[indexPath.row].title
+        let storyType = _items[indexPath.row]
+        
+        cell.titleLabel.text = storyType.title
         cell.separatorView.isHidden = indexPath.row == _items.count - 1
+        cell.checkmarkImageView.isHidden = _selectedStoryType != storyType
         
         return cell
     }

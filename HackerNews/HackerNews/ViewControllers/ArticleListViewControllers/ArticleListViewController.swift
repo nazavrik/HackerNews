@@ -43,7 +43,7 @@ class ArticleListViewController: TableViewController {
         super.viewDidLoad()
 
         titleView = HNButtonTitleView(title: displayData.storyType.title)
-        titleViewController = HNTitleViewController(with: [.new, .top, .best])
+        titleViewController = HNTitleViewController(with: [.new, .top, .best], selected: displayData.storyType)
         
         refreshing = true
         
