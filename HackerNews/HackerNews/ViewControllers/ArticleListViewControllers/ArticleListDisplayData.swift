@@ -35,7 +35,7 @@ class ArticleListDisplayData {
         
         ArticleListFetch.fetchFirstArticles(for: storyType) { [weak self] ids, articles, error in
             guard error == nil else {
-                self?.viewController?.showAlert(title: "Can't fetch comments",
+                self?.viewController?.showAlert(title: "Can't fetch stories",
                                                 message: "Reason: \(error?.description ?? "")")
                 self?.updateUI(with: [])
                 return
