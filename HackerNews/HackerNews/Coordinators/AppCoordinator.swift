@@ -26,6 +26,10 @@ class AppCoordinator: Coordinator {
             self?.showArticleViewController(with: article)
         }
         
+        articleListViewController.didInfoSelect = { [weak self] in
+            self?.showInfoViewController()
+        }
+        
         articleListViewController.displayData = displayData
         
         navigationController.setViewControllers([articleListViewController], animated: false)
@@ -57,5 +61,11 @@ class AppCoordinator: Coordinator {
             self.showCommentsViewController(for: article)
         }
         navigationController.pushViewController(articleViewController, animated: true)
+    }
+    
+    private func showInfoViewController() {
+        let infoViewController = Storyboards.Main.infoViewController()
+        
+        navigationController.pushViewController(infoViewController, animated: true)
     }
 }

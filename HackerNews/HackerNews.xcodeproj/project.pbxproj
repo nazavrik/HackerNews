@@ -54,6 +54,7 @@
 		118419242193FBFD00D0CB08 /* CommentHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118419222193FBFD00D0CB08 /* CommentHeaderTableViewCell.swift */; };
 		118419252193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118419232193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib */; };
 		118419272194009700D0CB08 /* CommentHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */; };
+		11B00A42219F9EAD00C8D9B9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */; };
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* ArticleViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */; };
@@ -142,6 +143,7 @@
 		118419222193FBFD00D0CB08 /* CommentHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		118419232193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderCellViewModel.swift; sourceTree = "<group>"; };
+		11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDisplayData.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		115140BA21702EC1007857A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11B00A40219F9E8D00C8D9B9 /* InfoViewController */,
 				11C34EB2217ADF0E00381C6D /* ArticleViewController */,
 				115140E72172DDB3007857A7 /* Base */,
 				117A846E2174301E00655CC9 /* CommentsViewController */,
@@ -454,6 +457,14 @@
 				117A84782174403200655CC9 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		11B00A40219F9E8D00C8D9B9 /* InfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */,
+			);
+			path = InfoViewController;
 			sourceTree = "<group>";
 		};
 		11C34E972179913800381C6D /* Date */ = {
@@ -657,6 +668,7 @@
 				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */,
 				112D3B4C218EB2D400D9575C /* Reachability.swift in Sources */,
+				11B00A42219F9EAD00C8D9B9 /* InfoViewController.swift in Sources */,
 				115140D021703EE7007857A7 /* UITableViewCell+Nib.swift in Sources */,
 				1104B8BB218809BA005BB702 /* LoaderCellViewModel.swift in Sources */,
 				118419242193FBFD00D0CB08 /* CommentHeaderTableViewCell.swift in Sources */,

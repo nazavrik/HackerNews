@@ -39,11 +39,18 @@ class ArticleListViewController: TableViewController {
         }
     }
     
+    var didInfoSelect: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleView = HNButtonTitleView(title: displayData.storyType.title)
         titleViewController = HNTitleViewController(with: [.new, .top, .best], selected: displayData.storyType)
+        
+        let button = HNBarButton(image: UIImage(named: "info_icon"))
+        button.addTarget(self, action: #selector(self.infoAction(_:)), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         
         refreshing = true
         
@@ -52,6 +59,10 @@ class ArticleListViewController: TableViewController {
     
     @objc override func refreshData() {
         displayData.fetchArticles(refresh: true)
+    }
+    
+    @objc func infoAction(_ sender: UIButton) {
+        didInfoSelect?()
     }
     
     private func updateTitleViewController() {

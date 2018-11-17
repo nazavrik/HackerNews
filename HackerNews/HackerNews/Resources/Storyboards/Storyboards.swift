@@ -34,5 +34,9 @@ struct Storyboards {
         static func articleViewController() -> ArticleViewController {
             return storyboard.instantiateViewController(withIdentifier: "ArticleViewController") as! ArticleViewController
         }
+        
+        static func infoViewController() -> InfoViewController {
+            return storyboard.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+        }
     }
 }
