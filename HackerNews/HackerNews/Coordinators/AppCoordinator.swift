@@ -75,6 +75,10 @@ class AppCoordinator: Coordinator {
     
     private func showUserProfileViewController(for user: String) {
         let userProfileViewController = Storyboards.Main.userProfileViewController()
+        let displayData = UserProfileDisplayData(viewController: userProfileViewController, user: user)
+        
+        userProfileViewController.displayData = displayData
+        
         navigationController.pushViewController(userProfileViewController, animated: true)
     }
 }

@@ -96,9 +96,24 @@
                     <view key="view" contentMode="scaleToFill" id="mGz-tt-MR1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EbP-lb-75R">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wtl-Vt-IPa" firstAttribute="trailing" secondItem="EbP-lb-75R" secondAttribute="trailing" id="9J4-w0-STN"/>
+                            <constraint firstItem="EbP-lb-75R" firstAttribute="leading" secondItem="wtl-Vt-IPa" secondAttribute="leading" id="Npu-CQ-Vy3"/>
+                            <constraint firstItem="wtl-Vt-IPa" firstAttribute="bottom" secondItem="EbP-lb-75R" secondAttribute="bottom" id="VMM-rr-eay"/>
+                            <constraint firstItem="EbP-lb-75R" firstAttribute="top" secondItem="wtl-Vt-IPa" secondAttribute="top" id="ufR-az-zts"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wtl-Vt-IPa"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="EbP-lb-75R" id="Oo0-HJ-Ai9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6R-qL-YcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

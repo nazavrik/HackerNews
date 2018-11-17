@@ -8,8 +8,14 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: TableViewController {
 
+    var displayData: UserProfileDisplayData! {
+        didSet {
+            tableDisplayData = displayData
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
