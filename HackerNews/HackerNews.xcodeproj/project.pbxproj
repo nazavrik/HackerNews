@@ -56,6 +56,7 @@
 		118419272194009700D0CB08 /* CommentHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */; };
 		11B00A42219F9EAD00C8D9B9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */; };
 		11B00A45219FD27400C8D9B9 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */; };
+		11B00A4921A0784100C8D9B9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A4821A0784100C8D9B9 /* UserProfileViewController.swift */; };
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* ArticleViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */; };
@@ -146,6 +147,7 @@
 		118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderCellViewModel.swift; sourceTree = "<group>"; };
 		11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Orientation.swift"; sourceTree = "<group>"; };
+		11B00A4821A0784100C8D9B9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDisplayData.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		115140BA21702EC1007857A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11B00A4721A0745600C8D9B9 /* ProfileViewController */,
 				11B00A40219F9E8D00C8D9B9 /* InfoViewController */,
 				11C34EB2217ADF0E00381C6D /* ArticleViewController */,
 				115140E72172DDB3007857A7 /* Base */,
@@ -476,6 +479,14 @@
 				11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */,
 			);
 			path = UIDevice;
+			sourceTree = "<group>";
+		};
+		11B00A4721A0745600C8D9B9 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11B00A4821A0784100C8D9B9 /* UserProfileViewController.swift */,
+			);
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		11C34E972179913800381C6D /* Date */ = {
@@ -700,6 +711,7 @@
 				11C34EBC217BC3F500381C6D /* ArticleHeaderTableViewCell.swift in Sources */,
 				1104B8B821880938005BB702 /* LoaderTableViewCell.swift in Sources */,
 				117A847B2174404900655CC9 /* Coordinator.swift in Sources */,
+				11B00A4921A0784100C8D9B9 /* UserProfileViewController.swift in Sources */,
 				11C34EC1217BCAD100381C6D /* Comment.swift in Sources */,
 				117A84742174326800655CC9 /* Storyboards.swift in Sources */,
 				117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */,

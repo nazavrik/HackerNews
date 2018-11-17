@@ -19,7 +19,7 @@ class CommentsDisplayData {
     
     var article: Article
     var didOpeningUrlSelect: ((String) -> Void)?
-    var didArticleSelect: (() -> Void)?
+    var didArticleSelect: ((String?) -> Void)?
     var commentHeaderHeight: CGFloat = 94.0
     
     init(viewController: CommentsViewController, article: Article) {
@@ -233,7 +233,26 @@ extension CommentsDisplayData: DisplayCollectionAction {
         guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
         
         if sectinType == .info {
-            didArticleSelect?()
+            didInfoSelect()
         }
+    }
+    
+    private func didInfoSelect() {
+        let alertController = UIAlertController(title: "What do you want to open?", message: nil, preferredStyle: .actionSheet)
+        
+        let articleAction = UIAlertAction(title: "Article", style: .default) { [weak self] _ in
+            self?.didArticleSelect?(nil)
+        }
+        alertController.addAction(articleAction)
+        
+        let openProfileAction = UIAlertAction(title: "User's Profile", style: .default, handler: { [weak self] _ in
+            self?.didArticleSelect?(self?.article.author)
+        })
+        alertController.addAction(openProfileAction)
+        
+        let cancelAction = UIAlertAction(title: "Nothing", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        viewController?.navigationController?.present(alertController, animated: true, completion: nil)
     }
 }

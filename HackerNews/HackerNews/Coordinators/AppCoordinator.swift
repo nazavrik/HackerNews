@@ -45,8 +45,12 @@ class AppCoordinator: Coordinator {
             }
         }
         
-        displayData.didArticleSelect = { [weak self] in
-            self?.navigationController.popViewController(animated: true)
+        displayData.didArticleSelect = { [weak self] user in
+            if let user = user {
+                self?.showUserProfileViewController(for: user)
+            } else {
+                self?.navigationController.popViewController(animated: true)
+            }
         }
         
         commentsViewController.displayData = displayData
@@ -67,5 +71,10 @@ class AppCoordinator: Coordinator {
         let infoViewController = Storyboards.Main.infoViewController()
         
         navigationController.pushViewController(infoViewController, animated: true)
+    }
+    
+    private func showUserProfileViewController(for user: String) {
+        let userProfileViewController = Storyboards.Main.userProfileViewController()
+        navigationController.pushViewController(userProfileViewController, animated: true)
     }
 }
