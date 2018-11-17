@@ -55,6 +55,7 @@
 		118419252193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118419232193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib */; };
 		118419272194009700D0CB08 /* CommentHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */; };
 		11B00A42219F9EAD00C8D9B9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */; };
+		11B00A45219FD27400C8D9B9 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */; };
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* ArticleViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */; };
@@ -144,6 +145,7 @@
 		118419232193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderCellViewModel.swift; sourceTree = "<group>"; };
 		11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Orientation.swift"; sourceTree = "<group>"; };
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDisplayData.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 		115140CE21703ED2007857A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				11B00A43219FD25A00C8D9B9 /* UIDevice */,
 				11D9FFF5217C2FB5003EF25D /* UIColor */,
 				11D9FFF0217C2E7F003EF25D /* UIViewController */,
 				11C34EB5217BB6B200381C6D /* String */,
@@ -465,6 +468,14 @@
 				11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */,
 			);
 			path = InfoViewController;
+			sourceTree = "<group>";
+		};
+		11B00A43219FD25A00C8D9B9 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */,
+			);
+			path = UIDevice;
 			sourceTree = "<group>";
 		};
 		11C34E972179913800381C6D /* Date */ = {
@@ -680,6 +691,7 @@
 				112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */,
 				11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */,
 				112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */,
+				11B00A45219FD27400C8D9B9 /* UIDevice+Orientation.swift in Sources */,
 				115140BD21702EFF007857A7 /* ArticleListViewController.swift in Sources */,
 				115140CD21703C0A007857A7 /* ArticleCellViewModel.swift in Sources */,
 				115CDE882199C93E0057225F /* HNStoryType.swift in Sources */,

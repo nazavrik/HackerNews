@@ -57,6 +57,12 @@ class ArticleListViewController: TableViewController {
         displayData.fetchArticles(refresh: false)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        titleViewController.updateFrame()
+    }
+    
     @objc override func refreshData() {
         displayData.fetchArticles(refresh: true)
     }

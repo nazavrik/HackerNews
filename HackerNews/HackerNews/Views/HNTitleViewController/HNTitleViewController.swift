@@ -43,15 +43,7 @@ class HNTitleViewController: NSObject {
         recognizer.delegate = self
         _view.addGestureRecognizer(recognizer)
         
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height - 64.0
-        let frame = CGRect(x: 0.0,
-                           y: 64.0,
-                           width: width,
-                           height: height)
-        
-        _view.frame = frame
-        _titleTableView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: 0.0)
+        updateFrame()
     }
     
     var view: UIView {
@@ -59,6 +51,19 @@ class HNTitleViewController: NSObject {
     }
     
     var isOpen = false
+    
+    func updateFrame() {
+        let offset: CGFloat = UIDevice.isPortrait ? 64.0 : 32.0
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height - offset
+        let frame = CGRect(x: 0.0,
+                           y: offset,
+                           width: width,
+                           height: height)
+        
+        _view.frame = frame
+        _titleTableView.frame = CGRect(x: 0.0, y: 0.0, width: width, height: isOpen ? titleTableViewHeight : 0.0)
+    }
     
     func show() {
         isOpen = true

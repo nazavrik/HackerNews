@@ -62,9 +62,9 @@ extension UIView {
     private func showActivityLoader() {
         if activityIndicatorView == nil {
             let indicatorView = UIActivityIndicatorView(style: .white)
-            indicatorView.frame = frame(for: indicatorView.bounds.size)
             indicatorView.color = UIColor.tint
             addSubview(indicatorView)
+            addConstraints(to: indicatorView, size: indicatorView.bounds.size)
             
             activityIndicatorView = indicatorView
         }
@@ -82,9 +82,9 @@ extension UIView {
             ]
             
             let imageView = UIImageView()
-            imageView.frame = frame(for: images.first!.size)
             imageView.image = UIImage.animatedImage(with: images, duration: 1.0)
             addSubview(imageView)
+            addConstraints(to: imageView, size: images.first!.size)
             
             gliderImageView = imageView
         }
@@ -92,10 +92,11 @@ extension UIView {
         gliderImageView?.startAnimating()
     }
     
-    private func frame(for size: CGSize) -> CGRect {
-        let x = (frame.size.width - size.width)/2
-        let y = (frame.size.height - size.height)/2
-        
-        return CGRect(x: x, y: y, width: size.width, height: size.height)
+    private func addConstraints(to view: UIView?, size: CGSize) {
+        view?.translatesAutoresizingMaskIntoConstraints = false
+        view?.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        view?.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        view?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        view?.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
 }
