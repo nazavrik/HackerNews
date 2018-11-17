@@ -42,8 +42,6 @@ class HNTitleViewController: NSObject {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(viewDidTap(_:)))
         recognizer.delegate = self
         _view.addGestureRecognizer(recognizer)
-        
-        updateFrame()
     }
     
     var view: UIView {
@@ -52,12 +50,11 @@ class HNTitleViewController: NSObject {
     
     var isOpen = false
     
-    func updateFrame() {
-        let offset: CGFloat = UIDevice.isPortrait ? 64.0 : 32.0
+    func updateFrame(with topMargin: CGFloat) {
         let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height - offset
+        let height = UIScreen.main.bounds.size.height - topMargin
         let frame = CGRect(x: 0.0,
-                           y: offset,
+                           y: topMargin,
                            width: width,
                            height: height)
         

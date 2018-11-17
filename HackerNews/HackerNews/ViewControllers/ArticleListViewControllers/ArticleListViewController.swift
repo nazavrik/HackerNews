@@ -60,7 +60,8 @@ class ArticleListViewController: TableViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        titleViewController.updateFrame()
+        let topMargin = view.layoutMarginsGuide.layoutFrame.origin.y
+        titleViewController.updateFrame(with: topMargin)
     }
     
     @objc override func refreshData() {
