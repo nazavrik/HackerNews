@@ -16,7 +16,9 @@ class ArticleListDisplayData {
     
     var storyType: HNStoryType = .best {
         didSet {
-            changeArticles()
+            if oldValue != storyType {
+                changeArticles()
+            }
         }
     }
     

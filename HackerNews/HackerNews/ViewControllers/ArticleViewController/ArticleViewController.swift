@@ -25,7 +25,7 @@ class ArticleViewController: UIViewController {
     private var isLoading = false {
         didSet {
             if isLoading {
-                view.showLoader()
+                view.showLoader(type: .glider)
             } else {
                 view.hideLoader()
             }
