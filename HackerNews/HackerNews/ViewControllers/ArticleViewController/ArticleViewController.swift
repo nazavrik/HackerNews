@@ -11,11 +11,7 @@ import WebKit
 
 class ArticleViewController: UIViewController {
 
-    @IBOutlet weak var webView: WKWebView! {
-        didSet {
-            webView.navigationDelegate = self
-        }
-    }
+    var webView: WKWebView?
     
     private var commentsTitle: String {
         let commentsCount = article?.commentsCount ?? 0
@@ -30,7 +26,7 @@ class ArticleViewController: UIViewController {
                 view.hideLoader()
             }
             
-            webView.isHidden = isLoading
+            webView?.isHidden = isLoading
         }
     }
     
@@ -44,11 +40,13 @@ class ArticleViewController: UIViewController {
         
         title = url.domain
         
-        isLoading = true
+        createWebView()
         
         let myURL = URL(string: url)
         let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+        webView?.load(myRequest)
+        
+        isLoading = true
         
         let button = HNBarButton(title: commentsTitle, image: UIImage(named: "comment_icon"))
         button.addTarget(self, action: #selector(self.commentsAction(_:)), for: .touchUpInside)
@@ -58,6 +56,22 @@ class ArticleViewController: UIViewController {
     
     @objc private func commentsAction(_ sender: UIButton) {
         didSelectComments?()
+    }
+    
+    private func createWebView() {
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsInlineMediaPlayback = true
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.navigationDelegate = self
+        view.addSubview(webView)
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        self.webView = webView
     }
 }
 
