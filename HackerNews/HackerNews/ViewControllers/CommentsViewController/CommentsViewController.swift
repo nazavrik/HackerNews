@@ -11,6 +11,8 @@ import WebKit
 
 class CommentsViewController: TableViewController {
     
+    private var titleView: HNTitleView!
+    
     var displayData: CommentsDisplayData! {
         didSet {
             tableDisplayData = displayData
@@ -19,11 +21,12 @@ class CommentsViewController: TableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Comments"
         
-        self.tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.tableView.rowHeight = UITableView.automaticDimension
+        titleView = HNTitleView(title: "Comments", secondTitle: displayData.article.title)
+        navigationItem.titleView = titleView
+            
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         let button = HNBarButton(image: UIImage(named: "update_icon"))
         button.addTarget(self, action: #selector(self.updateAction(_:)), for: .touchUpInside)
@@ -41,9 +44,9 @@ class CommentsViewController: TableViewController {
 extension CommentsViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= displayData.commentHeaderHeight {
-            navigationItem.titleView = HNTitleView(title: displayData.article.title)
+            titleView.showSecondTitle()
         } else {
-            navigationItem.titleView = nil
+            titleView.showFirstTitle()
         }
     }
 }
