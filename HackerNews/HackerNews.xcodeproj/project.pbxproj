@@ -71,6 +71,7 @@
 		11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF3217C2EE4003EF25D /* NavigationController.swift */; };
 		11D9FFF7217C2FC5003EF25D /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */; };
 		11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */; };
+		4402BB1A994C5AC9D77BAD9B /* Pods_HackerNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539347C054D80AACF1D40710 /* Pods_HackerNews.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00584E3220602FA7DF7A2E7D /* Pods-HackerNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews.release.xcconfig"; sourceTree = "<group>"; };
+		0800181D0D10E6CC05053EFA /* Pods-HackerNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackerNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews.debug.xcconfig"; sourceTree = "<group>"; };
 		1104B8B621880938005BB702 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
 		1104B8B721880938005BB702 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
 		1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderCellViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		11D9FFF3217C2EE4003EF25D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		11D9FFF6217C2FC5003EF25D /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		539347C054D80AACF1D40710 /* Pods_HackerNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackerNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4402BB1A994C5AC9D77BAD9B /* Pods_HackerNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +208,8 @@
 				1151408F216D7993007857A7 /* HackerNewsTests */,
 				1151409A216D7993007857A7 /* HackerNewsUITests */,
 				11514079216D7991007857A7 /* Products */,
+				E3AC9CC6F33C395AF11D3ABF /* Pods */,
+				D888ACC9B8A5D0CE2F3975D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -520,6 +527,23 @@
 			path = UIColor;
 			sourceTree = "<group>";
 		};
+		D888ACC9B8A5D0CE2F3975D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				539347C054D80AACF1D40710 /* Pods_HackerNews.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3AC9CC6F33C395AF11D3ABF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0800181D0D10E6CC05053EFA /* Pods-HackerNews.debug.xcconfig */,
+				00584E3220602FA7DF7A2E7D /* Pods-HackerNews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,9 +551,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 115140A0216D7993007857A7 /* Build configuration list for PBXNativeTarget "HackerNews" */;
 			buildPhases = (
+				D7A4CD4CEC5C74914DADA7D5 /* [CP] Check Pods Manifest.lock */,
 				11514074216D7991007857A7 /* Sources */,
 				11514075216D7991007857A7 /* Frameworks */,
 				11514076216D7991007857A7 /* Resources */,
+				113DADE121A8D9BB0083FDCE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -651,6 +677,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		113DADE121A8D9BB0083FDCE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 767448b949fc74e14583f31b2833fa5557be1b47 c642cef0401527e9170fc1209a34275f739e39eae62cb0cad4a2b1cd1bc22994\n";
+		};
+		D7A4CD4CEC5C74914DADA7D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HackerNews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11514074216D7991007857A7 /* Sources */ = {
@@ -815,7 +883,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -870,7 +938,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -882,17 +950,21 @@
 		};
 		115140A1216D7993007857A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0800181D0D10E6CC05053EFA /* Pods-HackerNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XW7Z7QF5BM;
 				INFOPLIST_FILE = HackerNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nazavrik.HN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -900,17 +972,21 @@
 		};
 		115140A2216D7993007857A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00584E3220602FA7DF7A2E7D /* Pods-HackerNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XW7Z7QF5BM;
 				INFOPLIST_FILE = HackerNews/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nazavrik.HN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
