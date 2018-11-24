@@ -119,7 +119,9 @@ extension CommentsDisplayData: DisplayCollection {
             return nil
         }
         
-        return HeaderCellViewModel(title: "Comments (\(article.commentsCount))")
+        let title = article.commentsCount > 0 ? "Comments (\(article.commentsCount))" : "No comments yet"
+        
+        return HeaderCellViewModel(title: title)
     }
     
     func height(for indexPath: IndexPath) -> CGFloat {

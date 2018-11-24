@@ -47,6 +47,7 @@
 		115CDE882199C93E0057225F /* HNStoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE872199C93E0057225F /* HNStoryType.swift */; };
 		115CDE8B2199CB0E0057225F /* StoryTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */; };
 		115CDE8C2199CB0E0057225F /* StoryTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */; };
+		115D495521A9DEB700984067 /* HNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115D495421A9DEB700984067 /* HNWebViewController.swift */; };
 		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
 		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 		117A84792174403200655CC9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84782174403200655CC9 /* AppCoordinator.swift */; };
@@ -140,6 +141,7 @@
 		115CDE872199C93E0057225F /* HNStoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNStoryType.swift; sourceTree = "<group>"; };
 		115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleTableViewCell.swift; sourceTree = "<group>"; };
 		115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTitleTableViewCell.xib; sourceTree = "<group>"; };
+		115D495421A9DEB700984067 /* HNWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNWebViewController.swift; sourceTree = "<group>"; };
 		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 		117A84782174403200655CC9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		115140C521703830007857A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				115D495321A9DE5A00984067 /* HNWebViewController */,
 				115CDE842199BB630057225F /* HNTitleViewController */,
 				115CDE7A219945C30057225F /* HNButtonTitleView.swift */,
 				112E7B4F2183E67200FD9E09 /* NBarButton.swift */,
@@ -431,6 +434,14 @@
 				115CDE872199C93E0057225F /* HNStoryType.swift */,
 			);
 			path = HNTitleViewController;
+			sourceTree = "<group>";
+		};
+		115D495321A9DE5A00984067 /* HNWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				115D495421A9DEB700984067 /* HNWebViewController.swift */,
+			);
+			path = HNWebViewController;
 			sourceTree = "<group>";
 		};
 		117A846E2174301E00655CC9 /* CommentsViewController */ = {
@@ -754,6 +765,7 @@
 				11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
+				115D495521A9DEB700984067 /* HNWebViewController.swift in Sources */,
 				11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */,
 				11C34EBF217BC57D00381C6D /* HeaderCellViewModel.swift in Sources */,
 				112D3B47218EA32800D9575C /* CommentsFetch.swift in Sources */,

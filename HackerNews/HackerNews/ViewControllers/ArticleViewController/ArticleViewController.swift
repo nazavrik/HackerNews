@@ -10,24 +10,17 @@ import UIKit
 import WebKit
 
 class ArticleViewController: UIViewController {
-
-    var webView: WKWebView?
+    
+    private var webViewController: HNWebViewController! {
+        didSet {
+            webViewController.delegate = self
+            view.addSubview(webViewController.view)
+        }
+    }
     
     private var commentsTitle: String {
         let commentsCount = article?.commentsCount ?? 0
         return commentsCount > 999 ? "1K+" : "\(commentsCount)"
-    }
-    
-    private var isLoading = false {
-        didSet {
-            if isLoading {
-                view.showLoader(type: .glider)
-            } else {
-                view.hideLoader()
-            }
-            
-            webView?.isHidden = isLoading
-        }
     }
     
     var article: Article?
@@ -40,17 +33,14 @@ class ArticleViewController: UIViewController {
         
         title = url.domain
         
-        createWebView()
+        webViewController = HNWebViewController()
         
         let myURL = URL(string: url)
         let myRequest = URLRequest(url: myURL!)
-        webView?.load(myRequest)
-        
-        isLoading = true
+        webViewController.load(myRequest)
         
         let button = HNBarButton(title: commentsTitle, image: UIImage(named: "comment_icon"))
         button.addTarget(self, action: #selector(self.commentsAction(_:)), for: .touchUpInside)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
@@ -58,40 +48,18 @@ class ArticleViewController: UIViewController {
         didSelectComments?()
     }
     
-    private func createWebView() {
-        let configuration = WKWebViewConfiguration()
-        configuration.allowsInlineMediaPlayback = true
-        let webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.navigationDelegate = self
-        view.addSubview(webView)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        self.webView = webView
+        let y = view.layoutMarginsGuide.layoutFrame.origin.y
+        var webViewControllerFrame = self.view.bounds
+        webViewControllerFrame.origin.y = y
+        webViewController.frame = webViewControllerFrame
     }
 }
 
-extension ArticleViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        isLoading = false
-    }
-    
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("didFail")
-    }
-    
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        isLoading = false
-        
-        self.showAlert(title: "Can't load the article", message: "Plase, try again later.", completion: nil)
+extension ArticleViewController: HNWebViewControllerDelegate {
+    func webViewController(_ controller: HNWebViewController, didFail error: Error) {
+        showAlert(title: "Can't load the article", message: "Plase, try again later.", completion: nil)
     }
 }
-
