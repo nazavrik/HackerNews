@@ -28,7 +28,7 @@ class CommentsViewController: TableViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.rowHeight = UITableView.automaticDimension
         
-        let button = HNBarButton(image: UIImage(named: "update_icon"))
+        let button = HNBarButton(image: UIImage(named: "refresh_icon"))
         button.addTarget(self, action: #selector(self.updateAction(_:)), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)

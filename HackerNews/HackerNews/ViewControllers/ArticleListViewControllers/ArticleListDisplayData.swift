@@ -14,11 +14,16 @@ class ArticleListDisplayData {
     private var articles = [Article]()
     private var loadedItemsCount = 0
     
-    var storyType: HNStoryType = .best {
-        didSet {
-            if oldValue != storyType {
+    var storyType: HNStoryType {
+        set {
+            if storyType != newValue {
+                UserDefaults.standard.set(newValue.rawValue, forKey: "SelectedStoryType")
                 changeArticles()
             }
+        }
+        get {
+            let rawValue = UserDefaults.standard.integer(forKey: "SelectedStoryType")
+            return HNStoryType(rawValue: rawValue) ?? .best
         }
     }
     
