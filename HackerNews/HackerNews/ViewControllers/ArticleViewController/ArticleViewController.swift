@@ -26,6 +26,10 @@ class ArticleViewController: UIViewController {
     var article: Article?
     var didSelectComments: (() -> Void)?
     
+    deinit {
+        print("deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +64,13 @@ class ArticleViewController: UIViewController {
 
 extension ArticleViewController: HNWebViewControllerDelegate {
     func webViewController(_ controller: HNWebViewController, didFail error: Error) {
+        let err = error as NSError
+        guard err.code == -1009 else { return } // The Internet connection appears to be offline.
         showAlert(title: "Can't load the article", message: "Plase, try again later.", completion: nil)
+    }
+    
+    func webViewController(_ controller: HNWebViewController, share link: String) {
+        let activityController = UIActivityViewController(activityItems: [link], applicationActivities: [])
+        present(activityController, animated: true, completion: nil)
     }
 }

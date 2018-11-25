@@ -17,6 +17,7 @@
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
+		114CC2C421AB02C800C0E7CC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114CC2C321AB02C800C0E7CC /* UIApplication.swift */; };
 		1151407C216D7991007857A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151407B216D7991007857A7 /* AppDelegate.swift */; };
 		11514081216D7991007857A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1151407F216D7991007857A7 /* Main.storyboard */; };
 		11514083216D7993007857A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11514082216D7993007857A7 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		115CDE8B2199CB0E0057225F /* StoryTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */; };
 		115CDE8C2199CB0E0057225F /* StoryTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */; };
 		115D495521A9DEB700984067 /* HNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115D495421A9DEB700984067 /* HNWebViewController.swift */; };
+		115D495D21AA07B300984067 /* HNWebViewToolBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115D495C21AA07B300984067 /* HNWebViewToolBarController.swift */; };
 		117A84742174326800655CC9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84732174326800655CC9 /* Storyboards.swift */; };
 		117A8476217437FD00655CC9 /* UITableView+Deselection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A8475217437FD00655CC9 /* UITableView+Deselection.swift */; };
 		117A84792174403200655CC9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A84782174403200655CC9 /* AppCoordinator.swift */; };
@@ -105,6 +107,7 @@
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
+		114CC2C321AB02C800C0E7CC /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		11514078216D7991007857A7 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1151407B216D7991007857A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11514080216D7991007857A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 		115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleTableViewCell.swift; sourceTree = "<group>"; };
 		115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTitleTableViewCell.xib; sourceTree = "<group>"; };
 		115D495421A9DEB700984067 /* HNWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNWebViewController.swift; sourceTree = "<group>"; };
+		115D495C21AA07B300984067 /* HNWebViewToolBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNWebViewToolBarController.swift; sourceTree = "<group>"; };
 		117A84732174326800655CC9 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		117A8475217437FD00655CC9 /* UITableView+Deselection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Deselection.swift"; sourceTree = "<group>"; };
 		117A84782174403200655CC9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -201,6 +205,14 @@
 				112D3B4B218EB2D400D9575C /* Reachability.swift */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		114CC2C221AB02B400C0E7CC /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				114CC2C321AB02C800C0E7CC /* UIApplication.swift */,
+			);
+			path = UIApplication;
 			sourceTree = "<group>";
 		};
 		1151406F216D7991007857A7 = {
@@ -349,6 +361,7 @@
 		115140CE21703ED2007857A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				114CC2C221AB02B400C0E7CC /* UIApplication */,
 				11B00A43219FD25A00C8D9B9 /* UIDevice */,
 				11D9FFF5217C2FB5003EF25D /* UIColor */,
 				11D9FFF0217C2E7F003EF25D /* UIViewController */,
@@ -440,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				115D495421A9DEB700984067 /* HNWebViewController.swift */,
+				115D495C21AA07B300984067 /* HNWebViewToolBarController.swift */,
 			);
 			path = HNWebViewController;
 			sourceTree = "<group>";
@@ -744,6 +758,7 @@
 				115140E62170C753007857A7 /* ArrayObject.swift in Sources */,
 				115140D62170401C007857A7 /* UITableView+Registration.swift in Sources */,
 				115140DC2170BA31007857A7 /* Request.swift in Sources */,
+				114CC2C421AB02C800C0E7CC /* UIApplication.swift in Sources */,
 				115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */,
 				11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */,
 				115140E32170BB72007857A7 /* ObjectType.swift in Sources */,
@@ -754,6 +769,7 @@
 				115CDE772195491D0057225F /* HNTitleView.swift in Sources */,
 				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
 				112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */,
+				115D495D21AA07B300984067 /* HNWebViewToolBarController.swift in Sources */,
 				115140E02170BAE9007857A7 /* ServerError.swift in Sources */,
 				11D9FFF2217C2E9C003EF25D /* UIViewController+NavigationBarItems.swift in Sources */,
 				11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */,

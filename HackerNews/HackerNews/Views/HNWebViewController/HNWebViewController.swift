@@ -11,12 +11,13 @@ import WebKit
 
 protocol HNWebViewControllerDelegate: class {
     func webViewController(_ controller: HNWebViewController, didFail error: Error)
+    func webViewController(_ controller: HNWebViewController, share link: String)
 }
 
 class HNWebViewController: NSObject {
     private var _view: UIView!
     private var webView: WKWebView!
-    private var toolbar: UIToolbar!
+    private var toolBarController: HNWebViewToolBarController!
     private var isLoading = false {
         didSet {
             if isLoading {
@@ -26,14 +27,17 @@ class HNWebViewController: NSObject {
             }
             
             webView.isHidden = isLoading
+            isToolbarHidden = isLoading
         }
     }
     
     private var scrollViewDragging = false
     private var isToolbarHidden = false {
         didSet {
-            if isToolbarHidden != oldValue {
-                toolbar.isHidden = isToolbarHidden
+            guard isToolbarHidden != oldValue else { return }
+            
+            UIView.animate(withDuration: 0.25) {
+                self.toolBarController.frame = self.toolBarFrame
             }
         }
     }
@@ -55,8 +59,9 @@ class HNWebViewController: NSObject {
         webView.scrollView.delegate = self
         _view.addSubview(webView)
         
-        toolbar = UIToolbar(frame: .zero)
-        _view.addSubview(toolbar)
+        toolBarController = HNWebViewToolBarController()
+        toolBarController.delegate = self
+        _view.addSubview(toolBarController.view)
     }
     
     var view: UIView {
@@ -67,11 +72,7 @@ class HNWebViewController: NSObject {
         didSet {
             _view.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
             webView.frame = frame
-            
-            var toolbarFrame = _view.bounds
-            toolbarFrame.origin.y = _view.bounds.size.height - 44.0
-            toolbarFrame.size.height = 44.0
-            toolbar.frame = toolbarFrame
+            toolBarController.frame = toolBarFrame
         }
     }
     
@@ -79,24 +80,39 @@ class HNWebViewController: NSObject {
         webView.load(request)
         isLoading = true
     }
+    
+    private var toolBarFrame: CGRect {
+        let height: CGFloat = 44.0
+        let y = isToolbarHidden ? _view.bounds.size.height : _view.bounds.size.height - height
+        return CGRect(x: 0.0, y: y, width: _view.bounds.size.width, height: height)
+    }
+    
+    private func updateToolBar() {
+        isToolbarHidden = false
+        
+        toolBarController.setEnabled(webView.canGoBack, item: .back)
+        toolBarController.setEnabled(webView.canGoForward, item: .forward)
+    }
 }
 
 extension HNWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         isLoading = false
+        updateToolBar()
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         isLoading = false
+        updateToolBar()
         delegate?.webViewController(self, didFail: error)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         isLoading = false
+        updateToolBar()
         delegate?.webViewController(self, didFail: error)
     }
 }
@@ -113,12 +129,33 @@ extension HNWebViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollViewDragging { return }
+        if scrollViewDragging || isLoading { return }
         
         if isScrollDown {
             isToolbarHidden = true
         } else {
             isToolbarHidden = false
+        }
+        
+        if scrollView.contentOffset.y == 0.0 {
+            isToolbarHidden = false
+        }
+    }
+}
+
+extension HNWebViewController: HNWebViewToolBarDelegate {
+    func toolBarController(_ controller: HNWebViewToolBarController, didPress item: HNToolBarItem) {
+        switch item {
+        case .back:
+            if webView.canGoBack { webView.goBack() }
+        case .forward:
+            if webView.canGoForward { webView.goForward() }
+        case .share:
+            delegate?.webViewController(self, share: webView.url?.absoluteString ?? "")
+        case .explore:
+            UIApplication.open(webView.url)
+        case .refresh:
+            webView.reload()
         }
     }
 }

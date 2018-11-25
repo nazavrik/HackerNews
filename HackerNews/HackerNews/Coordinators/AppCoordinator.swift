@@ -40,9 +40,7 @@ class AppCoordinator: Coordinator {
         
         let displayData = CommentsDisplayData(viewController: commentsViewController, article: article)
         displayData.didOpeningUrlSelect = { urlString in
-            if let url = URL(string: urlString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
+            UIApplication.open(urlString)
         }
         
         displayData.didArticleSelect = { [weak self] in
