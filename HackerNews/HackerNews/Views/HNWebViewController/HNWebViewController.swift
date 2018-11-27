@@ -97,8 +97,6 @@ class HNWebViewController: NSObject {
 
 extension HNWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        isLoading = false
-        updateToolBar()
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -114,6 +112,11 @@ extension HNWebViewController: WKNavigationDelegate {
         isLoading = false
         updateToolBar()
         delegate?.webViewController(self, didFail: error)
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        isLoading = false
+        updateToolBar()
     }
 }
 

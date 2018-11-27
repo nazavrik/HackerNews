@@ -9,8 +9,8 @@
 import Foundation
 
 enum HNStoryType: Int {
-    case top
     case best
+    case top
     case new
     
     var title: String {
