@@ -26,10 +26,6 @@ class ArticleViewController: UIViewController {
     var article: Article?
     var didSelectComments: (() -> Void)?
     
-    deinit {
-        print("deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -16,6 +16,7 @@ protocol HNWebViewControllerDelegate: class {
 
 class HNWebViewController: NSObject {
     private var _view: UIView!
+    private var loadingProgressView: UIView!
     private var webView: WKWebView!
     private var toolBarController: HNWebViewToolBarController!
     private var isLoading = false {
@@ -28,6 +29,30 @@ class HNWebViewController: NSObject {
             
             webView.isHidden = isLoading
             isToolbarHidden = isLoading
+        }
+    }
+    
+    private enum LoadingProgressState {
+        case none
+        case start
+        case `continue`
+        case finish
+        
+        var widthPercent: CGFloat {
+            switch self {
+            case .none: return 0.0
+            case .start: return 0.3
+            case .continue: return 0.6
+            case .finish: return 1.0
+            }
+        }
+    }
+    
+    private var loadingProgressState: LoadingProgressState = .none {
+        didSet {
+            if loadingProgressState == .none { // reset frame
+                loadingProgressView.frame = progressViewFrame
+            }
         }
     }
     
@@ -59,6 +84,11 @@ class HNWebViewController: NSObject {
         webView.scrollView.delegate = self
         _view.addSubview(webView)
         
+        loadingProgressView = UIView(frame: .zero)
+        loadingProgressView.backgroundColor = UIColor.tint
+        loadingProgressView.isHidden = true
+        _view.addSubview(loadingProgressView)
+        
         toolBarController = HNWebViewToolBarController()
         toolBarController.delegate = self
         _view.addSubview(toolBarController.view)
@@ -70,8 +100,9 @@ class HNWebViewController: NSObject {
     
     var frame: CGRect = .zero {
         didSet {
-            _view.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
+            _view.frame = CGRect(origin: .zero, size: frame.size)
             webView.frame = frame
+            loadingProgressView.frame = progressViewFrame
             toolBarController.frame = toolBarFrame
         }
     }
@@ -81,42 +112,74 @@ class HNWebViewController: NSObject {
         isLoading = true
     }
     
+    private func updateLoadingProgress(with state: LoadingProgressState) {
+        if loadingProgressState == state { return }
+        
+        loadingProgressState = state
+        
+        loadingProgressView.isHidden = false
+        loadingProgressView.alpha = 1.0
+        
+        let alpha: CGFloat = loadingProgressState == .finish ? 0.0 : 1.0
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.loadingProgressView.frame = self.progressViewFrame
+            self.loadingProgressView.alpha = alpha
+        }) { _ in
+            if self.loadingProgressState == .finish {
+                self.loadingProgressState = .none
+                self.loadingProgressView.isHidden = true
+            }
+        }
+    }
+    
+    private func updateToolBar() {
+        isToolbarHidden = false
+        toolBarController.setEnabled(webView.canGoBack, item: .back)
+        toolBarController.setEnabled(webView.canGoForward, item: .forward)
+    }
+    
     private var toolBarFrame: CGRect {
         let height: CGFloat = 44.0
         let y = isToolbarHidden ? _view.bounds.size.height : _view.bounds.size.height - height
         return CGRect(x: 0.0, y: y, width: _view.bounds.size.width, height: height)
     }
     
-    private func updateToolBar() {
-        isToolbarHidden = false
-        
-        toolBarController.setEnabled(webView.canGoBack, item: .back)
-        toolBarController.setEnabled(webView.canGoForward, item: .forward)
+    private var progressViewFrame: CGRect {
+        let height: CGFloat = 2.0
+        let width = loadingProgressState.widthPercent*frame.size.width
+        return CGRect(x: 0.0, y: frame.origin.y - height, width: width, height: height)
     }
 }
 
 extension HNWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        updateLoadingProgress(with: .finish)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        updateLoadingProgress(with: .start)
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        isLoading = false
-        updateToolBar()
-        delegate?.webViewController(self, didFail: error)
+        webViewLoadingDidFail(error)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        isLoading = false
-        updateToolBar()
-        delegate?.webViewController(self, didFail: error)
+        webViewLoadingDidFail(error)
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         isLoading = false
         updateToolBar()
+        updateLoadingProgress(with: .continue)
+    }
+    
+    private func webViewLoadingDidFail(_ error: Error) {
+        isLoading = false
+        updateToolBar()
+        updateLoadingProgress(with: .finish)
+        delegate?.webViewController(self, didFail: error)
     }
 }
 
@@ -158,6 +221,7 @@ extension HNWebViewController: HNWebViewToolBarDelegate {
         case .explore:
             UIApplication.open(webView.url)
         case .refresh:
+            loadingProgressState = .none
             webView.reload()
         }
     }

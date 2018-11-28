@@ -35,7 +35,8 @@ class ArticleListDisplayData {
     
     func fetchArticles(refresh: Bool) {
         if !refresh {
-            viewController?.view.showLoader()
+            viewController?.tableView.isUserInteractionEnabled = false
+            viewController?.tableView.showLoader(type: .glider)
         }
         
         ArticleListFetch.fetchFirstArticles(for: storyType) { [weak self] ids, articles, error in
@@ -66,7 +67,8 @@ class ArticleListDisplayData {
         articles.append(contentsOf: items)
         loadedItemsCount += ArticleListFetch.itemsOnPerPage
         
-        viewController?.view.hideLoader()
+        viewController?.tableView.isUserInteractionEnabled = true
+        viewController?.tableView.hideLoader()
         viewController?.endRefreshing()
         viewController?.tableView.reloadData()
     }

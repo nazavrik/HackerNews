@@ -29,7 +29,8 @@ class CommentsDisplayData {
     
     func fetchComments() {
         isRefreshing = true
-        viewController?.view.showLoader()
+        viewController?.tableView.isUserInteractionEnabled = false
+        viewController?.tableView.showLoader(type: .glider)
 
         CommentsFetch.fetchComments(for: article.id) { [weak self] article, comments, error in
             guard let article = article, error == nil else {
@@ -58,7 +59,8 @@ class CommentsDisplayData {
     
     private func updateUI() {
         isRefreshing = false
-        viewController?.view.hideLoader()
+        viewController?.tableView.isUserInteractionEnabled = true
+        viewController?.tableView.hideLoader()
     }
 }
 
