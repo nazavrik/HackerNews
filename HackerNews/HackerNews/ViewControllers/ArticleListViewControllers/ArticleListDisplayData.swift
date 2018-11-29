@@ -39,6 +39,8 @@ class ArticleListDisplayData {
             viewController?.tableView.showLoader(type: .glider)
         }
         
+        let storyType = self.storyType
+        
         ArticleListFetch.fetchFirstArticles(for: storyType) { [weak self] ids, articles, error in
             guard error == nil else {
                 self?.viewController?.showAlert(title: "Can't fetch stories",
@@ -47,9 +49,11 @@ class ArticleListDisplayData {
                 return
             }
             
-            self?.loadedItemsCount = 0
-            self?.allArticleIds = ids
-            self?.updateUI(with: articles)
+            if storyType == self?.storyType {
+                self?.loadedItemsCount = 0
+                self?.allArticleIds = ids
+                self?.updateUI(with: articles)
+            }
         }
     }
     
