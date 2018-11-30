@@ -23,7 +23,7 @@ class AppCoordinator: Coordinator {
         let articleListViewController = Storyboards.Main.articleListViewController()
         let displayData = ArticleListDisplayData(viewController: articleListViewController)
         displayData.didArticleSelect = { [weak self] article in
-            self?.showArticleViewController(with: article)
+            self?.showArticleViewController(.content(article))
         }
         
         articleListViewController.didInfoSelect = { [weak self] in
@@ -52,18 +52,29 @@ class AppCoordinator: Coordinator {
         navigationController.pushViewController(commentsViewController, animated: true)
     }
     
-    private func showArticleViewController(with article: Article) {
+    private func showArticleViewController(_ mode: ArticleViewController.Mode) {
         let articleViewController = Storyboards.Main.articleViewController()
-        articleViewController.article = article
-        articleViewController.didSelectComments = {
-            self.showCommentsViewController(for: article)
-        }
+        articleViewController.mode = mode
+        articleViewController.delegate = self
         navigationController.pushViewController(articleViewController, animated: true)
     }
     
     private func showInfoViewController() {
         let infoViewController = Storyboards.Main.infoViewController()
-        
         navigationController.pushViewController(infoViewController, animated: true)
+    }
+}
+
+extension AppCoordinator: ArticleViewControllerDelegate {
+    func articleViewController(_ articleViewController: ArticleViewController, didOpenOriginal article: Article) {
+        showArticleViewController(.original(article))
+    }
+    
+    func articleViewController(_ articleViewController: ArticleViewController, didSelectCommentsOf article: Article) {
+        showCommentsViewController(for: article)
+    }
+    
+    func articleViewController(_ articleViewController: ArticleViewController, didSelectUrl url: String) {
+        showArticleViewController(.link(url))
     }
 }

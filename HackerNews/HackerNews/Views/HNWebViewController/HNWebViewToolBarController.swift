@@ -14,6 +14,7 @@ enum HNToolBarItem: Int {
     case share
     case explore
     case refresh
+    case reader
     
     fileprivate var imageName: String {
         switch self {
@@ -22,6 +23,7 @@ enum HNToolBarItem: Int {
         case .share: return "share_icon"
         case .explore: return "explore_icon"
         case .refresh: return "refresh_icon"
+        case .reader: return "reader_icon"
         }
     }
 }
@@ -59,7 +61,7 @@ class HNWebViewToolBarController: NSObject {
         }
     }
     weak var delegate: HNWebViewToolBarDelegate?
-    var alignment: HNAlignment = .center
+    var alignment: HNAlignment = .right
     
     override init() {
         view = UIView(frame: .zero)

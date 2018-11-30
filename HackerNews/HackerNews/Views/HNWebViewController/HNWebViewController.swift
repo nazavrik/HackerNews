@@ -12,6 +12,8 @@ import WebKit
 protocol HNWebViewControllerDelegate: class {
     func webViewController(_ controller: HNWebViewController, didFail error: Error)
     func webViewController(_ controller: HNWebViewController, share link: String)
+    func webViewController(_ controller: HNWebViewController, open url: String)
+    func didSelectExplore(in controller: HNWebViewController)
 }
 
 class HNWebViewController: NSObject {
@@ -31,6 +33,7 @@ class HNWebViewController: NSObject {
             isToolbarHidden = isLoading
         }
     }
+    private var url = ""
     
     private enum LoadingProgressState {
         case none
@@ -77,7 +80,10 @@ class HNWebViewController: NSObject {
         _view = UIView(frame: .zero)
         _view.backgroundColor = .clear
         
+        let preferences = WKPreferences()
+        preferences.javaScriptEnabled = true
         let configuration = WKWebViewConfiguration()
+        configuration.preferences = preferences
         configuration.allowsInlineMediaPlayback = true
         webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
@@ -108,8 +114,34 @@ class HNWebViewController: NSObject {
         }
     }
     
-    func load(_ request: URLRequest) {
-        toolBarController.items = [.back, .forward, .refresh, .share, .explore]
+    func loadHTML(_ html: String?, url: String) {
+        guard var html = html, html.count > 200 else {
+            load(url)
+            return
+        }
+        
+        self.url = url
+        toolBarController.alignment = .right
+        toolBarController.items = [.share, .explore]
+        
+        if #available(iOS 11.0, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+
+        html = "<span style=\"font-family: 'HelveticaNeue'; font-size: 28;\">\(html)</span>"
+        
+        webView.loadHTMLString(html, baseURL: nil)
+        isLoading = true
+    }
+    
+    func load(_ urlString: String) {
+        let url = URL(string: urlString)
+        let request = URLRequest(url: url!)
+        
+        self.url = urlString
+        
+        toolBarController.alignment = .center
+        toolBarController.items = [.back, .forward, .refresh, .share]
         webView.load(request)
         isLoading = true
     }
@@ -219,12 +251,14 @@ extension HNWebViewController: HNWebViewToolBarDelegate {
         case .forward:
             if webView.canGoForward { webView.goForward() }
         case .share:
-            delegate?.webViewController(self, share: webView.url?.absoluteString ?? "")
+            delegate?.webViewController(self, share: url)
         case .explore:
-            UIApplication.open(webView.url)
+            delegate?.didSelectExplore(in: self)
         case .refresh:
             loadingProgressState = .none
             webView.reload()
+        case .reader:
+            break
         }
     }
 }

@@ -39,10 +39,16 @@ struct ArticleListFetch {
             
             let request = Article.Requests.article(for: id)
             Server.standard.request(request, completion: { article, error in
-                if let article = article {
-                    items.append(article)
+                guard var article = article else {
+                    group.leave()
+                    return
                 }
-                group.leave()
+                
+                MercuryWebService.fetchContent(for: article.url, complete: { content in
+                    article.content = content
+                    items.append(article)
+                    group.leave()
+                })
             })
         }
         

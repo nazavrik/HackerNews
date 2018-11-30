@@ -59,6 +59,7 @@
 		118419272194009700D0CB08 /* CommentHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */; };
 		11B00A42219F9EAD00C8D9B9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */; };
 		11B00A45219FD27400C8D9B9 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */; };
+		11BE261D21B0868E00628A59 /* MercuryWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE261C21B0868E00628A59 /* MercuryWebService.swift */; };
 		11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */; };
 		11C34EB1217AD8A600381C6D /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB0217AD8A600381C6D /* ArticleViewController.swift */; };
 		11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */; };
@@ -155,6 +156,7 @@
 		118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderCellViewModel.swift; sourceTree = "<group>"; };
 		11B00A41219F9EAD00C8D9B9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Orientation.swift"; sourceTree = "<group>"; };
+		11BE261C21B0868E00628A59 /* MercuryWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryWebService.swift; sourceTree = "<group>"; };
 		11C34E982179914700381C6D /* Date+TimeSinceNoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TimeSinceNoew.swift"; sourceTree = "<group>"; };
 		11C34EB0217AD8A600381C6D /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		11C34EB3217ADF8F00381C6D /* CommentsDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsDisplayData.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 		115140D92170BA0D007857A7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				11BE261B21B0867500628A59 /* WebParser */,
 				112D3B4A218EB2B100D9575C /* Reachability */,
 				115140DA2170BA25007857A7 /* Server */,
 			);
@@ -508,6 +511,14 @@
 				11B00A44219FD27400C8D9B9 /* UIDevice+Orientation.swift */,
 			);
 			path = UIDevice;
+			sourceTree = "<group>";
+		};
+		11BE261B21B0867500628A59 /* WebParser */ = {
+			isa = PBXGroup;
+			children = (
+				11BE261C21B0868E00628A59 /* MercuryWebService.swift */,
+			);
+			path = WebParser;
 			sourceTree = "<group>";
 		};
 		11C34E972179913800381C6D /* Date */ = {
@@ -753,6 +764,7 @@
 				112D3B49218EAE3600D9575C /* UIViewController+Alerts.swift in Sources */,
 				11C34EB7217BB6D500381C6D /* String+Url.swift in Sources */,
 				117A84792174403200655CC9 /* AppCoordinator.swift in Sources */,
+				11BE261D21B0868E00628A59 /* MercuryWebService.swift in Sources */,
 				115140DE2170BA8E007857A7 /* Server.swift in Sources */,
 				118419272194009700D0CB08 /* CommentHeaderCellViewModel.swift in Sources */,
 				115140E62170C753007857A7 /* ArrayObject.swift in Sources */,

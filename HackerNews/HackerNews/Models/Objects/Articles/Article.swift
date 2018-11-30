@@ -17,6 +17,7 @@ struct Article {
     let commentsCount: Int
     let date: Date?
     let commentIds: [Int]
+    var content: String?
 }
 
 extension Article: ObjectType {
