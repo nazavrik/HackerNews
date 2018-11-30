@@ -54,6 +54,7 @@ class ArticleViewController: UIViewController {
         let y = view.layoutMarginsGuide.layoutFrame.origin.y
         var webViewControllerFrame = self.view.bounds
         webViewControllerFrame.origin.y = y
+        webViewControllerFrame.size.height -= y
         webViewController.frame = webViewControllerFrame
     }
 }

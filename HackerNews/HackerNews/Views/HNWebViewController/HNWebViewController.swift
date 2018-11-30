@@ -100,7 +100,8 @@ class HNWebViewController: NSObject {
     
     var frame: CGRect = .zero {
         didSet {
-            _view.frame = CGRect(origin: .zero, size: frame.size)
+            let size = CGSize(width: frame.size.width, height: frame.size.height + frame.origin.y)
+            _view.frame = CGRect(origin: .zero, size: size)
             webView.frame = frame
             loadingProgressView.frame = progressViewFrame
             toolBarController.frame = toolBarFrame
@@ -108,6 +109,7 @@ class HNWebViewController: NSObject {
     }
     
     func load(_ request: URLRequest) {
+        toolBarController.items = [.back, .forward, .refresh, .share, .explore]
         webView.load(request)
         isLoading = true
     }

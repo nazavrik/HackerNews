@@ -24,10 +24,12 @@ enum HNToolBarItem: Int {
         case .refresh: return "refresh_icon"
         }
     }
-    
-    static var all: [HNToolBarItem] {
-        return [.back, .forward, .refresh, .share, .explore]
-    }
+}
+
+enum HNAlignment {
+    case left
+    case right
+    case center
 }
 
 class HNToolBarButton: UIButton {
@@ -41,9 +43,23 @@ protocol HNWebViewToolBarDelegate: class {
 class HNWebViewToolBarController: NSObject {
     private(set) var view: UIView
     private var topDivider: UIView
-    private var items = [HNToolBarButton]()
-
+    private var toolBarItems = [HNToolBarButton]()
+    private let optimalNumberOfItems = 5
+    private let optimalWidth: CGFloat = 60.0
+    
+    var items: [HNToolBarItem] = [] {
+        didSet {
+            let count = min(items.count, optimalNumberOfItems)
+            
+            for i in 0..<count {
+                let button = toolBarButton(items[i])
+                view.addSubview(button)
+                toolBarItems.append(button)
+            }
+        }
+    }
     weak var delegate: HNWebViewToolBarDelegate?
+    var alignment: HNAlignment = .center
     
     override init() {
         view = UIView(frame: .zero)
@@ -55,34 +71,40 @@ class HNWebViewToolBarController: NSObject {
         self.topDivider = topDivider
         
         super.init()
-        
-        for type in HNToolBarItem.all {
-            let button = toolBarButton(type)
-            view.addSubview(button)
-            items.append(button)
-        }
     }
     
     var frame: CGRect = .zero {
         didSet {
             view.frame = frame
             topDivider.frame = CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: 0.5)
-            
-            let buttonWidth: CGFloat = 50.0
-            let space = Int(frame.size.width - CGFloat(items.count) * buttonWidth)/(items.count - 1)
-            
-            for (i, item) in items.enumerated() {
-                item.frame = CGRect(x: CGFloat(i) * buttonWidth + CGFloat(i * space), y: 0.0, width: buttonWidth, height: frame.size.height)
-            }
+            updateItemFrames(frame)
         }
     }
     
     func setEnabled(_ enabled: Bool, item type: HNToolBarItem) {
-        for item in items {
+        for item in toolBarItems {
             if item.itemType == type {
                 item.isEnabled = enabled
                 break
             }
+        }
+    }
+    
+    private func updateItemFrames(_ frame: CGRect) {
+        let spaceBetweenItems = (frame.size.width - CGFloat(optimalNumberOfItems) * optimalWidth)/CGFloat(optimalNumberOfItems - 1)
+        let freeSpace = CGFloat(optimalNumberOfItems - toolBarItems.count) * (optimalWidth + spaceBetweenItems)
+        
+        let rightOffset: CGFloat = {
+            switch self.alignment {
+            case .left: return freeSpace
+            case .right: return 0.0
+            case .center: return freeSpace/2.0
+            }
+        }()
+        // Items from right to left
+        for (i, item) in toolBarItems.reversed().enumerated() {
+            let x = frame.size.width - (optimalWidth + CGFloat(i) * (optimalWidth + spaceBetweenItems) + rightOffset)
+            item.frame = CGRect(x: x, y: 0.0, width: optimalWidth, height: frame.size.height)
         }
     }
     
