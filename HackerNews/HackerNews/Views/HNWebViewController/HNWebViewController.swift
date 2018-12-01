@@ -34,6 +34,7 @@ class HNWebViewController: NSObject {
         }
     }
     private var url = ""
+    private var openLinksInNewWindow = false
     
     private enum LoadingProgressState {
         case none
@@ -86,6 +87,7 @@ class HNWebViewController: NSObject {
         configuration.preferences = preferences
         configuration.allowsInlineMediaPlayback = true
         webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.navigationDelegate = self
         webView.scrollView.delegate = self
         _view.addSubview(webView)
@@ -121,6 +123,7 @@ class HNWebViewController: NSObject {
         }
         
         self.url = url
+        openLinksInNewWindow = true
         toolBarController.alignment = .right
         toolBarController.items = [.share, .explore]
         
@@ -207,6 +210,15 @@ extension HNWebViewController: WKNavigationDelegate {
         isLoading = false
         updateToolBar()
         updateLoadingProgress(with: .continue)
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated && openLinksInNewWindow {
+            delegate?.webViewController(self, open: url)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
     }
     
     private func webViewLoadingDidFail(_ error: Error) {
