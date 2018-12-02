@@ -117,10 +117,16 @@ class HNWebViewController: NSObject {
     }
     
     func loadHTML(_ html: String?, url: String) {
-        guard var html = html, html.count > 200 else {
+        // if html content too small open original url
+        guard var html = html, html.count > 1000 else {
             load(url)
             return
         }
+        
+  
+        // <pre> element is displayed in a fixed-width and brakes webview's width
+        html = html.replacingOccurrences(of: "<pre", with: "<p", options: .literal, range: html.startIndex..<html.endIndex)
+        html = html.replacingOccurrences(of: "</pre>", with: "</p>", options: .literal, range: html.startIndex..<html.endIndex)
         
         self.url = url
         openLinksInNewWindow = true
@@ -131,6 +137,7 @@ class HNWebViewController: NSObject {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
 
+        // change font size
         html = "<span style=\"font-family: 'HelveticaNeue'; font-size: 28;\">\(html)</span>"
         
         webView.loadHTMLString(html, baseURL: nil)

@@ -35,7 +35,7 @@ class AppCoordinator: Coordinator {
         navigationController.setViewControllers([articleListViewController], animated: false)
     }
     
-    private func showCommentsViewController(for article: Article) {
+    private func showCommentsViewController(for article: Article, currentMode: ArticleViewController.Mode) {
         let commentsViewController = Storyboards.Main.commentsViewController()
         
         let displayData = CommentsDisplayData(viewController: commentsViewController, article: article)
@@ -44,7 +44,14 @@ class AppCoordinator: Coordinator {
         }
         
         displayData.didArticleSelect = { [weak self] in
-            self?.navigationController.popViewController(animated: true)
+            switch currentMode {
+            case .content(_):
+                self?.showArticleViewController(.original(article))
+            case .original(_):
+                self?.navigationController.popViewController(animated: true)
+            default:
+                break
+            }
         }
         
         commentsViewController.displayData = displayData
@@ -71,7 +78,7 @@ extension AppCoordinator: ArticleViewControllerDelegate {
     }
     
     func articleViewController(_ articleViewController: ArticleViewController, didSelectCommentsOf article: Article) {
-        showCommentsViewController(for: article)
+        showCommentsViewController(for: article, currentMode: articleViewController.mode)
     }
     
     func articleViewController(_ articleViewController: ArticleViewController, didSelectUrl url: String) {
