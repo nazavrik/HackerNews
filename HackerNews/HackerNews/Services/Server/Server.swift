@@ -8,14 +8,23 @@
 
 import Foundation
 
-class Server {
-    fileprivate let apiBase: String
+protocol URLSessionDataTaskProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
+
+extension URLSession: URLSessionDataTaskProtocol {}
+
+class Server {    
+    private var session: URLSessionDataTaskProtocol
+    
+    let apiBase: String
     
     static var standard: Server {
-        return Server(apiBase: Constants.apiBase)
+        return Server(apiBase: "https://hacker-news.firebaseio.com/v0/")
     }
     
-    init(apiBase: String) {
+    init(session: URLSessionDataTaskProtocol = URLSession.shared, apiBase: String) {
+        self.session = session
         self.apiBase = apiBase
     }
     
@@ -58,7 +67,7 @@ class Server {
             urlRequest.httpBody = jsonData
         }
         
-        let session = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 let internetAvailable = Reachability.isInternetAvailable
                 let serverError: ServerError = !internetAvailable ? .noConnection : .requestFailed
@@ -99,10 +108,6 @@ class Server {
             }
         }
         
-        session.resume()
-    }
-    
-    private struct Constants {
-        static var apiBase = "https://hacker-news.firebaseio.com/v0/"
+        task.resume()
     }
 }
