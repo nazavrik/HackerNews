@@ -34,7 +34,7 @@ class HNWebViewController: NSObject {
         }
     }
     private var url = ""
-    private var openLinksInNewWindow = false
+    private var isHTMLContent = false
     
     private enum LoadingProgressState {
         case none
@@ -129,17 +129,18 @@ class HNWebViewController: NSObject {
         html = html.replacingOccurrences(of: "</pre>", with: "</p>", options: .literal, range: html.startIndex..<html.endIndex)
         
         self.url = url
-        openLinksInNewWindow = true
+        isHTMLContent = true
         toolBarController.alignment = .right
         toolBarController.items = [.share, .explore]
         
         if #available(iOS 11.0, *) {
             webView.scrollView.contentInsetAdjustmentBehavior = .never
         }
-
-        // change font size
-        html = "<span style=\"font-family: 'HelveticaNeue'; font-size: 28;\">\(html)</span>"
         
+        // change font size
+        html = "<span style=\"font-family: 'HelveticaNeue'; font-size: 40; line-height: 60px; color:#555555;\">\(html)</span>"
+        
+        webView.isHidden = true
         webView.loadHTMLString(html, baseURL: nil)
         isLoading = true
     }
@@ -199,6 +200,17 @@ class HNWebViewController: NSObject {
 extension HNWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         updateLoadingProgress(with: .finish)
+        
+        // adjust html content
+        if isHTMLContent {
+            let css = "body { margin: 20; padding: 20; }"
+            let javascript = "var style = document.createElement('style'); style.innerHTML = '\(css)'; document.head.appendChild(style)"
+            
+            webView.evaluateJavaScript(javascript) { _, _ in
+                webView.isHidden = false
+                self.isLoading = false
+            }
+        }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -214,13 +226,16 @@ extension HNWebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        isLoading = false
+        // if content is loaded by URL, show it as soon as possible
+        if !isHTMLContent {
+            isLoading = false
+        }
         updateToolBar()
         updateLoadingProgress(with: .continue)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.navigationType == .linkActivated && openLinksInNewWindow {
+        if navigationAction.navigationType == .linkActivated && isHTMLContent {
             delegate?.webViewController(self, open: url)
             decisionHandler(.cancel)
         } else {
@@ -248,6 +263,8 @@ extension HNWebViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.contentOffset.x = 0.0
+        
         if scrollViewDragging || isLoading { return }
         
         if isScrollDown {
