@@ -15,10 +15,6 @@ class ServerTests: XCTestCase {
     
     var sut: Server!
     var mockURLSession: MockURLSession!
-
-    func getRequest(for query: String) -> Request<ArrayObject<Int>> {
-        return Request(query: query)
-    }
     
     override func setUp() {
         mockURLSession = MockURLSession()
@@ -27,47 +23,56 @@ class ServerTests: XCTestCase {
 
     override func tearDown() {}
 
-    func testServer_Settings() {
+    func testServer_ApiBaseShouldBeAssigned() {
         XCTAssertEqual(sut.apiBase, apiBase)
     }
     
-    func testServer_makeGetRequest() {
-        let request = getRequest(for: "test")
-        
-        sut.request(request) { _, _ in }
-        
+    func testServer_ShouldSendRequest() {
+        sendGetRequest()
         XCTAssertNotNil(mockURLSession.completionHandler)
+    }
+    
+    func testServer_SessionDataTaskShouldCallResume() {
+        sendGetRequest()
         XCTAssertTrue(mockURLSession.dataTask.resumeGotCalled)
+    }
+    
+    func testServer_URLRequestShouldHaveURLHost() {
+        sendGetRequest()
         
-        guard let mockRequest = mockURLSession.request,
-            let url = mockRequest.url else {
+        guard let url = mockURLSession.request?.url else {
             XCTFail()
             return
         }
         
         XCTAssertEqual(url.host, "example.com")
-        XCTAssertEqual(url.path, "/test")
+    }
+    
+    func testServer_URLRequestShouldHaveURLPath() {
+        sendGetRequest("somequery")
+        
+        guard let url = mockURLSession.request?.url else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertEqual(url.path, "/somequery")
+    }
+    
+    func testRequest_GetRequestShouldHaveGetMethod() {
+        sendGetRequest()
+        
+        guard let mockRequest = mockURLSession.request else {
+                XCTFail()
+                return
+        }
         
         XCTAssertEqual(mockRequest.httpMethod, "GET")
     }
     
-    func testServer_makePostRequest() {
-        let parameters = [
-            "parameter_one": "One",
-            "parameter_two": "Two"
-        ]
-        
-        let headers = [
-            "header_one": "One",
-            "header_two": "Two"
-        ]
-        
-        let request = Request<ArrayObject<Int>>(query: "test", method: .post, parameters: parameters, headers: headers)
-        
+    func testServer_PostRequestShouldHavePostMethod() {
+        let request = Request<ArrayObject<Int>>(query: "somequery", method: .post)
         sut.request(request) { _, _ in }
-        
-        XCTAssertNotNil(mockURLSession.completionHandler)
-        XCTAssertTrue(mockURLSession.dataTask.resumeGotCalled)
         
         guard let mockRequest = mockURLSession.request else {
             XCTFail()
@@ -75,9 +80,39 @@ class ServerTests: XCTestCase {
         }
         
         XCTAssertEqual(mockRequest.httpMethod, "POST")
+    }
+    
+    func testServer_PostRequestShouldHaveHttpBody() {
+        let parameters = [
+            "parameter_one": "One",
+            "parameter_two": "Two"
+        ]
+        
+        let request = Request<ArrayObject<Int>>(query: "somequery", method: .post, parameters: parameters)
+        sut.request(request) { _, _ in }
+        
+        guard let mockRequest = mockURLSession.request else {
+            XCTFail()
+            return
+        }
         
         let data = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         XCTAssertEqual(mockRequest.httpBody, data)
+    }
+    
+    func testServer_RequestShouldHaveHeaders() {
+        let headers = [
+            "header_one": "One",
+            "header_two": "Two"
+        ]
+        
+        let request = Request<ArrayObject<Int>>(query: "test", method: .post, headers: headers)
+        sut.request(request) { _, _ in }
+        
+        guard let mockRequest = mockURLSession.request else {
+            XCTFail()
+            return
+        }
         
         XCTAssertNotNil(mockRequest.allHTTPHeaderFields?["header_one"])
         XCTAssertEqual(mockRequest.allHTTPHeaderFields?["header_one"], "One")
@@ -88,7 +123,7 @@ class ServerTests: XCTestCase {
     
     func testServer_ThrowErrorWrongURL() {
         let sut = Server(session: mockURLSession, apiBase: "")
-        let request = getRequest(for: "")
+        let request = Request<ArrayObject<Int>>(query: "")
         var urlError: ServerError?
         
         sut.request(request) { _, error in
@@ -96,6 +131,11 @@ class ServerTests: XCTestCase {
         }
         
         XCTAssertNotNil(urlError)
+    }
+    
+    private func sendGetRequest(_ query: String = "test") {
+        let request = Request<ArrayObject<Int>>(query: query)
+        sut.request(request) { _, _ in }
     }
 }
 
