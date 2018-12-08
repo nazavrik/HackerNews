@@ -121,7 +121,61 @@ class ServerTests: XCTestCase {
         XCTAssertEqual(mockRequest.allHTTPHeaderFields?["header_two"], "Two")
     }
     
-    func testServer_ThrowErrorWrongURL() {
+    func testServer_ShouldReceiveData() {
+        mockURLSession.responseData = "[1,2,3]".data(using: .utf8)
+        mockURLSession.responseType = .success
+        var receiveData: ArrayObject<Int>?
+        let exp = expectation(description: "Wait for data")
+        
+        let request = Request<ArrayObject<Int>>(query: "")
+        sut.request(request) { data, error in
+            receiveData = data
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertNotNil(receiveData)
+    }
+    
+    func testServer_ShouldThrowErrorEmptyResponse() {
+        let error = sendRequestWithError()
+        
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.description, ServerError.emptyResponse.description)
+    }
+    
+    func testServer_ShouldThrowErrorRequestFailed() {
+        mockURLSession.responseData = "[1,2,3]".data(using: .utf8)
+        mockURLSession.responseType = .nil
+        
+        let error = sendRequestWithError()
+        
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.description, ServerError.requestFailed.description)
+    }
+    
+    func testServer_ShouldThrowClientError() {
+        mockURLSession.responseData = "{\"errors\": [\"not found\"]}".data(using: .utf8)
+        mockURLSession.responseType = .failed
+        
+        let error = sendRequestWithError()
+        
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.description, "not found")
+    }
+    
+    func testServer_ShouldThrowServerError() {
+        mockURLSession.responseError = NSError(domain: "Internal Server Error", code: 500, userInfo: nil)
+        mockURLSession.responseType = .success
+        
+        let error = sendRequestWithError()
+        
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.description, ServerError.requestFailed.description)
+    }
+    
+    func testServer_ShouldThrowErrorWrongURL() {
         let sut = Server(session: mockURLSession, apiBase: "")
         let request = Request<ArrayObject<Int>>(query: "")
         var urlError: ServerError?
@@ -137,6 +191,21 @@ class ServerTests: XCTestCase {
         let request = Request<ArrayObject<Int>>(query: query)
         sut.request(request) { _, _ in }
     }
+    
+    private func sendRequestWithError() -> ServerError? {
+        var receiveError: ServerError?
+        let exp = expectation(description: "Wait for error")
+        
+        let request = Request<ArrayObject<Int>>(query: "")
+        sut.request(request) { data, error in
+            receiveError = error
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        return receiveError
+    }
 }
 
 extension ServerTests {
@@ -147,10 +216,32 @@ extension ServerTests {
         var request: URLRequest?
         var dataTask = MockURLSessionDataTask()
         
+        enum ResponseType {
+            case success
+            case failed
+            case `nil`
+        }
+        
+        var responseData: Data?
+        var responseType: ResponseType = .nil
+        var responseError: Error?
+        
         func dataTask(with request: URLRequest, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
             self.completionHandler = completionHandler
             self.request = request
+            completionHandler(responseData, response(with: responseType, request: request), responseError)
             return dataTask
+        }
+        
+        func response(with type: ResponseType, request: URLRequest) -> URLResponse? {
+            switch type {
+            case .success:
+                return HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
+            case .failed:
+                return HTTPURLResponse(url: request.url!, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: nil)!
+            case .nil:
+                return nil
+            }
         }
     }
     
