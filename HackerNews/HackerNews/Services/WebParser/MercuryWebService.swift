@@ -8,6 +8,8 @@
 
 import Foundation
 
+let mercuryApiKey = "" // put your mercury id here
+
 struct MercuryContent {
     let content: String?
 }
@@ -22,7 +24,7 @@ extension MercuryContent {
     struct Requests {
         static func content(for urlString: String) -> Request<MercuryContent> {
             let header = [
-                "x-api-key": "<put your mercury id here>"
+                "x-api-key": mercuryApiKey
             ]
             return Request(query: "parser?url=\(urlString)", method: .get, headers: header)
         }
@@ -30,6 +32,10 @@ extension MercuryContent {
 }
 
 struct MercuryWebService {
+    static var isAvailable: Bool {
+        return !mercuryApiKey.isEmpty
+    }
+    
     static func fetchContent(for urlString: String?, complete: @escaping ((String?) -> Void)) {
         guard let url = urlString else {
             complete(nil)

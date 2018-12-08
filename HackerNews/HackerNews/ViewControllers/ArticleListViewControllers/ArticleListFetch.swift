@@ -44,6 +44,12 @@ struct ArticleListFetch {
                     return
                 }
                 
+                guard MercuryWebService.isAvailable else {
+                    group.leave()
+                    items.append(article)
+                    return
+                }
+                
                 MercuryWebService.fetchContent(for: article.url, complete: { content in
                     article.content = content
                     items.append(article)
