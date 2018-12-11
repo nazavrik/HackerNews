@@ -14,7 +14,11 @@ protocol URLSessionDataTaskProtocol {
 
 extension URLSession: URLSessionDataTaskProtocol {}
 
-class Server {    
+protocol ServerRequestProtocol {
+    func request<T: ObjectType>(_ request: Request<T>, completion: @escaping ((T?, ServerError?) -> Void))
+}
+
+class Server: ServerRequestProtocol {
     private var session: URLSessionDataTaskProtocol
     
     let apiBase: String
@@ -87,8 +91,6 @@ class Server {
             
             print(String(data: data, encoding: .utf8) ?? "")
             
-            let jsonData = try? JSONSerialization.jsonObject(with: data, options: [])
-            
             guard let httpResponse = response as? HTTPURLResponse else {
                 OperationQueue.main.addOperation {
                     completion(nil, .requestFailed)
@@ -96,13 +98,14 @@ class Server {
                 return
             }
             
+            let jsonData = try? JSONSerialization.jsonObject(with: data, options: [])
+            
             if httpResponse.statusCode != 200 {
                 OperationQueue.main.addOperation {
                     completion(nil, ServerError(data: jsonData))
                 }
                 return
             }
-            
             OperationQueue.main.addOperation {
                 completion(jsonData, nil)
             }
