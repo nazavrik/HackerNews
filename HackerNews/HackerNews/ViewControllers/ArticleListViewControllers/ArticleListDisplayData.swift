@@ -12,6 +12,7 @@ class ArticleListDisplayData {
     private weak var viewController: ArticleListViewController?
     private var allArticleIds: [Int]?
     private var articles = [Article]()
+    private var contents = [Int: String?]()
     private var loadedItemsCount = 0
     
     var storyType: HNStoryType {
@@ -53,6 +54,7 @@ class ArticleListDisplayData {
                 self?.loadedItemsCount = 0
                 self?.allArticleIds = ids
                 self?.updateUI(with: articles)
+                self?.fetchContent(for: articles)
             }
         }
     }
@@ -60,6 +62,17 @@ class ArticleListDisplayData {
     private func fetchMoreArticles() {
         ArticleListFetch.fetchArticles(for: nextArticleIds) { [weak self] articles in
             self?.updateUI(with: articles)
+            self?.fetchContent(for: articles)
+        }
+    }
+    
+    private func fetchContent(for articles: [Article]) {
+        guard MercuryWebService.isAvailable else { return }
+        
+        for article in articles {
+            MercuryWebService.fetchContent(for: article.url, complete: { content in
+                self.contents[article.id] = content
+            })
         }
     }
     
@@ -140,6 +153,10 @@ extension ArticleListDisplayData: DisplayCollection {
         return 65.0
     }
     
+    func estimatedHeight(for indexPath: IndexPath) -> CGFloat {
+        return height(for: indexPath)
+    }
+    
     private func isLoaderCell(_ indexPath: IndexPath) -> Bool {
         return indexPath.row == articles.count
     }
@@ -159,7 +176,8 @@ extension ArticleListDisplayData: DisplayCollectionAction {
             cell.startLoaderAnimation()
             fetchMoreArticles()
         } else {
-            let article = articles[indexPath.row]
+            var article = articles[indexPath.row]
+            article.content = contents[article.id] as? String
             didArticleSelect?(article)
         }
     }

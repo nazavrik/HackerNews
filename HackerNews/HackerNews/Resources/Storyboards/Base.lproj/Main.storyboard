@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -83,7 +84,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_icon_big" translatesAutoresizingMaskIntoConstraints="NO" id="O8D-ao-2eJ">
-                                <rect key="frame" x="123.5" y="94" width="128" height="128"/>
+                                <rect key="frame" x="123" y="94" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="117-o2-nfn"/>
                                     <constraint firstAttribute="width" constant="128" id="4me-nT-9aB"/>
@@ -101,7 +102,7 @@
                         <constraints>
                             <constraint firstItem="5KR-ag-Qas" firstAttribute="bottom" secondItem="Xb9-IW-0H7" secondAttribute="bottom" constant="20" id="5gk-TE-YtK"/>
                             <constraint firstItem="O8D-ao-2eJ" firstAttribute="top" secondItem="5KR-ag-Qas" secondAttribute="top" constant="30" id="Fki-U9-HoB"/>
-                            <constraint firstItem="O8D-ao-2eJ" firstAttribute="centerX" secondItem="5KR-ag-Qas" secondAttribute="centerX" id="SqJ-Eb-BUb"/>
+                            <constraint firstItem="O8D-ao-2eJ" firstAttribute="centerX" secondItem="5KR-ag-Qas" secondAttribute="centerX" constant="-0.5" id="SqJ-Eb-BUb"/>
                             <constraint firstItem="5KR-ag-Qas" firstAttribute="trailing" secondItem="Xb9-IW-0H7" secondAttribute="trailing" constant="20" id="dAL-zb-2HJ"/>
                             <constraint firstItem="Xb9-IW-0H7" firstAttribute="leading" secondItem="5KR-ag-Qas" secondAttribute="leading" constant="20" id="iM8-8d-jv4"/>
                             <constraint firstItem="Xb9-IW-0H7" firstAttribute="top" secondItem="O8D-ao-2eJ" secondAttribute="bottom" constant="30" id="qcr-YU-lp4"/>

@@ -19,7 +19,7 @@ class CommentTableViewCell: UITableViewCell {
     
     var level: Int = 0 {
         didSet {
-            let lvl = level > 4 ? 4 : level
+            let lvl = level > 6 ? 6 : level
             contentViewLeadingConstraint.constant = CGFloat(16 + 16*lvl)
         }
     }
