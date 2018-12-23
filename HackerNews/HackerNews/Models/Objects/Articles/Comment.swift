@@ -24,15 +24,13 @@ extension Comment: ObjectType {
     init?(json: JSONDictionary) {
         guard
             let id = json["id"] as? Int,
-            let text = json["text"] as? String,
-            let author = json["by"] as? String,
             let timeStamp = json["time"] as? TimeInterval,
             let parentId = json["parent"] as? Int
             else { return nil }
         
         self.id = id
-        self.text = text
-        self.author = author
+        self.text = json["text"] as? String ?? ""
+        self.author = json["by"] as? String ?? ""
         self.date = Date(timeIntervalSince1970: timeStamp)
         self.commentIds = json["kids"] as? [Int] ?? []
         self.deleted = json["deleted"] as? Bool ?? false

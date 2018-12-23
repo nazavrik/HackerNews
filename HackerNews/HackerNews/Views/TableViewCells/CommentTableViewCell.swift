@@ -13,12 +13,9 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var replyButton: UIButton!
-    @IBOutlet weak var replyViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentViewLeadingConstraint: NSLayoutConstraint!
     
     var didCellSelect: ((_ urls: [String]) -> Void)?
-    var didReplyingSelect: ((_ cell: CommentTableViewCell) -> Void)?
     
     var level: Int = 0 {
         didSet {
@@ -29,29 +26,13 @@ class CommentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func config(name: String, text: String, timeAgo: String, subComments number: String) {
-        nameLabel.text = name
-        dateLabel.text = timeAgo
-        
-        if let data = text.data(using: .unicode) {
-            commentLabel.attributedText = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-        }
-        
-        let replyTitle = number.isEmpty ? "" : "Show Replies (\(number))"
-        replyButton.setTitle(replyTitle, for: .normal)
-        replyViewHeightConstraint.constant = replyTitle.isEmpty ? 0 : 30
-    }
-    
-    @IBAction func didReply(_ sender: UIButton) {
-        didReplyingSelect?(self)
     }
     
     @IBAction func didSelect(_ sender: UIButton) {
         var urls = [String]()
-        commentLabel.attributedText?.enumerateAttribute(NSAttributedString.Key.link, in: NSMakeRange(0, commentLabel.text!.count), options: [.longestEffectiveRangeNotRequired], using: { value, range, isStop in
+        let range = NSMakeRange(0, commentLabel.text!.count)
+        let options: NSAttributedString.EnumerationOptions = [.longestEffectiveRangeNotRequired]
+        commentLabel.attributedText?.enumerateAttribute(.link, in: range, options: options, using: { value, range, isStop in
             if let value = value as? URL {
                 urls.append(value.absoluteString)
             }

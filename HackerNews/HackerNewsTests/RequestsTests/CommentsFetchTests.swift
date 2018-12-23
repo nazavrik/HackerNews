@@ -11,22 +11,22 @@ import XCTest
 
 class CommentsFetchTests: XCTestCase {
     
-    var sutArticle: CommentsFetchNew!
+    var sutArticle: CommentsFetch!
     var mockServerForArticle: MockServer<Article>!
     
-    var sutComment: CommentsFetchNew!
+    var sutComment: CommentsFetch!
     var mockServerForComment: MockServer<Comment>!
     
-    var sutComments: CommentsFetchNew!
+    var sutComments: CommentsFetch!
     
     override func setUp() {
         mockServerForArticle = MockServer<Article>()
-        sutArticle = CommentsFetchNew(server: mockServerForArticle)
+        sutArticle = CommentsFetch(server: mockServerForArticle)
         
         mockServerForComment = MockServer<Comment>()
-        sutComment = CommentsFetchNew(server: mockServerForComment)
+        sutComment = CommentsFetch(server: mockServerForComment)
         
-        sutComments = CommentsFetchNew()
+        sutComments = CommentsFetch()
     }
 
     override func tearDown() {}
@@ -113,54 +113,6 @@ class CommentsFetchTests: XCTestCase {
         }
         
         XCTAssertNotNil(errorResult)
-    }
-    
-    // MARK: fetch comments by article id
-    
-    func testComments_ShouldSendRequestToFetchCommentIds() {
-        let mockServer = MockServer<Article>()
-        sutComments = CommentsFetchNew(server: mockServer)
-        
-        let articleId = 1
-        sutComments.fetchComments(with: articleId) { comments, error in
-            
-        }
-        
-        XCTAssertNotNil(mockServer.completion)
-    }
-    
-    func testComments_ShouldReturnErrorIfError() {
-        let mockServer = MockServer<Article>()
-        sutComments = CommentsFetchNew(server: mockServer)
-        
-        mockServer.error = error
-        
-        var errorResult: ServerError?
-        
-        let articleId = 1
-        sutComments.fetchComments(with: articleId) { comments, error in
-            errorResult = error
-        }
-        
-        XCTAssertNotNil(errorResult)
-    }
-    
-    func testComments_ShouldCallFetchCommentNTimes() {
-        let mockServer = MockServer<Article>()
-        sutComments = CommentsFetchNew(server: mockServer)
-
-        mockServer.data = article
-
-        var count = 0
-
-        let articleId = 1
-        sutComments.fetchComments(with: articleId) { _, _ in
-            count += 1
-        }
-        
-        wait(for: [], timeout: 1.0)
-
-        XCTAssertEqual(count, 3)
     }
     
     private var article: Article? {

@@ -17,6 +17,7 @@
 		112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112D3B53218FFF0C00D9575C /* ArticleListFetch.swift */; };
 		112E7B502183E67200FD9E09 /* NBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B4F2183E67200FD9E09 /* NBarButton.swift */; };
 		112E7B522183F01200FD9E09 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E7B512183F01100FD9E09 /* CommentsViewController.swift */; };
+		1138361621C48552004E9DF2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138361521C48552004E9DF2 /* Queue.swift */; };
 		11444BD02176E8DC000632E0 /* UIView+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11444BCF2176E8DC000632E0 /* UIView+Loader.swift */; };
 		114CC2C421AB02C800C0E7CC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114CC2C321AB02C800C0E7CC /* UIApplication.swift */; };
 		1151407C216D7991007857A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1151407B216D7991007857A7 /* AppDelegate.swift */; };
@@ -110,6 +111,7 @@
 		112D3B53218FFF0C00D9575C /* ArticleListFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListFetch.swift; sourceTree = "<group>"; };
 		112E7B4F2183E67200FD9E09 /* NBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBarButton.swift; sourceTree = "<group>"; };
 		112E7B512183F01100FD9E09 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		1138361521C48552004E9DF2 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		11444BCF2176E8DC000632E0 /* UIView+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Loader.swift"; sourceTree = "<group>"; };
 		114CC2C321AB02C800C0E7CC /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		11514078216D7991007857A7 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +221,14 @@
 				112D3B4B218EB2D400D9575C /* Reachability.swift */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		1138361421C48534004E9DF2 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				1138361521C48552004E9DF2 /* Queue.swift */,
+			);
+			path = "Data Structures";
 			sourceTree = "<group>";
 		};
 		114CC2C221AB02B400C0E7CC /* UIApplication */ = {
@@ -377,6 +387,7 @@
 		115140CE21703ED2007857A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1138361421C48534004E9DF2 /* Data Structures */,
 				114CC2C221AB02B400C0E7CC /* UIApplication */,
 				11B00A43219FD25A00C8D9B9 /* UIDevice */,
 				11D9FFF5217C2FB5003EF25D /* UIColor */,
@@ -800,6 +811,7 @@
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
 				115CDE862199BB930057225F /* HNTitleViewController.swift in Sources */,
 				11C34EC4217BCFCF00381C6D /* CommentTableViewCell.swift in Sources */,
+				1138361621C48552004E9DF2 /* Queue.swift in Sources */,
 				115CDE772195491D0057225F /* HNTitleView.swift in Sources */,
 				11D9FFF4217C2EE4003EF25D /* NavigationController.swift in Sources */,
 				112D3B54218FFF0C00D9575C /* ArticleListFetch.swift in Sources */,

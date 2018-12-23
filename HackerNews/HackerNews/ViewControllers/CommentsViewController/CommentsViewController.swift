@@ -24,9 +24,6 @@ class CommentsViewController: TableViewController {
         
         titleView = HNTitleView(title: "Comments", secondTitle: displayData.article.title)
         navigationItem.titleView = titleView
-            
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.rowHeight = UITableView.automaticDimension
         
         let button = HNBarButton(image: UIImage(named: "refresh_icon"))
         button.addTarget(self, action: #selector(self.updateAction(_:)), for: .touchUpInside)

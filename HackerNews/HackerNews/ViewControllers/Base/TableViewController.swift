@@ -68,10 +68,18 @@ extension TableViewController: UITableViewDataSource {
         }
         return tableView.dequeueReusableHeader(for: section, with: model)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        tableDisplayData.willDisplay(cell, forRowAt: indexPath)
+    }
 }
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableDisplayData.height(for: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableDisplayData.height(for: indexPath)
     }
     

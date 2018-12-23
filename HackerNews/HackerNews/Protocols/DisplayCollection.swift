@@ -13,16 +13,24 @@ protocol DisplayCollection {
     
     var numberOfSections: Int { get }
     func numberOfRows(in section: Int) -> Int
-    func model(for indexPath: IndexPath) -> BaseCellViewModel
-    func header(for section: Int) -> BaseCellViewModel?
     
+    func model(for indexPath: IndexPath) -> BaseCellViewModel
     func height(for indexPath: IndexPath) -> CGFloat
+    func estimatedHeight(for indexPath: IndexPath) -> CGFloat
+    
+    func header(for section: Int) -> BaseCellViewModel?
     func headerHeight(for section: Int) -> CGFloat
+    
+    func willDisplay(_ cell: UITableViewCell, forRowAt indexPath: IndexPath)
 }
 
 extension DisplayCollection {
     var numberOfSections: Int {
         return 1
+    }
+    
+    func estimatedHeight(for indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func header(for section: Int) -> BaseCellViewModel? {
@@ -31,6 +39,10 @@ extension DisplayCollection {
     
     func headerHeight(for section: Int) -> CGFloat {
         return 0.0
+    }
+    
+    func willDisplay(_ cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
 }
 

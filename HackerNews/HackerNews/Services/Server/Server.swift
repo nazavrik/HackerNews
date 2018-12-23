@@ -22,6 +22,7 @@ class Server: ServerRequestProtocol {
     private var session: URLSessionDataTaskProtocol
     
     let apiBase: String
+    var returnCompletionBlockInMainThread = true
     
     static var standard: Server {
         return Server(apiBase: "https://hacker-news.firebaseio.com/v0/")
@@ -71,19 +72,30 @@ class Server: ServerRequestProtocol {
             urlRequest.httpBody = jsonData
         }
         
+        func returnBlock(_ complete: @escaping (() -> Void)) {
+            if !returnCompletionBlockInMainThread {
+                complete()
+                return
+            }
+            
+            OperationQueue.main.addOperation {
+                complete()
+            }
+        }
+        
         let task = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 let internetAvailable = Reachability.isInternetAvailable
                 let serverError: ServerError = !internetAvailable ? .noConnection : .requestFailed
                 
-                OperationQueue.main.addOperation {
+                returnBlock {
                     completion(nil, serverError)
                 }
                 return
             }
             
             guard let data = data else {
-                OperationQueue.main.addOperation {
+                returnBlock {
                     completion(nil, .emptyResponse)
                 }
                 return
@@ -92,7 +104,7 @@ class Server: ServerRequestProtocol {
             print(String(data: data, encoding: .utf8) ?? "")
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                OperationQueue.main.addOperation {
+                returnBlock {
                     completion(nil, .requestFailed)
                 }
                 return
@@ -101,12 +113,13 @@ class Server: ServerRequestProtocol {
             let jsonData = try? JSONSerialization.jsonObject(with: data, options: [])
             
             if httpResponse.statusCode != 200 {
-                OperationQueue.main.addOperation {
+                returnBlock {
                     completion(nil, ServerError(data: jsonData))
                 }
                 return
             }
-            OperationQueue.main.addOperation {
+            
+            returnBlock {
                 completion(jsonData, nil)
             }
         }

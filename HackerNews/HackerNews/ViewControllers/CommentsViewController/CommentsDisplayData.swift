@@ -10,17 +10,38 @@ import UIKit
 
 class CommentsDisplayData {
     private weak var viewController: CommentsViewController?
+    private var tableView: UITableView? {
+        return viewController?.tableView
+    }
     private var isRefreshing = false {
         didSet {
-            viewController?.tableView.reloadData()
+            if isRefreshing {
+                tableView?.showLoader(type: .glider)
+                resetContainers()
+                tableView?.reloadData()
+            } else {
+                tableView?.hideLoader()
+            }
+            
+            loadingCommentId = nil
+            tableView?.tableFooterView = nil
         }
     }
     private var comments = [Comment]()
+    private var commentTexts = [NSAttributedString?]()
+    private var unloadArticleIds = Queue<Int>()
+    private var loadingCommentId: Int?
+    private var cellHeights = [CGFloat]()
+    private var server: Server = {
+        let server = Server.standard
+        server.returnCompletionBlockInMainThread = false
+        return server
+    }()
+    var commentHeaderHeight: CGFloat = 94.0
     
     var article: Article
     var didOpeningUrlSelect: ((String) -> Void)?
     var didArticleSelect: (() -> Void)?
-    var commentHeaderHeight: CGFloat = 94.0
     
     init(viewController: CommentsViewController, article: Article) {
         self.viewController = viewController
@@ -29,38 +50,88 @@ class CommentsDisplayData {
     
     func fetchComments() {
         isRefreshing = true
-        viewController?.tableView.isUserInteractionEnabled = false
-        viewController?.tableView.showLoader(type: .glider)
-
-        CommentsFetch.fetchComments(for: article.id) { [weak self] article, comments, error in
-            guard let article = article, error == nil else {
+        
+        CommentsFetch().fetchCommentIds(with: article.id) { [weak self] commentIds, error in
+            guard let commentIds = commentIds, error == nil else {
                 self?.viewController?.showAlert(title: "Can't fetch comments",
                                                 message: "Reason: \(error?.description ?? "")")
-                self?.updateUI()
                 return
             }
             
-            self?.article = article
+            if commentIds.isEmpty {
+                self?.isRefreshing = false
+                return
+            }
+
+            self?.unloadArticleIds.enqueue(commentIds)
+            self?.fetchNextCommentAndSubcomments()
+        }
+    }
+    
+    private func fetchNextCommentAndSubcomments() {
+        guard
+            let commentId = unloadArticleIds.dequeue(),
+            loadingCommentId == nil
+            else { return }
+        
+        loadingCommentId = commentId
+        
+        let width = self.width
+        
+        CommentsFetch(server: server).fetchCommentAndSubcomments(with: commentId, complete: { [weak self] comment, error in
+            guard var comment = comment else { return }
             
-            var sortedComments = [Comment]()
-            self?.getComments(from: comments, to: &sortedComments)
-            self?.comments.removeAll()
-            self?.comments.append(contentsOf: sortedComments)
-            self?.updateUI()
-        }
+            if comment.deleted {
+                self?.loadingCommentId = nil
+                self?.fetchNextCommentAndSubcomments()
+                return
+            }
+            
+            comment.level = 0
+            var sortedComments = [comment]
+            self?.getComments(from: (comment.subcomments, 1), to: &sortedComments)
+            
+            var indexPaths = [IndexPath]()
+            var row = self?.comments.count ?? 0
+            
+            sortedComments.forEach({ comment in
+                if comment.deleted { return }
+                
+                let (height, attributedText) = CommentCellViewModel.height(for: comment, width: width)
+                self?.cellHeights.append(height)
+                self?.commentTexts.append(attributedText)
+                self?.comments.append(comment)
+                
+                let indexPath = IndexPath(row: row, section: Section.comments.rawValue)
+                indexPaths.append(indexPath)
+                row += 1
+            })
+            
+            DispatchQueue.main.async {
+                self?.isRefreshing = false
+                
+                self?.tableView?.insertRows(at: indexPaths, with: .automatic)
+            }
+        })
     }
     
-    private func getComments(from graph: [Comment], to comments: inout [Comment]) {
-        for comment in graph {
+    private var width: CGFloat {
+        return UIScreen.main.bounds.size.width
+    }
+    
+    private func getComments(from tuple: (graph: [Comment], level: Int), to comments: inout [Comment]) {
+        for var comment in tuple.graph {
+            comment.level = tuple.level
             comments.append(comment)
-            getComments(from: comment.subcomments, to: &comments)
+            getComments(from: (comment.subcomments, tuple.level + 1), to: &comments)
         }
     }
     
-    private func updateUI() {
-        isRefreshing = false
-        viewController?.tableView.isUserInteractionEnabled = true
-        viewController?.tableView.hideLoader()
+    private func resetContainers() {
+        comments.removeAll()
+        cellHeights.removeAll()
+        commentTexts.removeAll()
+        unloadArticleIds.removeAll()
     }
 }
 
@@ -97,20 +168,11 @@ extension CommentsDisplayData: DisplayCollection {
         }
         
         let comment = comments[indexPath.row]
-        var model = CommentCellViewModel(comment: comment)
+        let attributedText = commentTexts[indexPath.row]
+        var model = CommentCellViewModel(comment: comment, attributedText: attributedText)
         model.didCommentSelect = { urls in
             self.showURLActions(for: urls)
         }
-//        model.didReplyingSelect = { cell in
-//            let text = cell.replyButton.titleLabel?.text ?? ""
-//            if text.hasPrefix("Show") {
-//                cell.replyButton.setTitle("Hide replies", for: .normal)
-//                self.showSubcomments(for: cell, comment: comment)
-//            } else {
-//                cell.replyButton.setTitle("Show replies (\(comment.commentIds.count))", for: .normal)
-//                self.hideSubcomments(for: cell, comment: comment)
-//            }
-//        }
         return model
     }
     
@@ -133,7 +195,11 @@ extension CommentsDisplayData: DisplayCollection {
             return commentHeaderHeight
         }
         
-        return UITableView.automaticDimension
+        return cellHeights[indexPath.row]
+    }
+    
+    func estimatedHeight(for indexPath: IndexPath) -> CGFloat {
+        return height(for: indexPath)
     }
     
     func headerHeight(for section: Int) -> CGFloat {
@@ -167,69 +233,23 @@ extension CommentsDisplayData: DisplayCollection {
         viewController?.navigationController?.present(alertController, animated: true, completion: nil)
     }
     
-//    private func showSubcomments(for cell: CommentTableViewCell, comment: Comment) {
-//        guard !comment.commentIds.isEmpty,
-//            let tableView = viewController?.tableView else { return }
-//
-//        _fetchComments(comment.commentIds) { comments in
-//            let actualComments = comments.filter({ !$0.deleted })
-//
-//            self.subcomments[comment.id] = actualComments
-//
-//            let items = actualComments.compactMap({ element -> Comment in
-//                var item = element
-//                item.level = comment.level + 1
-//                return item
-//            })
-//
-//            tableView.performBatchUpdates({
-//                if let indexPath = tableView.indexPath(for: cell) {
-//                    self.comments.insert(contentsOf: items, at: indexPath.row + 1)
-//                    var indexPaths = [IndexPath]()
-//                    var index = indexPath.row + 1
-//
-//                    comments.forEach({ comment in
-//                        indexPaths.append(IndexPath(row: index, section: 1))
-//                        index += 1
-//                    })
-//
-//                    tableView.insertRows(at: indexPaths, with: .automatic)
-//                }
-//            }, completion: { success in
-//
-//            })
-//        }
-//    }
-//
-//    private func hideSubcomments(for cell: CommentTableViewCell, comment: Comment) {
-//        guard !comment.commentIds.isEmpty,
-//            let tableView = viewController?.tableView else { return }
-//
-//        tableView.performBatchUpdates({
-//            if let indexPath = tableView.indexPath(for: cell) {
-//                let comments = self.subcomments[comment.id] ?? []
-//                let commentIds = comments.map({ comment -> Int in
-//                    return comment.id
-//                })
-//
-//                self.comments.removeAll(where: {
-//                    commentIds.contains($0.id)
-//                })
-//
-//                var indexPaths = [IndexPath]()
-//                var index = indexPath.row + 1
-//
-//                commentIds.forEach({ _ in
-//                    indexPaths.append(IndexPath(row: index, section: 1))
-//                    index += 1
-//                })
-//
-//                tableView.deleteRows(at: indexPaths, with: .automatic)
-//            }
-//        }, completion: { success in
-//
-//        })
-//    }
+    func willDisplay(_ cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let sectinType = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        let isLastRow = sectinType == .comments && indexPath.row == comments.count - 1
+        
+        if isLastRow && !unloadArticleIds.isEmpty {
+            addLoadingFooterView()
+            fetchNextCommentAndSubcomments()
+        }
+    }
+    
+    private func addLoadingFooterView() {
+        let view = UIView()
+        view.frame = CGRect(x: 0.0, y: 0.0, width: width, height: 44.0)
+        view.showLoader(type: .activity)
+        tableView?.tableFooterView = view
+    }
 }
 
 extension CommentsDisplayData: DisplayCollectionAction {

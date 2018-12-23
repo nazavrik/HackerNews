@@ -6,30 +6,45 @@
 //  Copyright © 2018 nazavrik. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct CommentCellViewModel {
     let comment: Comment
+    let attributedText: NSAttributedString?
     var didCommentSelect: ((_ urls: [String]) -> Void)?
-    var didReplyingSelect: ((_ cell: CommentTableViewCell) -> Void)?
     
-    init(comment: Comment) {
+    init(comment: Comment, attributedText: NSAttributedString?) {
         self.comment = comment
+        self.attributedText = attributedText
     }
 }
 
 extension CommentCellViewModel: CellViewModel {
     func setup(on cell: CommentTableViewCell) {
-        let numberOfSubcomments = ""//comment.commentIds.count == 0 ? "" : "\(comment.commentIds.count)"
-        
-        cell.config(name: comment.author,
-                    text: comment.text,
-                    timeAgo: comment.date?.timeSinceNow ?? "",
-                    subComments: numberOfSubcomments)
-        
+        cell.nameLabel.text = comment.author
+        cell.dateLabel.text = comment.date?.timeSinceNow
+        cell.commentLabel.attributedText = attributedText
         cell.level = comment.level
-        
         cell.didCellSelect = didCommentSelect
-        cell.didReplyingSelect = didReplyingSelect
+    }
+}
+
+extension CommentCellViewModel {
+    static func height(for comment: Comment, width: CGFloat) -> (CGFloat, NSAttributedString?) {
+        guard
+            let data = comment.text.data(using: .unicode),
+            let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil)
+            else { return (UITableView.automaticDimension, nil) }
+        
+        let top = CGFloat(49.0 + 5.0 + 0.5)
+        let levelOffset = CGFloat(16 + 16*comment.level + 16)
+        
+        let size = CGSize(width: width - levelOffset, height: CGFloat.greatestFiniteMagnitude)
+        let height = top + attributedString.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).height
+        return (ceil(height), attributedString)
+    }
+    
+    static private var options: [NSAttributedString.DocumentReadingOptionKey : Any] {
+        return [.documentType: NSAttributedString.DocumentType.html]
     }
 }
