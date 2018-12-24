@@ -53,6 +53,7 @@ class CommentsDisplayData {
         
         CommentsFetch().fetchCommentIds(with: article.id) { [weak self] commentIds, error in
             guard let commentIds = commentIds, error == nil else {
+                self?.isRefreshing = false
                 self?.viewController?.showAlert(title: "Can't fetch comments",
                                                 message: "Reason: \(error?.description ?? "")")
                 return
