@@ -45,8 +45,10 @@ class HNBarButton: UIButton {
     override var frame: CGRect {
         didSet {
             guard let image = _imageView?.image else { return }
-            let leftEdgeInsets = rightBarButton ? frame.size.width - image.size.width + 5.0 : 0.0
-            let x = leftEdgeInsets + (frame.size.width - leftEdgeInsets - image.size.width)/2
+//            let leftEdgeInsets = rightBarButton ? frame.size.width - image.size.width + 5.0 : 0.0
+//            let x = leftEdgeInsets + (frame.size.width - leftEdgeInsets - image.size.width)/2
+//            let leftEdgeInsets = rightBarButton ? frame.size.width - image.size.width : 0.0
+            let x = rightBarButton ? frame.size.width - image.size.width : 0.0
             let y = (frame.size.height - image.size.height)/2
             let width = image.size.width
             let height = image.size.height

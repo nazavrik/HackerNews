@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venture Capital in the 1980s Venture Capital in the 1980s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="RHS-lM-Me2">
-                        <rect key="frame" x="20" y="5" width="280" height="34"/>
+                        <rect key="frame" x="16" y="5" width="288" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="nLM-hD-TdE"/>
                         </constraints>
@@ -28,13 +29,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcE-zN-Sa8">
-                        <rect key="frame" x="20" y="41" width="280" height="30.5"/>
+                        <rect key="frame" x="16" y="41" width="288" height="30.5"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njq-wn-oA4" userLabel="Bottom View">
-                        <rect key="frame" x="20" y="73.5" width="280" height="15"/>
+                        <rect key="frame" x="16" y="73.5" width="288" height="15"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="author_icon_small" translatesAutoresizingMaskIntoConstraints="NO" id="LJc-GZ-PWc">
                                 <rect key="frame" x="0.0" y="3.5" width="10" height="10"/>
@@ -104,15 +105,15 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RHS-lM-Me2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="A1t-dP-jxY"/>
-                    <constraint firstAttribute="trailing" secondItem="Njq-wn-oA4" secondAttribute="trailing" constant="20" id="C0F-80-ozp"/>
+                    <constraint firstItem="RHS-lM-Me2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="A1t-dP-jxY"/>
+                    <constraint firstAttribute="trailing" secondItem="Njq-wn-oA4" secondAttribute="trailing" constant="16" id="C0F-80-ozp"/>
                     <constraint firstItem="Njq-wn-oA4" firstAttribute="top" secondItem="xcE-zN-Sa8" secondAttribute="bottom" constant="2" id="NKV-QT-WPv"/>
-                    <constraint firstAttribute="trailing" secondItem="xcE-zN-Sa8" secondAttribute="trailing" constant="20" id="Sok-Jn-jIj"/>
+                    <constraint firstItem="xcE-zN-Sa8" firstAttribute="leading" secondItem="RHS-lM-Me2" secondAttribute="leading" id="O6j-to-WBL"/>
                     <constraint firstItem="RHS-lM-Me2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="UQA-gK-WLh"/>
-                    <constraint firstItem="xcE-zN-Sa8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="a2i-ay-Sm3"/>
-                    <constraint firstItem="Njq-wn-oA4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ghU-Lo-8IE"/>
+                    <constraint firstItem="Njq-wn-oA4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ghU-Lo-8IE"/>
                     <constraint firstItem="xcE-zN-Sa8" firstAttribute="top" secondItem="RHS-lM-Me2" secondAttribute="bottom" constant="2" id="mtn-5j-AOS"/>
-                    <constraint firstAttribute="trailing" secondItem="RHS-lM-Me2" secondAttribute="trailing" constant="20" id="pPx-yK-D8B"/>
+                    <constraint firstItem="xcE-zN-Sa8" firstAttribute="trailing" secondItem="RHS-lM-Me2" secondAttribute="trailing" id="p0y-Jf-egd"/>
+                    <constraint firstAttribute="trailing" secondItem="RHS-lM-Me2" secondAttribute="trailing" constant="16" id="pPx-yK-D8B"/>
                     <constraint firstAttribute="bottom" secondItem="Njq-wn-oA4" secondAttribute="bottom" constant="5" id="tId-2J-3wy"/>
                 </constraints>
             </tableViewCellContentView>

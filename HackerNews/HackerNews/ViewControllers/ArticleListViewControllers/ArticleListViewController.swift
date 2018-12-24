@@ -40,6 +40,7 @@ class ArticleListViewController: TableViewController {
     }
     
     var didInfoSelect: (() -> Void)?
+    var didSettingsSelect: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +48,14 @@ class ArticleListViewController: TableViewController {
         titleView = HNButtonTitleView(title: displayData.storyType.title)
         titleViewController = HNTitleViewController(with: [.new, .top, .best], selected: displayData.storyType)
         
-        let button = HNBarButton(image: UIImage(named: "info_icon"))
-        button.addTarget(self, action: #selector(self.infoAction(_:)), for: .touchUpInside)
+        let leftButton = HNBarButton(image: UIImage(named: "info_icon"))
+        leftButton.rightBarButton = false
+        leftButton.addTarget(self, action: #selector(self.infoAction(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        let rightButton = HNBarButton(image: UIImage(named: "settings_icon"))
+        rightButton.addTarget(self, action: #selector(self.settingsAction(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
         
         refreshing = true
         
@@ -70,6 +75,10 @@ class ArticleListViewController: TableViewController {
     
     @objc func infoAction(_ sender: UIButton) {
         didInfoSelect?()
+    }
+    
+    @objc func settingsAction(_ sender: UIButton) {
+        didSettingsSelect?()
     }
     
     private func updateTitleViewController() {

@@ -30,6 +30,10 @@ class AppCoordinator: Coordinator {
             self?.showInfoViewController()
         }
         
+        articleListViewController.didSettingsSelect = { [weak self] in
+            self?.showSettingsViewController()
+        }
+        
         articleListViewController.displayData = displayData
         
         navigationController.setViewControllers([articleListViewController], animated: false)
@@ -69,6 +73,12 @@ class AppCoordinator: Coordinator {
     private func showInfoViewController() {
         let infoViewController = Storyboards.Main.infoViewController()
         navigationController.pushViewController(infoViewController, animated: true)
+    }
+    
+    private func showSettingsViewController() {
+        let settingsViewController = Storyboards.Main.settingsViewController()
+        settingsViewController.displayData = SettingsDisplayData(viewController: settingsViewController)
+        navigationController.pushViewController(settingsViewController, animated: true)
     }
 }
 

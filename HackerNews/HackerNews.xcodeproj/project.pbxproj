@@ -78,6 +78,11 @@
 		11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */; };
 		11DE0EBB21B9EE1E00C0562B /* ServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE0EBA21B9EE1E00C0562B /* ServerTests.swift */; };
 		11DE0EBD21B9EFF700C0562B /* HackerNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE0EBC21B9EFF700C0562B /* HackerNewsTests.swift */; };
+		11F1168E21D08C5800416F9E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1168D21D08C5800416F9E /* SettingsViewController.swift */; };
+		11F1169021D08F3A00416F9E /* SettingsDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1168F21D08F3A00416F9E /* SettingsDisplayData.swift */; };
+		11F1169321D0937600416F9E /* SwitcherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1169121D0937600416F9E /* SwitcherTableViewCell.swift */; };
+		11F1169421D0937600416F9E /* SwitcherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F1169221D0937600416F9E /* SwitcherTableViewCell.xib */; };
+		11F1169621D094AF00416F9E /* SwitcherCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1169521D094AF00416F9E /* SwitcherCellViewModel.swift */; };
 		4402BB1A994C5AC9D77BAD9B /* Pods_HackerNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 539347C054D80AACF1D40710 /* Pods_HackerNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +183,11 @@
 		11D9FFF8217C3655003EF25D /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
 		11DE0EBA21B9EE1E00C0562B /* ServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerTests.swift; sourceTree = "<group>"; };
 		11DE0EBC21B9EFF700C0562B /* HackerNewsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsTests.swift; sourceTree = "<group>"; };
+		11F1168D21D08C5800416F9E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		11F1168F21D08F3A00416F9E /* SettingsDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDisplayData.swift; sourceTree = "<group>"; };
+		11F1169121D0937600416F9E /* SwitcherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherTableViewCell.swift; sourceTree = "<group>"; };
+		11F1169221D0937600416F9E /* SwitcherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitcherTableViewCell.xib; sourceTree = "<group>"; };
+		11F1169521D094AF00416F9E /* SwitcherCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherCellViewModel.swift; sourceTree = "<group>"; };
 		539347C054D80AACF1D40710 /* Pods_HackerNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackerNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -311,6 +321,7 @@
 		115140BA21702EC1007857A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11F1168C21D08BA700416F9E /* SettingsViewController */,
 				11B00A40219F9E8D00C8D9B9 /* InfoViewController */,
 				11C34EB2217ADF0E00381C6D /* ArticleViewController */,
 				115140E72172DDB3007857A7 /* Base */,
@@ -368,6 +379,8 @@
 				118419232193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib */,
 				115CDE892199CB0E0057225F /* StoryTitleTableViewCell.swift */,
 				115CDE8A2199CB0E0057225F /* StoryTitleTableViewCell.xib */,
+				11F1169121D0937600416F9E /* SwitcherTableViewCell.swift */,
+				11F1169221D0937600416F9E /* SwitcherTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -380,6 +393,7 @@
 				11C34EC6217BD1B000381C6D /* CommentCellViewModel.swift */,
 				1104B8BA218809BA005BB702 /* LoaderCellViewModel.swift */,
 				118419262194009700D0CB08 /* CommentHeaderCellViewModel.swift */,
+				11F1169521D094AF00416F9E /* SwitcherCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -596,6 +610,15 @@
 			path = ServerTests;
 			sourceTree = "<group>";
 		};
+		11F1168C21D08BA700416F9E /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11F1168D21D08C5800416F9E /* SettingsViewController.swift */,
+				11F1168F21D08F3A00416F9E /* SettingsDisplayData.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
 		D888ACC9B8A5D0CE2F3975D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,6 +748,7 @@
 				11514086216D7993007857A7 /* LaunchScreen.storyboard in Resources */,
 				11514083216D7993007857A7 /* Assets.xcassets in Resources */,
 				115CDE8C2199CB0E0057225F /* StoryTitleTableViewCell.xib in Resources */,
+				11F1169421D0937600416F9E /* SwitcherTableViewCell.xib in Resources */,
 				11C34EBD217BC3F500381C6D /* ArticleHeaderTableViewCell.xib in Resources */,
 				118419252193FBFD00D0CB08 /* CommentHeaderTableViewCell.xib in Resources */,
 				11514081216D7991007857A7 /* Main.storyboard in Resources */,
@@ -806,6 +830,8 @@
 				114CC2C421AB02C800C0E7CC /* UIApplication.swift in Sources */,
 				115140C2217031BD007857A7 /* DisplayCollection.swift in Sources */,
 				11C34E992179914700381C6D /* Date+TimeSinceNoew.swift in Sources */,
+				11F1168E21D08C5800416F9E /* SettingsViewController.swift in Sources */,
+				11F1169021D08F3A00416F9E /* SettingsDisplayData.swift in Sources */,
 				115140E32170BB72007857A7 /* ObjectType.swift in Sources */,
 				1151407C216D7991007857A7 /* AppDelegate.swift in Sources */,
 				115140E92172DE69007857A7 /* TableViewController.swift in Sources */,
@@ -826,6 +852,8 @@
 				118419242193FBFD00D0CB08 /* CommentHeaderTableViewCell.swift in Sources */,
 				11C34EB4217ADF8F00381C6D /* CommentsDisplayData.swift in Sources */,
 				115140C421703484007857A7 /* CellViewModel.swift in Sources */,
+				11F1169321D0937600416F9E /* SwitcherTableViewCell.swift in Sources */,
+				11F1169621D094AF00416F9E /* SwitcherCellViewModel.swift in Sources */,
 				115140B2216EE36E007857A7 /* Article.swift in Sources */,
 				115D495521A9DEB700984067 /* HNWebViewController.swift in Sources */,
 				11D9FFF9217C3655003EF25D /* UIColor+CustomColors.swift in Sources */,
